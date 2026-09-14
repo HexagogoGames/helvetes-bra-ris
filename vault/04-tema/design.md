@@ -144,6 +144,11 @@ tema — noll extra installation, redan tillgängligt som fallback på de flesta
 
 **hyprlock:** **minimal** — stor klocka centrerat, lösenordsfält under, blurrad
 wallpaper som bakgrund. Ingen avatar, inget extra info-lager, inte en waybar-kopia.
+**Uppdaterat 2026-09-15:** bakgrunden är nu den riktiga skogsbilden
+(`images/backgrounds/forrest-background1.png`) istället för `path = screenshot`
+(som blurrade den levande skärmen). Inte testat live av mig — kräver att låsa
+skärmen, vilket jag inte gör utan lösenordsåtkomst att låsa upp med igen. Jakob
+verifierar själv med `Super+L`.
 
 **wlogout:** **ikon-rad utan textetiketter** (som i Riggsmedjan-mockupen) — lås/logga
 ut/starta om/stäng av som rena cirkulära ikonknappar.
