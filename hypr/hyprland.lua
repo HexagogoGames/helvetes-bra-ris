@@ -14,19 +14,31 @@ require("autostart")
 -- Snabb/snappy tempo (~150-200ms), rät kurva utan overshoot — se
 -- vault/04-tema/design.md för resonemanget bakom bytet från easeOutCubic (~300ms)
 hl.curve("snappy", { type = "bezier", points = { { 0.2, 0.9 }, { 0.3, 1 } } })
+-- "easeOutBack"-stil overshoot — studsig känsla för nya fönster (2026-09-15, på
+-- Jakobs begäran: långsammare + lite mer bouncy än standard-snappy)
+hl.curve("bouncy", { type = "bezier", points = { { 0.34, 1.56 }, { 0.64, 1 } } })
+-- Mjuk, icke-studsig kurva för fullscreen-övergången (bara långsammare, inte bouncy)
+hl.curve("smooth", { type = "bezier", points = { { 0.25, 0.46 }, { 0.45, 0.94 } } })
+
 hl.animation({
     leaf = "windows",
     enabled = true,
-    speed = 3,
-    bezier = "snappy",
+    speed = 5,
+    bezier = "bouncy",
     style = "popin 80%",
 })
 hl.animation({
     leaf = "windowsOut",
     enabled = true,
-    speed = 3,
-    bezier = "snappy",
+    speed = 5,
+    bezier = "bouncy",
     style = "popin 80%",
+})
+hl.animation({
+    leaf = "windowsMove",
+    enabled = true,
+    speed = 6,
+    bezier = "smooth",
 })
 hl.animation({
     leaf = "border",

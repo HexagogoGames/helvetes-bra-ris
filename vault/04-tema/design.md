@@ -112,6 +112,11 @@ kant i skarp config, det var bara mockup-smek i Riggsmedjan/Bokstavssmedjan.
 - Workspace-byte: **slide**
 - Tempo: **snabbt/snappy** — korta durationer (~150-200ms), rät/snäv easing,
   inte den gamla `easeOutCubic ~300ms`-känslan från placeholder-configen.
+- **Justerat 2026-09-15:** nytt-fönster-animationen (`windows`/`windowsOut`)
+  gjord **långsammare och lite bouncy** igen — egen `bouncy`-kurva (easeOutBack-
+  stil overshoot, `speed 3→5`). Fullscreen-övergången (`windowsMove`) gjord
+  **långsammare** med en mjuk, icke-studsig `smooth`-kurva (`speed 6`).
+  Workspace-slide/border/fade rörda inte, fortfarande snappy.
 
 ```
 -- hyprland.lua (riktning, exakta bezier-värden återstår vid implementation)

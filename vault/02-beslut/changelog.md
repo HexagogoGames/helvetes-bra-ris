@@ -2,6 +2,19 @@
 
 Nyast överst.
 
+## 2026-09-15 — Eww-systemmenyns designrunda påbörjad, animationer justerade
+
+Byggde en fjärde provrums-Artifact, "Menysmedjan"
+([[../05-todo/menysmedjan]]), för spinoff-projektet eww-systemmeny: struktur
+(fristående vs. ihopslagen med wifi/volym/batteri), utlösarplats i waybar,
+vilka snabbåtgärder/info som ska ingå, och om en utökad vy med sparklines ska
+finnas. Låst mot det riktiga färdiga temat (mörkgrönt/guld) för korrekt förhandsvy.
+Väntar på Jakobs val innan implementation.
+
+Samtidigt: nytt-fönster-animationen gjord långsammare och lite bouncy (egen
+`bouncy`-kurva, easeOutBack-stil), och fullscreen-övergången (`windowsMove`)
+gjord långsammare med en mjuk `smooth`-kurva. Se [[../04-tema/design]].
+
 ## 2026-09-15 — swaync förenklad: bort med hover-expand, mindre storlek
 
 Jakob gillade inte att swaycs kontrollcenter tog upp typ halva skärmen. Orsaken:

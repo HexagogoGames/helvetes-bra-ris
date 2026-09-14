@@ -1,0 +1,311 @@
+<title>Menysmedjan</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700&display=swap">
+<style>
+  :root{
+    --shell-bg:#eef0f1; --shell-surface:#ffffff; --shell-surface-2:#f4f5f7;
+    --shell-border:#d7dade; --shell-text:#1b1e24; --shell-text-dim:#5b616e;
+    --shell-accent:#8a6416; --shell-accent-ink:#ffffff; --shell-shadow:0 1px 2px rgba(20,20,30,.06);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --shell-bg:#14161c; --shell-surface:#1c1f28; --shell-surface-2:#242833;
+      --shell-border:#2f3341; --shell-text:#e8e6df; --shell-text-dim:#8b8fa3;
+      --shell-accent:#c9a24b; --shell-accent-ink:#14161c; --shell-shadow:0 1px 2px rgba(0,0,0,.35);
+    }
+  }
+  :root[data-theme="dark"]{
+    --shell-bg:#14161c; --shell-surface:#1c1f28; --shell-surface-2:#242833;
+    --shell-border:#2f3341; --shell-text:#e8e6df; --shell-text-dim:#8b8fa3;
+    --shell-accent:#c9a24b; --shell-accent-ink:#14161c; --shell-shadow:0 1px 2px rgba(0,0,0,.35);
+  }
+  *{ box-sizing:border-box; }
+  body{ margin:0; background:var(--shell-bg); color:var(--shell-text); font-family:"Manrope",ui-sans-serif,system-ui,sans-serif; -webkit-font-smoothing:antialiased; }
+  .wrap{ max-width:1180px; margin:0 auto; padding-inline:20px; padding-block:28px 60px; display:flex; flex-direction:column; gap:26px; }
+
+  header.intro{ display:flex; flex-direction:column; gap:10px; max-width:660px; }
+  .eyebrow{ margin:0; font-family:"JetBrains Mono",monospace; font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:var(--shell-accent); }
+  h1{ margin:0; font-size:clamp(28px,4vw,38px); line-height:1.05; text-wrap:balance; }
+  .lede{ margin:0; color:var(--shell-text-dim); font-size:15px; line-height:1.55; max-width:62ch; }
+
+  .panel-grid{ display:grid; grid-template-columns:minmax(260px,330px) 1fr; gap:20px; align-items:start; }
+  @media (max-width:860px){ .panel-grid{ grid-template-columns:1fr; } }
+
+  .controls{ display:flex; flex-direction:column; gap:18px; background:var(--shell-surface); border:1px solid var(--shell-border); border-radius:10px; padding:16px; box-shadow:var(--shell-shadow); }
+  .control-group{ display:flex; flex-direction:column; gap:8px; }
+  .control-group h2{ margin:0; font-family:"JetBrains Mono",monospace; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--shell-text-dim); font-weight:600; }
+  .control-group p.hint{ margin:0; font-size:11.5px; color:var(--shell-text-dim); }
+
+  .seg{ display:flex; flex-direction:column; border:1px solid var(--shell-border); border-radius:8px; overflow:hidden; }
+  .seg-btn{ padding:10px 12px; border:none; border-bottom:1px solid var(--shell-border); background:var(--shell-surface-2); color:var(--shell-text); font-family:"Manrope",sans-serif; font-size:13px; text-align:left; cursor:pointer; display:flex; flex-direction:column; gap:2px; }
+  .seg-btn:last-child{ border-bottom:none; }
+  .seg-btn .sub{ font-size:11px; color:var(--shell-text-dim); }
+  .seg-btn[aria-pressed="true"]{ background:color-mix(in srgb, var(--shell-accent) 14%, var(--shell-surface-2)); }
+  .seg-btn[aria-pressed="true"] .name{ color:var(--shell-accent); }
+
+  .toggle-grid{ display:flex; flex-direction:column; gap:6px; }
+  .toggle-btn{ display:flex; align-items:center; justify-content:space-between; background:var(--shell-surface-2); border:1.5px solid var(--shell-border); border-radius:7px; padding:8px 10px; cursor:pointer; color:var(--shell-text); font-family:"Manrope",sans-serif; font-size:13px; }
+  .toggle-btn::after{ content:"av"; font-family:"JetBrains Mono",monospace; font-size:10.5px; color:var(--shell-text-dim); letter-spacing:.05em; text-transform:uppercase; }
+  .toggle-btn[aria-pressed="true"]::after{ content:"på"; color:var(--shell-accent); }
+  .toggle-btn[aria-pressed="true"]{ border-color:var(--shell-accent); }
+
+  button:focus-visible{ outline:2px solid var(--shell-accent); outline-offset:2px; }
+
+  .stage-col{ display:flex; flex-direction:column; gap:8px; min-width:0; }
+  .bezel{ background:linear-gradient(180deg,#3a3d46,#1c1e24); border-radius:16px; padding:14px 14px 20px; box-shadow:0 8px 24px rgba(0,0,0,.25); }
+  .stage{ position:relative; overflow:hidden; border-radius:6px; aspect-ratio:2256/1504; width:100%; font-family:"IBM Plex Mono",monospace;
+    background:
+      radial-gradient(circle at 22% 18%, rgba(127,166,107,.35) 0%, transparent 45%),
+      radial-gradient(circle at 78% 75%, rgba(212,162,74,.28) 0%, transparent 50%),
+      #17211a;
+  }
+
+  .bar{ position:relative; z-index:3; display:flex; align-items:center; justify-content:space-between; height:8.6%; padding:0 1.3%; color:#ece3c6; font-size:clamp(9px,1.15vw,13px);
+    background:rgba(28,38,30,.5); border-bottom:1px solid rgba(236,227,198,.1);
+  }
+  .zone{ display:flex; align-items:center; gap:.7em; background:rgba(236,227,198,.045); border-radius:10px; padding:.25em .6em; }
+  .ws{ display:flex; gap:.35em; }
+  .ws span{ width:.6em; height:.6em; border-radius:50%; background:#7fa66b; opacity:.75; }
+  .ws span.active{ background:#d4a24a; opacity:1; width:.85em; height:.85em; }
+  .mod{ display:flex; align-items:center; gap:.35em; border:1px solid rgba(63,92,66,.5); border-radius:8px; padding:.15em .6em; }
+  .trigger-mod{ position:relative; }
+  .trigger-mod.highlight{ border-color:#d4a24a; box-shadow:0 0 0 2px rgba(212,162,74,.35); background:rgba(212,162,74,.14); }
+  .clock{ color:#d4a24a; font-weight:600; font-variant-numeric:tabular-nums; }
+
+  .desktop{ position:relative; height:91.4%; }
+
+  .menu-popup{
+    position:absolute; top:6%; z-index:6; width:44%; max-width:340px;
+    background:rgba(23,33,26,.72); backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px);
+    border:1px solid rgba(63,92,66,.7); border-radius:16px; padding:1em 1.1em;
+    color:#ece3c6; font-size:clamp(9px,1.05vw,12.5px); box-shadow:0 16px 40px rgba(0,0,0,.4);
+    transition:right .2s ease, left .2s ease;
+  }
+  .menu-popup.pos-right{ right:2%; left:auto; }
+  .menu-popup.pos-left{ left:2%; right:auto; }
+  .menu-tabs{ display:flex; gap:.4em; margin-bottom:.8em; flex-wrap:wrap; }
+  .menu-tab{ font-size:.85em; padding:.3em .7em; border-radius:999px; background:rgba(236,227,198,.08); color:#93a08c; }
+  .menu-tab.active{ background:rgba(212,162,74,.2); color:#d4a24a; }
+  .menu-row{ display:flex; align-items:center; justify-content:space-between; padding:.5em 0; border-bottom:1px solid rgba(236,227,198,.08); }
+  .menu-row:last-child{ border-bottom:none; }
+  .menu-row .label{ display:flex; align-items:center; gap:.5em; color:#ece3c6; }
+  .menu-row .value{ color:#93a08c; font-variant-numeric:tabular-nums; }
+  .menu-row.action .value{ color:#7fa66b; }
+  .spark{ display:flex; align-items:flex-end; gap:1px; height:1.4em; }
+  .spark i{ width:3px; background:#d4a24a; opacity:.8; border-radius:1px; }
+  .expand-btn{ margin-top:.7em; width:100%; text-align:center; padding:.45em; border-radius:8px; background:rgba(212,162,74,.14); color:#d4a24a; font-size:.85em; }
+
+  .bezel-caption{ margin:0; font-family:"JetBrains Mono",monospace; font-size:11px; color:var(--shell-text-dim); text-align:right; }
+
+  .spec-sheet{ background:var(--shell-surface); border:1px solid var(--shell-border); border-radius:10px; padding:16px 18px; box-shadow:var(--shell-shadow); }
+  .spec-sheet h2{ margin:0 0 10px; font-family:"JetBrains Mono",monospace; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--shell-text-dim); font-weight:600; }
+  .spec-sheet pre{ margin:0; overflow-x:auto; background:var(--shell-surface-2); border:1px solid var(--shell-border); border-radius:8px; padding:12px 14px; }
+  .spec-sheet code{ font-family:"JetBrains Mono",monospace; font-size:12px; line-height:1.65; white-space:pre; color:var(--shell-text); }
+  footer.note{ font-size:12px; color:var(--shell-text-dim); max-width:70ch; }
+</style>
+
+<div class="wrap">
+  <header class="intro">
+    <p class="eyebrow">Spinoff-runda · Systemmeny</p>
+    <h1>Menysmedjan</h1>
+    <p class="lede">Panelen och stilen till höger är redan ert riktiga, klara tema (mörkgrönt/guld, IBM Plex Mono, kapslar) — bara den nya menyn är påhittad här. Ställ in till vänster, se den dyka upp i waybar-mockupen.</p>
+  </header>
+
+  <div class="panel-grid">
+    <aside class="controls">
+      <section class="control-group">
+        <h2>Struktur</h2>
+        <div class="seg" role="group" aria-label="Struktur">
+          <button class="seg-btn" data-structure="standalone" aria-pressed="false">
+            <span class="name">Fristående 4:e meny</span>
+            <span class="sub">Egen ikon, egen popup — wifi/volym/batteri-menyerna orörda</span>
+          </button>
+          <button class="seg-btn" data-structure="merged" aria-pressed="false">
+            <span class="name">Slå ihop med wifi/volym/batteri</span>
+            <span class="sub">En meny, flikar för Nätverk / Ljud / Batteri / System</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="control-group">
+        <h2>Utlösare i waybar</h2>
+        <div class="seg" role="group" aria-label="Utlösare">
+          <button class="seg-btn" data-trigger="new" aria-pressed="false">
+            <span class="name">Ny ikon längst till höger</span>
+          </button>
+          <button class="seg-btn" data-trigger="replace-gear" aria-pressed="false">
+            <span class="name">Ersätt ⚙ dotfiles-ikonen</span>
+            <span class="sub">Dotfiles-genvägen flyttar in som en rad i menyn istället</span>
+          </button>
+          <button class="seg-btn" data-trigger="replace-cpu" aria-pressed="false">
+            <span class="name">Klick på CPU/minne öppnar denna</span>
+            <span class="sub">Istället för att öppna btop i flytande kitty</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="control-group">
+        <h2>Snabbåtgärder att inkludera</h2>
+        <div class="toggle-grid" id="actionToggles"></div>
+      </section>
+
+      <section class="control-group">
+        <h2>Info att visa</h2>
+        <p class="hint">Allt ikryssat visas i kompakt läge direkt.</p>
+        <div class="toggle-grid" id="infoToggles"></div>
+      </section>
+
+      <section class="control-group">
+        <h2>Utökad vy</h2>
+        <div class="toggle-grid">
+          <button class="toggle-btn" id="expandToggle" aria-pressed="false">Visa "Visa mer"-knapp med grafer</button>
+        </div>
+      </section>
+    </aside>
+
+    <div class="stage-col">
+      <div class="bezel">
+        <div class="stage" id="stage">
+          <div class="bar">
+            <div class="zone"><span class="ws"><span class="active"></span><span></span><span></span></span></div>
+            <div class="zone"><span class="clock">00:12</span></div>
+            <div class="zone" id="rightZone">
+              <span class="mod trigger-mod" id="gearMod">⚙</span>
+              <span class="mod trigger-mod" id="cpuMod">14%</span>
+              <span class="mod">30%</span>
+              <span class="mod">📶 68%</span>
+              <span class="mod trigger-mod" id="newMod" style="display:none">☰</span>
+              <span class="mod">51%</span>
+            </div>
+          </div>
+          <div class="desktop">
+            <div class="menu-popup pos-right" id="menuPopup">
+              <div class="menu-tabs" id="menuTabs" style="display:none"></div>
+              <div id="menuRows"></div>
+              <div class="expand-btn" id="expandBtn" style="display:none">Visa mer ▾</div>
+              <div id="graphRows" style="display:none"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="bezel-caption">eDP-1 · låst tema, bara menyn är påhittad</p>
+    </div>
+  </div>
+
+  <section class="spec-sheet">
+    <h2>Anteckning för implementation</h2>
+    <pre><code id="specCode"></code></pre>
+  </section>
+
+  <footer class="note">Sparkline-staplarna är slumpade varje gång du ändrar något — bara för att visa var en graf skulle sitta, inte riktig data.</footer>
+</div>
+
+<script>
+(function(){
+  const ACTIONS = {
+    wifi:     { label:"Wifi på/av" },
+    bt:       { label:"Bluetooth på/av" },
+    audiodev: { label:"Byt ljudenhet" },
+    dnd:      { label:"Stör ej" },
+    nightlight:{ label:"Nattljus" },
+    lock:     { label:"Lås skärm" }
+  };
+  const INFO = {
+    cpu:  { label:"CPU", value:"14%" },
+    mem:  { label:"Minne", value:"30%" },
+    net:  { label:"Nätverk", value:"↓2.1 MB/s" },
+    temp: { label:"Temp", value:"44°C" },
+    uptime:{ label:"Upptid", value:"3h 12m" },
+    disk: { label:"Disk", value:"58%" }
+  };
+
+  const state = {
+    structure:"standalone", trigger:"new",
+    actions:{ wifi:true, bt:false, audiodev:true, dnd:true, nightlight:false, lock:true },
+    info:{ cpu:true, mem:true, net:true, temp:false, uptime:false, disk:false },
+    expandGraphs:true
+  };
+
+  const menuPopup = document.getElementById("menuPopup");
+  const menuTabs = document.getElementById("menuTabs");
+  const menuRows = document.getElementById("menuRows");
+  const expandBtn = document.getElementById("expandBtn");
+  const graphRows = document.getElementById("graphRows");
+  const specCode = document.getElementById("specCode");
+
+  function sparkline(){
+    let h = "";
+    for(let i=0;i<14;i++) h += '<i style="height:'+(20+Math.random()*80)+'%"></i>';
+    return '<span class="spark">'+h+'</span>';
+  }
+
+  function buildToggles(container, dict, stateKey){
+    container.innerHTML = "";
+    Object.keys(dict).forEach(key=>{
+      const btn = document.createElement("button");
+      btn.className = "toggle-btn";
+      btn.setAttribute("aria-pressed", state[stateKey][key] ? "true" : "false");
+      btn.textContent = dict[key].label;
+      btn.addEventListener("click", ()=>{ state[stateKey][key] = !state[stateKey][key]; render(); });
+      container.appendChild(btn);
+    });
+  }
+
+  function setPressed(selector, matchFn){
+    document.querySelectorAll(selector).forEach(el=> el.setAttribute("aria-pressed", matchFn(el) ? "true" : "false"));
+  }
+
+  function render(){
+    buildToggles(document.getElementById("actionToggles"), ACTIONS, "actions");
+    buildToggles(document.getElementById("infoToggles"), INFO, "info");
+    setPressed(".seg-btn[data-structure]", el => el.dataset.structure === state.structure);
+    setPressed(".seg-btn[data-trigger]", el => el.dataset.trigger === state.trigger);
+    document.getElementById("expandToggle").setAttribute("aria-pressed", state.expandGraphs ? "true" : "false");
+
+    document.getElementById("gearMod").classList.toggle("highlight", state.trigger === "replace-gear");
+    document.getElementById("cpuMod").classList.toggle("highlight", state.trigger === "replace-cpu");
+    document.getElementById("newMod").style.display = state.trigger === "new" ? "" : "none";
+    document.getElementById("newMod").classList.toggle("highlight", state.trigger === "new");
+
+    menuTabs.style.display = state.structure === "merged" ? "flex" : "none";
+    if(state.structure === "merged"){
+      menuTabs.innerHTML = ["Nätverk","Ljud","Batteri","System"].map((t,i)=>
+        '<span class="menu-tab'+(i===3?' active':'')+'">'+t+'</span>').join("");
+    }
+
+    let rows = "";
+    Object.keys(INFO).forEach(key=>{
+      if(state.info[key]) rows += '<div class="menu-row"><span class="label">'+INFO[key].label+'</span><span class="value">'+INFO[key].value+'</span></div>';
+    });
+    Object.keys(ACTIONS).forEach(key=>{
+      if(state.actions[key]) rows += '<div class="menu-row action"><span class="label">'+ACTIONS[key].label+'</span><span class="value">på</span></div>';
+    });
+    menuRows.innerHTML = rows || '<div class="menu-row"><span class="label" style="opacity:.6">Inget ikryssat än</span></div>';
+
+    expandBtn.style.display = state.expandGraphs ? "block" : "none";
+    if(state.expandGraphs){
+      let g = "";
+      Object.keys(INFO).forEach(key=>{
+        if(state.info[key]) g += '<div class="menu-row"><span class="label">'+INFO[key].label+'</span>'+sparkline()+'</div>';
+      });
+      graphRows.innerHTML = g;
+      graphRows.style.display = "none";
+      expandBtn.onclick = ()=>{ graphRows.style.display = graphRows.style.display === "none" ? "block" : "none"; };
+    }
+
+    const includedActions = Object.keys(ACTIONS).filter(k=>state.actions[k]);
+    const includedInfo = Object.keys(INFO).filter(k=>state.info[k]);
+    specCode.textContent =
+      "Struktur: " + (state.structure === "merged" ? "Slås ihop med wifi/volym/batteri (flikar)" : "Fristående 4:e meny") + "\n" +
+      "Utlösare: " + ({new:"Ny ikon längst till höger", "replace-gear":"Ersätter ⚙ dotfiles-ikonen", "replace-cpu":"Klick på cpu/memory-modulerna"}[state.trigger]) + "\n" +
+      "Snabbåtgärder: " + (includedActions.length ? includedActions.map(k=>ACTIONS[k].label).join(", ") : "(inga)") + "\n" +
+      "Info i kompakt vy: " + (includedInfo.length ? includedInfo.map(k=>INFO[k].label).join(", ") : "(inga)") + "\n" +
+      "Utökad vy: " + (state.expandGraphs ? "Ja, \"Visa mer\" expanderar med sparklines per rad" : "Nej, bara kompakt vy finns");
+  }
+
+  document.querySelectorAll(".seg-btn[data-structure]").forEach(btn=> btn.addEventListener("click", ()=>{ state.structure = btn.dataset.structure; render(); }));
+  document.querySelectorAll(".seg-btn[data-trigger]").forEach(btn=> btn.addEventListener("click", ()=>{ state.trigger = btn.dataset.trigger; render(); }));
+  document.getElementById("expandToggle").addEventListener("click", ()=>{ state.expandGraphs = !state.expandGraphs; render(); });
+
+  render();
+})();
+</script>
