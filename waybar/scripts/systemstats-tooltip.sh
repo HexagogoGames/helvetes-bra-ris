@@ -6,7 +6,7 @@ python3 -c "
 import json
 d = json.loads('''$data''')
 print(json.dumps({
-    'text': '📊',
+    'text': '',
     'tooltip': f\"Minne {d['mem']}%\nTemp {d['temp']}°C\n{d['net']}\n\nKlicka för systemmeny\"
 }))
 "

@@ -2,6 +2,25 @@
 
 Nyast överst.
 
+## 2026-09-15 — Hittade den riktiga swaync-bulan (blur, inte storlek), bytte ikon
+
+Jakob rapporterade att swaync-notiser fortfarande "sträckte sig över för stor
+del av skärmen" trots gårdagens storleksfix. Testade live — notiskortet
+självt var faktiskt redan litet (~340px), men den **suddiga (blurrade) ytan**
+sträckte sig ända ner till skärmens botten. Orsak: Hyprlands
+`layerrule = blur` täcker hela layer-surface-rektangeln, och swaync gör den
+ytan hög (för att kunna stapla flera notiser), inte bara det synliga kortet.
+Provade `ignorezero` (blurra bara där alpha > 0) men den lua-bindningen stödjer
+inte det fältet ("unknown field") — enklaste fixen blev att stänga av blur
+helt för `swaync-notification-window` (kontrollcentret behåller sin, det är en
+fast liten yta utan samma problem). Verifierat med `--verify-config` och en
+riktig testnotis.
+
+Samtidigt: systemmeny-ikonen i waybar (📊-emoji) byttes mot en riktig Nerd
+Font-glyf (tachometer/mätare, U+F0E4) — konsekvent med resten av barens
+monokroma ikoner istället för en färgad emoji. Verifierade att glyfen faktiskt
+finns i fonten först (`fc-list ":charset=F0E4"`) innan jag gissade.
+
 ## 2026-09-15 — Slog ihop dubbla power-profile-kontroller till en
 
 Jakob påpekade att power-profile kunde ändras på två ställen: batteriets
