@@ -2,6 +2,14 @@
 
 Nyast överst.
 
+## 2026-09-14 — Cursor, hyprlock, wlogout beslutade
+
+Runda 6: **cursor** Adwaita 24px (medvetet inget custom-tema, noll extra
+installation). **hyprlock** minimal — klocka + lösenordsfält, blurrad wallpaper,
+inget mer. **wlogout** ikon-rad utan textetiketter. Enda kvarvarande punkten:
+matcha btop/fastfetch/cava/starship mot Gruvbox-paletten. Detaljer i
+[[../04-tema/design]].
+
 ## 2026-09-14 — Rofi + notiser beslutade
 
 Runda 5: **rofi** blir `grid`-läge nära fullskärm, centrerad — live-filtrering medan

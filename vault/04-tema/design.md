@@ -108,7 +108,19 @@ standardläge i swaync — kan kräva CSS/JS-hack i `swaync/style.css`/`config.j
 eller så får click-to-expand bli den realistiska kompromissen om hover visar sig
 opraktiskt (t.ex. notisen försvinner/timeout medan musen är på väg dit).
 
+**Cursor:** **Adwaita** (GNOME-standard), **24px**. Medvetet valt bort Bibata/färgat
+tema — noll extra installation, redan tillgängligt som fallback på de flesta system.
+
+**hyprlock:** **minimal** — stor klocka centrerat, lösenordsfält under, blurrad
+wallpaper som bakgrund. Ingen avatar, inget extra info-lager, inte en waybar-kopia.
+
+**wlogout:** **ikon-rad utan textetiketter** (som i Riggsmedjan-mockupen) — lås/logga
+ut/starta om/stäng av som rena cirkulära ikonknappar.
+
 ### Kvar att bestämma (fylls i allt eftersom)
+- [x] ~~Cursor~~ (se ovan)
+- [x] ~~hyprlock~~ (se ovan)
+- [x] ~~wlogout~~ (se ovan)
 - [x] ~~Rofi-layout~~ (se ovan)
 - [x] ~~Notiser~~ (se ovan)
 - [x] ~~Animationer~~ (se ovan)
@@ -118,9 +130,6 @@ opraktiskt (t.ex. notisen försvinner/timeout medan musen är på väg dit).
       verktyg blir **hyprpaper** (byte från `swaybg`, som är vad som faktiskt kör just
       nu, se [[../01-appar/hyprland]]/`ps aux`). Vilken bild och hur den konfigureras
       bestämmer Jakob själv och meddelar när det är klart.
-- [ ] Cursor-tema + storlek
-- [ ] hyprlock-stil
-- [ ] wlogout-layout (ikon-set, bekräftelsedialoger)
 - [ ] btop/fastfetch/cava/starship — matcha samma Gruvbox-palett
 
 ## Tidigare placeholder-tema (ersätts, kvar som historik)
