@@ -13,6 +13,11 @@ mappen `vault (anteckningar)` internt — därav döptes vault-rubrikerna om tid
 idag). Uppdaterade CSS-selektorer i `waybar/style.css` och noterna i
 [[../01-appar/waybar]] och [[../00-oversikt/dotfiles-struktur]] i samma veva.
 
+Waybar körde fortfarande gamla configen i minnet efter redigeringen (startades vid
+omstarten, innan filen ändrades) — knappen pekade tillfälligt på den redan borttagna
+`rice.code-workspace` och gjorde inget vid klick. Jakob startade om waybar manuellt;
+knappen bekräftat fungerande efteråt.
+
 ## 2026-09-14 — Hyprland lua-migrering klar, backup borttagen
 
 Jakob startade om datorn. `hyprctl systeminfo` bekräftar `configProvider: lua`,
