@@ -158,12 +158,19 @@ kärnspecs till höger (OS, kernel, uptime, paket, shell, DE, CPU/GPU, minne).
 **starship:** **medel** — katalog + git-status. Inga språkversions-badges
 (Python/Node osv), inget exit-code-märke.
 
-### Nytt eget projekt: eww-systemmeny (inte längre en btop-fråga)
+### Eww-systemmeny — byggd 2026-09-15
 
 Svaret på "vilken btop-layout" blev egentligen en helt annan sak: en **GNOME quick-
-settings-stil eww-meny** (kompakt popup + utökad vy, info + snabb-åtgärder som
-wifi-toggle). Det är ett separat widget-projekt, inte en temafråga — flyttat till
-[[../05-todo/wishlist]] med det som redan är bestämt, får sin egen designrunda.
+settings-stil eww-meny**. Designad i Artifacten [[../05-todo/menysmedjan]] och sedan
+byggd på riktigt, se [[../05-todo/wishlist]] för slutgiltigt scope (fristående 4:e
+meny, minne/temp/nät + wifi/stör-ej/ljud/inställningar/lås-skärm — **CPU/GPU
+uteslutna**, Jakob ville ha dem kvar direkt synliga i waybar). Wifi/Stör ej är
+riktiga toggle-switchar (eww `checkbox` omstylad till pillerform, ingen `switch`-
+widget finns i eww). Ny "Inställningar"-knapp öppnar `gnome-control-center`.
+
+Samtidigt: waybar fick en diagonal gradient + guld-underglöd (mindre platt),
+`margin-left`/`margin-right` 10→0 (ingen gap mot skärmkant), och Hyprlands
+`gaps_in`/`gaps_out` 8/14 → 4/6 (mindre mellanrum mellan fönster).
 
 ### Kvar att bestämma (fylls i allt eftersom)
 - [x] ~~btop/fastfetch/starship~~ (se ovan) — cava redan klar sedan runda 3 (waybar-

@@ -3,8 +3,8 @@
     "position": "top",
     "height": 44,
     "margin-top": 8,
-    "margin-left": 10,
-    "margin-right": 10,
+    "margin-left": 0,
+    "margin-right": 0,
 
     "modules-left": [
         "hyprland/workspaces"
@@ -18,14 +18,13 @@
     "modules-right": [
         "custom/dotfiles",
         "cpu",
-        "memory",
-        "temperature",
         "custom/gpu",
         "network",
         "custom/cava",
         "pulseaudio",
         "custom/power-profile",
-        "battery"
+        "battery",
+        "custom/systemstats"
     ],
 
     "hyprland/workspaces": {
@@ -75,31 +74,19 @@
         "on-click": "kitty --class btop-float -e btop"
     },
 
-    "memory": {
-        "format": "󰍛 {percentage}%",
-        "interval": 6,
-        "tooltip": true,
-        "tooltip-format": "RAM: {used:0.1f} GB / {total:0.1f} GB\nLedigt: {avail:0.1f} GB\nSwap: {swapUsed:0.1f} / {swapTotal:0.1f} GB\n\nKlicka för detaljerad vy",
-        "on-click": "kitty --class btop-float -e btop"
-    },
-
-    "temperature": {
-        "thermal-zone": 1,
-        "format": "󰔏 {temperatureC}°C",
-        "interval": 6,
-        "tooltip": true,
-        "tooltip-format": "CPU-temperatur: {temperatureC}°C\n\nKlicka för detaljerad vy",
-        "on-click": "kitty --class btop-float -e btop",
-        "critical-threshold": 85,
-        "format-critical": "󰸁 {temperatureC}°C"
-    },
-
     "custom/gpu": {
         "exec": "~/.config/waybar/scripts/gpu.sh",
         "return-type": "json",
         "interval": 8,
         "format": "󰢮 {}",
         "on-click": "kitty --class btop-float -e intel_gpu_top"
+    },
+
+    "custom/systemstats": {
+        "exec": "~/.config/waybar/scripts/systemstats-tooltip.sh",
+        "return-type": "json",
+        "interval": 6,
+        "on-click": "eww open system-menu --toggle"
     },
 
     "network": {

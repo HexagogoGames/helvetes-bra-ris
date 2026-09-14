@@ -7,10 +7,17 @@
 }
 
 window#waybar {
-    background: rgba(28, 38, 30, 0.38); /* mörkgrön, tydligt genomskinlig — Hyprlands layerrule-blur syns igenom */
+    /* Svag diagonal gradient (mörkgrön → lövgrön-ton → mörkgrön) istället för
+       en helt platt yta — mer "rice", fortfarande tydligt genomskinlig. */
+    background: linear-gradient(100deg,
+        rgba(23, 33, 26, 0.42) 0%,
+        rgba(63, 92, 66, 0.32) 45%,
+        rgba(23, 33, 26, 0.42) 100%);
     border: 1px solid rgba(236, 227, 198, 0.12);
     border-radius: 18px;
     padding: 0 8px;
+    /* Varm guld-underglöd + vanlig djupskugga */
+    box-shadow: 0 1px 0 rgba(212, 162, 74, 0.22), 0 4px 18px rgba(0, 0, 0, 0.28);
 }
 
 /* Kapsel-gruppering: varje zon (vänster/center/höger) får en egen rundad
@@ -54,9 +61,8 @@ window#waybar {
 
 #clock,
 #cpu,
-#memory,
-#temperature,
 #custom-gpu,
+#custom-systemstats,
 #network,
 #pulseaudio,
 #custom-power-profile,
@@ -71,9 +77,8 @@ window#waybar {
 /* "Knappar": klickbara moduler får en egen chip (bakgrund+kant), inte bara
    text på en rad — tydlig hover-lyft (ljusare + liten uppåtrörelse). */
 #cpu,
-#memory,
-#temperature,
 #custom-gpu,
+#custom-systemstats,
 #network,
 #pulseaudio,
 #custom-power-profile,
@@ -88,9 +93,8 @@ window#waybar {
 }
 
 #cpu:hover,
-#memory:hover,
-#temperature:hover,
 #custom-gpu:hover,
+#custom-systemstats:hover,
 #network:hover,
 #pulseaudio:hover,
 #custom-power-profile:hover,
@@ -103,6 +107,17 @@ window#waybar {
 
 #custom-dotfiles {
     color: #d4a24a;
+}
+
+#custom-systemstats {
+    color: #7fa66b;
+    background: rgba(127, 166, 107, 0.14);
+    border-color: rgba(127, 166, 107, 0.6);
+}
+
+#custom-systemstats:hover {
+    background: rgba(127, 166, 107, 0.24);
+    border-color: #7fa66b;
 }
 
 #custom-power-profile.performance {

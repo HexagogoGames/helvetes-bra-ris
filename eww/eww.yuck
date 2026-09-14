@@ -22,6 +22,13 @@
 (defvar wifi_connect_error_msg "")
 (defvar wifi_connect_pw "")
 
+;; Systemmeny (minne/temp/nät + snabbåtgärder) - CPU/GPU visas direkt i
+;; waybar istället, se vault/04-tema/design.md
+(defpoll system_stats :interval "5s"
+  :initial "{\"mem\":\"0\",\"temp\":\"0\",\"net\":\"?\"}"
+  "~/.config/eww/scripts/system-stats.sh")
+(defvar dnd_active false)
+
 ;; ===================== Batteri-meny =====================
 
 (defwidget battery-content []
@@ -144,6 +151,57 @@
       (button :class "menu-item wifi-connect-btn"
               :onclick "~/.config/eww/scripts/wifi-submit-password.sh '${ssid}' '${wifi_connect_pw}'"
         (label :halign "center" :text "Anslut")))))
+
+;; ===================== Systemmeny =====================
+
+(defwidget system-content []
+  (box :class "menu-card" :orientation "vertical" :space-evenly false
+    (label :class "menu-header" :halign "start" :text "System")
+    (box :class "menu-sep")
+    (box :orientation "horizontal" :space-evenly false :class "menu-item"
+      (label :class "menu-item-label" :halign "start" :hexpand true :text "Minne")
+      (label :class "menu-item-time" :text "${system_stats.mem}%"))
+    (box :orientation "horizontal" :space-evenly false :class "menu-item"
+      (label :class "menu-item-label" :halign "start" :hexpand true :text "Temperatur")
+      (label :class "menu-item-time" :text "${system_stats.temp}°C"))
+    (box :orientation "horizontal" :space-evenly false :class "menu-item"
+      (label :class "menu-item-label" :halign "start" :hexpand true :text "Nätverk")
+      (label :class "menu-item-time" :text "${system_stats.net}"))
+    (box :class "menu-sep")
+    (box :orientation "horizontal" :space-evenly false :class "menu-item toggle-row"
+      (label :class "menu-item-label" :halign "start" :hexpand true :text "Wifi")
+      (checkbox :class "toggle-switch"
+                :checked selected_wifi_enabled
+                :onchecked "nmcli radio wifi on; eww update selected_wifi_enabled=true"
+                :onunchecked "nmcli radio wifi off; eww update selected_wifi_enabled=false"))
+    (box :orientation "horizontal" :space-evenly false :class "menu-item toggle-row"
+      (label :class "menu-item-label" :halign "start" :hexpand true :text "Stör ej")
+      (checkbox :class "toggle-switch"
+                :checked dnd_active
+                :onchecked "swaync-client -d > /dev/null; eww update dnd_active=true"
+                :onunchecked "swaync-client -d > /dev/null; eww update dnd_active=false"))
+    (box :class "menu-sep")
+    (button :class "menu-item"
+            :onclick "pavucontrol &"
+      (label :class "menu-item-label" :halign "start" :text "Ljudinställningar"))
+    (button :class "menu-item"
+            :onclick "gnome-control-center &"
+      (label :class "menu-item-label" :halign "start" :text "Inställningar"))
+    (button :class "menu-item"
+            :onclick "hyprlock &"
+      (label :class "menu-item-label" :halign "start" :text "Lås skärm"))))
+
+(defwindow system-menu
+  :monitor 0
+  :namespace "eww-dropdown"
+  :geometry (geometry :x "0" :y "0" :width "100%" :height "100%" :anchor "top left")
+  :stacking "overlay"
+  :focusable false
+  (eventbox :onclick "eww close system-menu"
+    (box :class "backdrop" :halign "end" :valign "start"
+      (eventbox :onclick "true"
+        (box :class "align-system"
+          (system-content))))))
 
 (defwindow wifi-connect [ssid]
   :monitor 0

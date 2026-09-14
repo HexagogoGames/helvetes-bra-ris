@@ -12,24 +12,34 @@ window, .background {
     background-color: transparent;
 }
 
-/* Positionering - varje meny knuffas in under sin ikon i waybar */
+/* Positionering - varje meny knuffas in under sin ikon i waybar.
+   systemstats-ikonen flyttades 2026-09-15 till langst till hoger (efter
+   battery), sa battery/volume/wifi fick darfor ratt +80px vardera (samma
+   ungefarliga modulbredd som resten av baren). Uppskattat, verifiera visuellt. */
 .align-battery {
-    margin-top: 44px;
-    margin-right: 16px;
-}
-
-.align-volume {
     margin-top: 44px;
     margin-right: 96px;
 }
 
-.align-wifi {
+.align-volume {
     margin-top: 44px;
     margin-right: 176px;
 }
 
+.align-wifi {
+    margin-top: 44px;
+    margin-right: 256px;
+}
+
 .align-wifi-connect {
     margin: 0px;
+}
+
+/* systemstats-ikonen ligger langst till hoger i waybar (efter battery),
+   darfor ligger .align-system narmast skarmkanten av de fyra menyerna. */
+.align-system {
+    margin-top: 44px;
+    margin-right: 16px;
 }
 
 .menu-card {
@@ -146,4 +156,29 @@ window, .background {
 .wifi-connect-btn:hover {
     background-color: #d4a24a;
     color: #17211a;
+}
+
+/* Slide-toggle-look for checkbox-widgetar (eww har ingen egen switch-widget).
+   Restylar GTK:s interna check-nod till en piller-form som byter farg -
+   ingen animerad glidande cirkel (GTK-CSS ger inte det), men mycket
+   tydligare an bara text "pa/av". */
+.toggle-switch {
+    min-width: 40px;
+    min-height: 22px;
+}
+
+.toggle-switch check {
+    min-width: 40px;
+    min-height: 22px;
+    border-radius: 999px;
+    background-color: rgba(236, 227, 198, 0.12);
+    border: 1px solid rgba(63, 92, 66, 0.7);
+    background-image: none;
+    box-shadow: none;
+    transition: background-color 150ms ease-out;
+}
+
+.toggle-switch check:checked {
+    background-color: #d4a24a;
+    border-color: #d4a24a;
 }

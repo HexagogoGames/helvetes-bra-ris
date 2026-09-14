@@ -2,6 +2,34 @@
 
 Nyast överst.
 
+## 2026-09-15 — Eww-systemmenyn byggd och live, waybar-städning + dekor
+
+Byggde den tidigare designade eww-systemmenyn på riktigt (inte bara Artifact-
+mockup): ny `system-menu` i `eww.yuck` visar Minne/Temperatur/Nätverk +
+snabbåtgärder (Wifi, Stör ej, Ljudinställningar, Lås skärm), öppnas via en ny
+📊-modul (`custom/systemstats`) i waybar. Datakälla: nytt skript
+`eww/scripts/system-stats.sh`, delat med waybars tooltip via
+`waybar/scripts/systemstats-tooltip.sh`.
+
+Jakob ville ha **CPU% och GPU% kvar synliga direkt i waybar** (inte gömda i
+menyn) — så bara minne/temp/nätverk flyttades in, `cpu`/`custom/gpu`-modulerna
+återställda med samma beteende som förut (klick öppnar btop/intel_gpu_top).
+
+Två fällor på vägen, dokumenterade i
+[[../03-felsokning/eww-locale-och-scss-quirks]]: systemet kör svensk locale så
+`top`/`free` byter fältnamn och decimaltecken (måste tvinga `LC_ALL=C`), och en
+svensk bokstav + emoji i en `eww.scss`-kommentar fick ewws SCSS-kompilator att
+injicera en `@charset`-rad som eww sen inte kunde tolka.
+
+Övrigt samtidigt:
+- Waybar: mer dekorativ (diagonal gradient istället för platt yta, varm
+  guld-underglöd), `margin-left`/`margin-right` 10→0 (ingen gap mot skärmkanten).
+- Hyprland: `gaps_in`/`gaps_out` 8/14 → 4/6 (mindre mellanrum mellan fönster).
+- Tog bort `waybar/scripts/gpu.sh` och la sen tillbaka den (kort felaktig
+  borttagning under omstruktureringen).
+
+Uppdaterad [[../05-todo/wishlist]] — eww-systemmenyn är nu avbockad.
+
 ## 2026-09-15 — Eww-systemmenyns designrunda påbörjad, animationer justerade
 
 Byggde en fjärde provrums-Artifact, "Menysmedjan"

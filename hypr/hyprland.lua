@@ -69,8 +69,8 @@ hl.animation({
 
 hl.config({
     general = {
-        gaps_in = 8,
-        gaps_out = 14,
+        gaps_in = 4,
+        gaps_out = 6,
         border_size = 1,
         layout = "dwindle",
         ["col.active_border"] = "rgba(3f5c42ff)",
