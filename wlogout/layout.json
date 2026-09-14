@@ -1,0 +1,30 @@
+{
+    "label" : "lock",
+    "action" : "hyprlock",
+    "text" : "Lås",
+    "keybind" : "l"
+}
+{
+    "label" : "logout",
+    "action" : "hyprctl dispatch exit",
+    "text" : "Logga ut",
+    "keybind" : "e"
+}
+{
+    "label" : "suspend",
+    "action" : "systemctl suspend",
+    "text" : "Vila",
+    "keybind" : "s"
+}
+{
+    "label" : "reboot",
+    "action" : "systemctl reboot",
+    "text" : "Starta om",
+    "keybind" : "r"
+}
+{
+    "label" : "shutdown",
+    "action" : "systemctl poweroff",
+    "text" : "Stäng av",
+    "keybind" : "p"
+}

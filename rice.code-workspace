@@ -1,0 +1,19 @@
+{
+    "folders": [
+        { "name": "dotfiles (root)", "path": "." },
+        { "name": "hypr", "path": "hypr" },
+        { "name": "hypr.conf-backup", "path": "hypr.conf-backup-20260913" },
+        { "name": "kitty", "path": "kitty" },
+        { "name": "waybar", "path": "waybar" },
+        { "name": "eww", "path": "eww" },
+        { "name": "rofi", "path": "rofi" },
+        { "name": "swaync", "path": "swaync" },
+        { "name": "wlogout", "path": "wlogout" },
+        { "name": "wob", "path": "wob" },
+        { "name": "cava", "path": "cava" },
+        { "name": "btop", "path": "btop" },
+        { "name": "fastfetch", "path": "fastfetch" },
+        { "name": "vault (anteckningar)", "path": "vault" }
+    ],
+    "settings": {}
+}

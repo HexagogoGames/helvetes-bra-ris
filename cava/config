@@ -1,0 +1,22 @@
+[general]
+bars = 0
+framerate = 60
+autosens = 1
+
+[input]
+method = pulse
+source = auto
+
+[output]
+method = ncurses
+channels = mono
+
+[color]
+gradient = 1
+gradient_count = 2
+gradient_color_1 = '#62e6ff'
+gradient_color_2 = '#a970ff'
+background = 'default'
+
+[smoothing]
+noise_reduction = 55

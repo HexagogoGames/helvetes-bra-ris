@@ -1,0 +1,27 @@
+* {
+    font-family: "JetBrainsMono Nerd Font";
+}
+
+window {
+    background-color: rgba(7, 9, 16, 0.85);
+}
+
+button {
+    color: #e8f1ff;
+    background-color: rgba(15, 19, 31, 0.9);
+    background-image: none;
+    border: 1px solid rgba(98, 230, 255, 0.3);
+    border-radius: 20px;
+    margin: 14px;
+    font-size: 20px;
+    min-width: 140px;
+    min-height: 140px;
+    transition: all 150ms;
+}
+
+button:focus,
+button:hover {
+    background-color: rgba(98, 230, 255, 0.15);
+    border-color: #62e6ff;
+    color: #62e6ff;
+}

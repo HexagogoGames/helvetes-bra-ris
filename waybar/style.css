@@ -1,0 +1,111 @@
+* {
+    font-family: "JetBrainsMono Nerd Font", sans-serif;
+    font-size: 14px;
+    transition: background 150ms ease-out, color 150ms ease-out;
+}
+
+window#waybar {
+    background: rgba(7, 9, 16, 0.85);
+    border: 1px solid rgba(98, 230, 255, 0.18);
+    border-radius: 16px;
+    padding: 0 8px;
+}
+
+#workspaces button {
+    padding: 0 8px;
+    border-radius: 8px;
+}
+
+#workspaces button:hover {
+    background: rgba(98, 230, 255, 0.14);
+}
+
+#workspaces button.active {
+    background: rgba(98, 230, 255, 0.22);
+    color: #62e6ff;
+}
+
+#clock,
+#cpu,
+#memory,
+#temperature,
+#custom-gpu,
+#network,
+#pulseaudio,
+#custom-power-profile,
+#battery,
+#custom-hyprland-config {
+    padding: 0 10px;
+    border-radius: 8px;
+}
+
+#cpu:hover,
+#memory:hover,
+#temperature:hover,
+#custom-gpu:hover,
+#network:hover,
+#pulseaudio:hover,
+#custom-power-profile:hover,
+#battery:hover,
+#custom-hyprland-config:hover {
+    background: rgba(255, 255, 255, 0.06);
+}
+
+#custom-power-profile.performance {
+    color: #ff6b4a;
+}
+
+#custom-power-profile.balanced {
+    color: #62e6ff;
+}
+
+#custom-power-profile.power-saver {
+    color: #6dffb8;
+}
+
+#temperature.critical {
+    color: #ff5470;
+}
+
+#battery.warning {
+    color: #ff9e3d;
+}
+
+#battery.critical {
+    color: #ff5470;
+}
+
+#battery.charging {
+    color: #6dffb8;
+}
+
+#custom-sep1,
+#custom-sep2,
+#custom-sep3 {
+    color: rgba(255, 255, 255, 0.15);
+    padding: 0 2px;
+}
+
+#custom-cava {
+    color: #62e6ff;
+    padding: 0 10px;
+    font-size: 13px;
+}
+
+#clock {
+    font-weight: 600;
+    font-size: 15px;
+    padding: 0 16px;
+}
+
+/* Tooltips (used across every module) */
+tooltip {
+    background: rgba(7, 9, 16, 0.92);
+    border: 1px solid rgba(98, 230, 255, 0.35);
+    border-radius: 10px;
+}
+
+tooltip label {
+    color: #e8f1ff;
+    padding: 4px 6px;
+}

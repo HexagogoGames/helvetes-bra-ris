@@ -1,0 +1,138 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 34,
+    "margin-top": 8,
+    "margin-left": 10,
+    "margin-right": 10,
+
+    "modules-left": [
+        "hyprland/workspaces"
+    ],
+
+    "modules-center": [
+        "clock"
+    ],
+
+    "modules-right": [
+        "custom/hyprland-config",
+        "custom/sep1",
+        "cpu",
+        "memory",
+        "temperature",
+        "custom/gpu",
+        "custom/sep2",
+        "network",
+        "custom/cava",
+        "pulseaudio",
+        "custom/sep3",
+        "custom/power-profile",
+        "battery"
+    ],
+
+    "hyprland/workspaces": {
+        "tooltip": true
+    },
+
+    "custom/hyprland-config": {
+        "format": "⚙",
+        "tooltip": true,
+        "tooltip-format": "Öppna rice-workspace (dotfiles)",
+        "on-click": "code --new-window ~/dotfiles/rice.code-workspace"
+    },
+
+    "clock": {
+        "format": "{:%H:%M}",
+        "tooltip": true,
+        "tooltip-format": "{:%A %d %B %Y}\n\n{calendar}"
+    },
+
+    "cpu": {
+        "format": "󰘚 {usage}%",
+        "interval": 6,
+        "tooltip": true,
+        "tooltip-format": "CPU-användning: {usage}%\nFrekvens: {avg_frequency} GHz\n\nKlicka för detaljerad vy",
+        "on-click": "kitty --class btop-float -e btop"
+    },
+
+    "memory": {
+        "format": "󰍛 {percentage}%",
+        "interval": 6,
+        "tooltip": true,
+        "tooltip-format": "RAM: {used:0.1f} GB / {total:0.1f} GB\nLedigt: {avail:0.1f} GB\nSwap: {swapUsed:0.1f} / {swapTotal:0.1f} GB\n\nKlicka för detaljerad vy",
+        "on-click": "kitty --class btop-float -e btop"
+    },
+
+    "temperature": {
+        "thermal-zone": 1,
+        "format": "󰔏 {temperatureC}°C",
+        "interval": 6,
+        "tooltip": true,
+        "tooltip-format": "CPU-temperatur: {temperatureC}°C\n\nKlicka för detaljerad vy",
+        "on-click": "kitty --class btop-float -e btop",
+        "critical-threshold": 85,
+        "format-critical": "󰸁 {temperatureC}°C"
+    },
+
+    "custom/gpu": {
+        "exec": "~/.config/waybar/scripts/gpu.sh",
+        "return-type": "json",
+        "interval": 8,
+        "format": "󰢮 {}",
+        "on-click": "kitty --class btop-float -e intel_gpu_top"
+    },
+
+    "network": {
+        "format-wifi": "󰖩 {signalStrength}%",
+        "format-ethernet": "󰈀",
+        "format-disconnected": "󰖪",
+        "tooltip": true,
+        "tooltip-format-wifi": "{essid}\nSignal: {signalStrength}%\nIP: {ipaddr}/{cidr}\nHastighet: {bandwidthUpBits}↑ {bandwidthDownBits}↓",
+        "tooltip-format-ethernet": "IP: {ipaddr}/{cidr}",
+        "tooltip-format-disconnected": "Ingen anslutning",
+        "on-click": "eww open wifi-menu --toggle"
+    },
+
+    "custom/sep1": { "format": "│", "tooltip": false },
+    "custom/sep2": { "format": "│", "tooltip": false },
+    "custom/sep3": { "format": "│", "tooltip": false },
+
+    "custom/cava": {
+        "exec": "~/.config/waybar/scripts/cava-waybar.sh",
+        "return-type": "json",
+        "tooltip": false
+    },
+
+    "pulseaudio": {
+        "format": "󰕾 {volume}%",
+        "format-muted": "󰝟 Tyst",
+        "tooltip": true,
+        "tooltip-format": "{desc}\nVolym: {volume}%",
+        "on-click": "eww open volume-menu --toggle",
+        "on-click-right": "pactl set-sink-mute @DEFAULT_SINK@ toggle"
+    },
+
+    "custom/power-profile": {
+        "exec": "~/.config/waybar/scripts/power-profile.sh",
+        "return-type": "json",
+        "interval": 5,
+        "signal": 20,
+        "tooltip": true,
+        "on-click": "~/.config/waybar/scripts/power-profile-cycle.sh"
+    },
+
+    "battery": {
+        "format": "{icon} {capacity}%",
+        "format-icons": ["󰁻", "󰁽", "󰁿", "󰂁", "󰁹"],
+        "format-charging": "󰂄 {capacity}%",
+        "format-full": "󰁹 Fulladdad",
+        "tooltip": true,
+        "tooltip-format": "Återstår: {time}\nKapacitet: {capacity}%",
+        "states": {
+            "warning": 25,
+            "critical": 10
+        },
+        "on-click": "eww open battery-menu --toggle",
+        "on-click-right": "powerprofilesctl set power-saver && pkill -RTMIN+20 waybar"
+    }
+}

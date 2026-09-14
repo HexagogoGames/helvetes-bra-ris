@@ -1,0 +1,38 @@
+* {
+    /* Base */
+    bg:              #070910e8;
+    bg-solid:        #070910ff;
+    bg-alt:          #0f131fe8;
+    bg-hover:        #20273ae0;
+
+    /* Text */
+    fg:              #e8f1ff;
+    fg-muted:        #71809d;
+
+    /* Main accents */
+    cyan:            #62e6ff;
+    cyan-soft:       #2ca9c9;
+
+    purple:          #a970ff;
+    purple-soft:     #7048b8;
+
+    /* Hyprland accent */
+    orange:          #ff9e3d;
+
+    /* Status */
+    red:             #ff5470;
+    green:           #6dffb8;
+
+    /* Borders */
+    border:          #62e6ff5a;
+    border-strong:   #62e6ffaa;
+
+    /* Selection */
+    selected-bg:     #62e6ff23;
+    selected-bg-solid: #142832ff;
+    selected-bg-2:   #a970ff19;
+    selected-border: #62e6ffaa;
+
+    /* Transparent */
+    transparent:     #00000000;
+}
