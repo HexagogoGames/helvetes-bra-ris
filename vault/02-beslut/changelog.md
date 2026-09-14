@@ -2,6 +2,16 @@
 
 Nyast överst.
 
+## 2026-09-14 — Wallpaper: Jakobs eget beslut, verktyg blir hyprpaper
+
+Jakob bestämmer wallpaper-bild och -konfiguration helt själv, inte via
+frågerundorna. Bekräftat verktygsval: **hyprpaper** ersätter `swaybg` (som är vad
+som faktiskt kör i autostart just nu). `hyprpaper 0.8.4-8` redan installerat.
+Rör inte `autostart.lua` förrän Jakob är klar och ber om bytet. Byggde en andra
+Artifact, "Bokstavssmedjan" ([[../05-todo/bokstavssmedjan]]), för runda 2:
+typografi (fontparning/ligaturer/storlek/ikonstil) ovanpå det låsta
+Vibrant/Gruvbox Dark-läget.
+
 ## 2026-09-14 — Temaomdesign påbörjad: Vibrant + Gruvbox Dark
 
 Jakob beslutade att göra om hela tema/layout-designen från grunden — allt tidigare

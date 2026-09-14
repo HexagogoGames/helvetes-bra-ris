@@ -41,7 +41,10 @@ med låg alfa).
 
 - [ ] Typografi (UI-font waybar/rofi/eww/swaync, terminal-font kitty, ligaturer, storlek)
 - [ ] Waybar-layout (position, modulgruppering, workspace-indikatorstil, vilka moduler)
-- [ ] Wallpaper (behålla `hyprland-nebula.png` eller byta mot något Gruvbox-nära; statisk/dynamisk)
+- [x] ~~Wallpaper~~ — **Jakobs eget beslut, inte del av frågerundorna.** Bekräftat:
+      verktyg blir **hyprpaper** (byte från `swaybg`, som är vad som faktiskt kör just
+      nu, se [[../01-appar/hyprland]]/`ps aux`). Vilken bild och hur den konfigureras
+      bestämmer Jakob själv och meddelar när det är klart.
 - [ ] Animationer (fönster öppna/stäng-stil, workspace-switch, hastighet/personlighet)
 - [ ] Gradient-kant på fokuserat fönster: verklig Hyprland-effekt eller bara mockup?
 - [ ] Rofi-layout (lista/grid, position)
