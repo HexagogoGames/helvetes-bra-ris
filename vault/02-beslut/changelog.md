@@ -2,6 +2,14 @@
 
 Nyast överst.
 
+## 2026-09-14 — Waybar-layout beslutad: topp, kapslar, punkter, + mpris
+
+Runda 3 (Panelsmedjan) klar: panel i **toppen**, moduler grupperade i **kapslar**
+(rundad bakgrund per zon), workspace-stil **punkter** (inga siffror). Ny modul:
+**mpris** (media-widget) tillagd i center-zonen. Övriga moduler (cava, gpu, network,
+battery, power-profile) oförändrade. `custom/tray`/väder inte tillagda. Färdig
+`config.jsonc`/`style.css`-skiss i [[../04-tema/design]].
+
 ## 2026-09-14 — Typografi beslutad: IBM Plex Mono, medel, glyf-ikoner
 
 Runda 2 (Bokstavssmedjan) klar: **IBM Plex Mono överallt** (UI + terminal), textstorlek

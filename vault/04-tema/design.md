@@ -51,8 +51,34 @@ font_family      IBM Plex Mono
 font_size        12.0
 ```
 
+**Waybar-layout:** panel i **toppen**, moduler grupperade i **kapslar** (rundad
+bakgrund per zon: `.modules-left`/`.modules-center`/`.modules-right`). Workspace-stil:
+**punkter** (inga siffror — fyllda/tomma prickar). Moduler: `cava`, `custom/gpu`,
+`network`, `battery`, `custom/power-profile` (befintliga) + **`custom/mpris` tillagd**
+(media-widget, ny). `custom/tray`/väder inte tillagda.
+
+```
+// waybar/config.jsonc
+{
+    "layer": "top",
+    "position": "top",
+    "modules-left": ["hyprland/workspaces", "custom/dotfiles"],
+    "modules-center": ["cava", "custom/gpu", "custom/mpris"],
+    "modules-right": ["network", "battery", "custom/power-profile", "clock"]
+}
+```
+```
+/* style.css */
+"hyprland/workspaces" { /* punkt-stil, inga siffror */ }
+.modules-left, .modules-center, .modules-right {
+    background: alpha(@fg, 0.07);
+    border-radius: 8px;
+    padding: 2px 10px;
+}
+```
+
 ### Kvar att bestämma (fylls i allt eftersom)
-- [ ] Waybar-layout (position, modulgruppering, workspace-indikatorstil, vilka moduler)
+- [x] ~~Waybar-layout~~ (se ovan)
 - [x] ~~Wallpaper~~ — **Jakobs eget beslut, inte del av frågerundorna.** Bekräftat:
       verktyg blir **hyprpaper** (byte från `swaybg`, som är vad som faktiskt kör just
       nu, se [[../01-appar/hyprland]]/`ps aux`). Vilken bild och hur den konfigureras
