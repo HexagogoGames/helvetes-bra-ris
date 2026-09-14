@@ -2,6 +2,18 @@
 
 Nyast överst.
 
+## 2026-09-15 — Slog ihop dubbla power-profile-kontroller till en
+
+Jakob påpekade att power-profile kunde ändras på två ställen: batteriets
+högerklick (hårdkodad till power-saver) och en separat `custom/power-profile`-
+modul (cyklar alla tre lägen). Battery-menyn (öppnas via vänsterklick på
+batteriet) har redan en fullständig profilväljare med tidsuppskattningar per
+läge — så den täcker samma behov bättre. Tog bort `custom/power-profile`-
+modulen och dess två skript helt, samt batteriets `on-click-right`-genväg.
+Kvar: **en** väg att ändra power-profile — klicka batteriet, välj i menyn.
+Städade bort matchande död CSS (inklusive en kvarglömd `#network`-referens
+sedan wifi-konsolideringen).
+
 ## 2026-09-15 — Power-knappar i systemmenyn (vila/starta om/stäng av)
 
 La till Vila, Starta om, Stäng av i eww-systemmenyn (samma `systemctl`-kommandon

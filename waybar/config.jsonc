@@ -21,7 +21,6 @@
         "cpu",
         "custom/gpu",
         "pulseaudio",
-        "custom/power-profile",
         "battery",
         "custom/systemstats"
     ],
@@ -103,15 +102,6 @@
         "on-click-right": "pactl set-sink-mute @DEFAULT_SINK@ toggle"
     },
 
-    "custom/power-profile": {
-        "exec": "~/.config/waybar/scripts/power-profile.sh",
-        "return-type": "json",
-        "interval": 5,
-        "signal": 20,
-        "tooltip": true,
-        "on-click": "~/.config/waybar/scripts/power-profile-cycle.sh"
-    },
-
     "battery": {
         "format": "{icon} {capacity}%",
         "format-icons": ["󰁻", "󰁽", "󰁿", "󰂁", "󰁹"],
@@ -123,7 +113,6 @@
             "warning": 25,
             "critical": 10
         },
-        "on-click": "eww open battery-menu --toggle",
-        "on-click-right": "powerprofilesctl set power-saver && pkill -RTMIN+20 waybar"
+        "on-click": "eww open battery-menu --toggle"
     }
 }
