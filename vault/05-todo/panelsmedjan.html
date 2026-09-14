@@ -1,0 +1,284 @@
+<title>Panelsmedjan</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700&display=swap">
+<style>
+  :root{
+    --shell-bg:#eef0f1; --shell-surface:#ffffff; --shell-surface-2:#f4f5f7;
+    --shell-border:#d7dade; --shell-text:#1b1e24; --shell-text-dim:#5b616e;
+    --shell-accent:#8a6416; --shell-accent-ink:#ffffff; --shell-shadow:0 1px 2px rgba(20,20,30,.06);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --shell-bg:#14161c; --shell-surface:#1c1f28; --shell-surface-2:#242833;
+      --shell-border:#2f3341; --shell-text:#e8e6df; --shell-text-dim:#8b8fa3;
+      --shell-accent:#c9a24b; --shell-accent-ink:#14161c; --shell-shadow:0 1px 2px rgba(0,0,0,.35);
+    }
+  }
+  :root[data-theme="dark"]{
+    --shell-bg:#14161c; --shell-surface:#1c1f28; --shell-surface-2:#242833;
+    --shell-border:#2f3341; --shell-text:#e8e6df; --shell-text-dim:#8b8fa3;
+    --shell-accent:#c9a24b; --shell-accent-ink:#14161c; --shell-shadow:0 1px 2px rgba(0,0,0,.35);
+  }
+
+  *{ box-sizing:border-box; }
+  body{ margin:0; background:var(--shell-bg); color:var(--shell-text); font-family:"Manrope",ui-sans-serif,system-ui,sans-serif; -webkit-font-smoothing:antialiased; }
+  .wrap{ max-width:1180px; margin:0 auto; padding-inline:20px; padding-block:28px 60px; display:flex; flex-direction:column; gap:26px; }
+
+  header.intro{ display:flex; flex-direction:column; gap:10px; max-width:640px; }
+  .eyebrow{ margin:0; font-family:"JetBrains Mono",monospace; font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:var(--shell-accent); }
+  h1{ margin:0; font-size:clamp(28px,4vw,38px); line-height:1.05; text-wrap:balance; }
+  .lede{ margin:0; color:var(--shell-text-dim); font-size:15px; line-height:1.55; max-width:60ch; }
+
+  .panel-grid{ display:grid; grid-template-columns:minmax(250px,320px) 1fr; gap:20px; align-items:start; }
+  @media (max-width:860px){ .panel-grid{ grid-template-columns:1fr; } }
+
+  .controls{ display:flex; flex-direction:column; gap:18px; background:var(--shell-surface); border:1px solid var(--shell-border); border-radius:10px; padding:16px; box-shadow:var(--shell-shadow); }
+  .control-group{ display:flex; flex-direction:column; gap:8px; }
+  .control-group h2{ margin:0; font-family:"JetBrains Mono",monospace; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--shell-text-dim); font-weight:600; }
+
+  .seg{ display:flex; border:1px solid var(--shell-border); border-radius:8px; overflow:hidden; }
+  .seg-btn{ flex:1; padding:9px 6px; border:none; background:var(--shell-surface-2); color:var(--shell-text); font-family:"JetBrains Mono",monospace; font-size:11.5px; cursor:pointer; border-right:1px solid var(--shell-border); }
+  .seg-btn:last-child{ border-right:none; }
+  .seg-btn[aria-pressed="true"]{ background:var(--shell-accent); color:var(--shell-accent-ink); }
+
+  .toggle-grid{ display:flex; flex-direction:column; gap:6px; }
+  .toggle-btn{
+    display:flex; align-items:center; justify-content:space-between;
+    background:var(--shell-surface-2); border:1.5px solid var(--shell-border); border-radius:7px;
+    padding:8px 10px; cursor:pointer; color:var(--shell-text); font-family:"Manrope",sans-serif; font-size:13px;
+  }
+  .toggle-btn::after{ content:"av"; font-family:"JetBrains Mono",monospace; font-size:10.5px; color:var(--shell-text-dim); letter-spacing:.05em; text-transform:uppercase; }
+  .toggle-btn[aria-pressed="true"]::after{ content:"på"; color:var(--shell-accent); }
+  .toggle-btn[aria-pressed="true"]{ border-color:var(--shell-accent); }
+  .lock-note{ margin:0; font-size:11px; color:var(--shell-text-dim); }
+
+  button:focus-visible{ outline:2px solid var(--shell-accent); outline-offset:2px; }
+
+  .stage-col{ display:flex; flex-direction:column; gap:8px; min-width:0; }
+  .bezel{ background:linear-gradient(180deg,#3a3d46,#1c1e24); border-radius:16px; padding:14px 14px 20px; box-shadow:0 8px 24px rgba(0,0,0,.25); }
+  .stage{ position:relative; overflow:hidden; border-radius:6px; aspect-ratio:2256/1504; width:100%; background:#282828; font-family:"IBM Plex Mono",monospace; display:flex; flex-direction:column; }
+
+  .bar{
+    position:relative; z-index:3; display:flex; align-items:center; justify-content:space-between;
+    height:8.6%; padding:0 1.3%; color:#ebdbb2; flex-shrink:0;
+    background:color-mix(in srgb, #1d2021 90%, transparent);
+    font-size:clamp(9px,1.15vw,13px);
+  }
+  .bar.bottom-bar{ border-bottom:none; border-top:1px solid color-mix(in srgb, #ebdbb2 10%, transparent); order:3; }
+  .bar.top-bar{ border-bottom:1px solid color-mix(in srgb, #ebdbb2 10%, transparent); order:1; }
+  .zone{ display:flex; align-items:center; gap:.85em; }
+  .stage.grouped .zone{ background:color-mix(in srgb, #ebdbb2 7%, transparent); padding:.3em .8em; border-radius:8px; }
+  .stage.grouped .zone:empty{ display:none; }
+
+  .ws{ display:flex; gap:.4em; }
+  .ws-item{ display:flex; align-items:center; justify-content:center; min-width:1.6em; height:1.6em; border-radius:5px; gap:.2em; padding:0 .35em; }
+  .ws-item.active{ background:#fe8019; color:#282828; font-weight:600; }
+  .ws-item.dot span{ width:.55em; height:.55em; border-radius:50%; background:currentColor; display:block; opacity:.55; }
+  .ws-item.dot.active span{ opacity:1; width:.8em; height:.8em; }
+  .ws-item.dot{ background:none !important; color:#ebdbb2; }
+
+  .mod{ display:flex; align-items:center; gap:.4em; white-space:nowrap; }
+  .gear{ color:#fe8019; }
+  .clock{ font-variant-numeric:tabular-nums; font-weight:500; }
+  .tray-dot{ width:.85em; height:.85em; border-radius:3px; background:color-mix(in srgb, #ebdbb2 55%, transparent); display:inline-block; }
+
+  .desktop{
+    position:relative; flex:1; padding:2.2% 2%; display:flex; gap:8px; order:2;
+    background:
+      radial-gradient(circle at 26% 22%, color-mix(in srgb, #83a598 55%, transparent) 0%, transparent 46%),
+      radial-gradient(circle at 82% 78%, color-mix(in srgb, #fe8019 45%, transparent) 0%, transparent 50%),
+      #282828;
+  }
+  .win{ flex:1; border-radius:14px; background:color-mix(in srgb, #3c3836 55%, transparent); opacity:.5; }
+
+  .bezel-caption{ margin:0; font-family:"JetBrains Mono",monospace; font-size:11px; color:var(--shell-text-dim); text-align:right; }
+
+  .spec-sheet{ background:var(--shell-surface); border:1px solid var(--shell-border); border-radius:10px; padding:16px 18px; box-shadow:var(--shell-shadow); }
+  .spec-sheet h2{ margin:0 0 10px; font-family:"JetBrains Mono",monospace; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--shell-text-dim); font-weight:600; }
+  .spec-sheet pre{ margin:0; overflow-x:auto; background:var(--shell-surface-2); border:1px solid var(--shell-border); border-radius:8px; padding:12px 14px; }
+  .spec-sheet code{ font-family:"JetBrains Mono",monospace; font-size:12px; line-height:1.65; white-space:pre; color:var(--shell-text); }
+
+  footer.note{ font-size:12px; color:var(--shell-text-dim); max-width:70ch; }
+</style>
+
+<div class="wrap">
+  <header class="intro">
+    <p class="eyebrow">Runda 3 · Waybar-layout</p>
+    <h1>Panelsmedjan</h1>
+    <p class="lede">Färg, font och estetik är låsta till det ni redan bestämt. Här handlar det bara om var panelen sitter, hur modulerna grupperas, hur workspaces visas och vilka moduler som är med.</p>
+  </header>
+
+  <div class="panel-grid">
+    <aside class="controls">
+      <section class="control-group">
+        <h2>Position</h2>
+        <div class="seg" role="group" aria-label="Panelposition">
+          <button class="seg-btn" data-pos="top" aria-pressed="false">Topp</button>
+          <button class="seg-btn" data-pos="bottom" aria-pressed="false">Botten</button>
+          <button class="seg-btn" data-pos="split" aria-pressed="false">Delad</button>
+        </div>
+      </section>
+
+      <section class="control-group">
+        <h2>Modulgruppering</h2>
+        <div class="seg" role="group" aria-label="Modulgruppering">
+          <button class="seg-btn" data-group="flat" aria-pressed="false">Rak rad</button>
+          <button class="seg-btn" data-group="grouped" aria-pressed="false">Kapslar</button>
+        </div>
+      </section>
+
+      <section class="control-group">
+        <h2>Workspace-stil</h2>
+        <div class="seg" role="group" aria-label="Workspace-stil">
+          <button class="seg-btn" data-ws="numbers" aria-pressed="false">Siffror</button>
+          <button class="seg-btn" data-ws="dots" aria-pressed="false">Punkter</button>
+          <button class="seg-btn" data-ws="icons" aria-pressed="false">Fönsterikoner</button>
+        </div>
+      </section>
+
+      <section class="control-group">
+        <h2>Moduler</h2>
+        <p class="lock-note">Workspaces, ⚙ dotfiles-knappen och klockan är redan beslutade och alltid med.</p>
+        <div class="toggle-grid" id="moduleToggles"></div>
+      </section>
+    </aside>
+
+    <div class="stage-col">
+      <div class="bezel">
+        <div class="stage" id="stage">
+          <div class="bar top-bar" id="topBar"></div>
+          <div class="desktop"><div class="win"></div><div class="win"></div></div>
+          <div class="bar bottom-bar" id="bottomBar" hidden></div>
+        </div>
+      </div>
+      <p class="bezel-caption">eDP-1 · 2256×1504 · Vibrant / Gruvbox Dark / IBM Plex Mono (låst)</p>
+    </div>
+  </div>
+
+  <section class="spec-sheet">
+    <h2>Motsvarande waybar/config.jsonc</h2>
+    <pre><code id="specCode"></code></pre>
+  </section>
+
+  <footer class="note">"Fönsterikoner" i workspace-läget visar vilka appar som faktiskt är öppna per workspace (hyprland/workspaces stödjer detta nativt) — en tom workspace visar bara en punkt.</footer>
+</div>
+
+<script>
+(function(){
+  const WORKSPACES = [
+    { id:1, apps:["🖥","🌐"] },
+    { id:2, apps:["✎"] },
+    { id:3, apps:[] }
+  ];
+  const ACTIVE_WS = 1;
+
+  const MODULES = {
+    cava:    { label:"Cava-visualisering", zone:"center", render:()=>'<span class="mod">▂▅█▃▆</span>' },
+    gpu:     { label:"GPU-temp",           zone:"center", render:()=>'<span class="mod">GPU 34°</span>' },
+    network: { label:"Nätverk",            zone:"right",  render:()=>'<span class="mod">📶</span>' },
+    battery: { label:"Batteri",            zone:"right",  render:()=>'<span class="mod">🔋 85%</span>' },
+    power:   { label:"Power-profil",       zone:"right",  render:()=>'<span class="mod">⚡ Balanserad</span>' },
+    mpris:   { label:"Media (mpris)",      zone:"center", render:()=>'<span class="mod">♪ Waybar Rock – Local Band</span>' },
+    tray:    { label:"System-tray",        zone:"right",  render:()=>'<span class="mod"><span class="tray-dot"></span><span class="tray-dot"></span><span class="tray-dot"></span></span>' },
+    weather: { label:"Väder",              zone:"right",  render:()=>'<span class="mod">☀ 14°</span>' }
+  };
+
+  const state = {
+    pos:"top", group:"flat", ws:"numbers",
+    modules:{ cava:true, gpu:true, network:true, battery:true, power:true, mpris:false, tray:false, weather:false }
+  };
+
+  const stage = document.getElementById("stage");
+  const topBar = document.getElementById("topBar");
+  const bottomBar = document.getElementById("bottomBar");
+  const moduleToggles = document.getElementById("moduleToggles");
+  const specCode = document.getElementById("specCode");
+
+  function wsHtml(){
+    return '<span class="ws">' + WORKSPACES.map(w=>{
+      const active = w.id === ACTIVE_WS;
+      if(state.ws === "dots"){
+        return '<span class="ws-item dot'+(active?' active':'')+'"><span></span></span>';
+      }
+      if(state.ws === "icons"){
+        if(w.apps.length === 0) return '<span class="ws-item dot'+(active?' active':'')+'"><span></span></span>';
+        return '<span class="ws-item'+(active?' active':'')+'">'+w.apps.join(" ")+'</span>';
+      }
+      return '<span class="ws-item'+(active?' active':'')+'">'+w.id+'</span>';
+    }).join("") + '</span>';
+  }
+
+  function zoneHtml(zone, includeWs, includeGear, includeClock){
+    let items = [];
+    if(includeWs) items.push(wsHtml());
+    Object.keys(MODULES).forEach(key=>{
+      if(state.modules[key] && MODULES[key].zone === zone) items.push(MODULES[key].render());
+    });
+    if(includeGear) items.push('<span class="gear">⚙</span>');
+    if(includeClock) items.push('<span class="clock">14:32</span>');
+    return '<div class="zone">'+items.join("")+'</div>';
+  }
+
+  function buildModuleToggles(){
+    moduleToggles.innerHTML = "";
+    Object.keys(MODULES).forEach(key=>{
+      const m = MODULES[key];
+      const btn = document.createElement("button");
+      btn.className = "toggle-btn";
+      btn.dataset.mod = key;
+      btn.setAttribute("aria-pressed", state.modules[key] ? "true" : "false");
+      btn.textContent = m.label;
+      btn.addEventListener("click", ()=>{ state.modules[key] = !state.modules[key]; render(); });
+      moduleToggles.appendChild(btn);
+    });
+  }
+
+  function setPressed(selector, matchFn){
+    document.querySelectorAll(selector).forEach(el=> el.setAttribute("aria-pressed", matchFn(el) ? "true" : "false"));
+  }
+
+  function render(){
+    stage.classList.toggle("grouped", state.group === "grouped");
+
+    if(state.pos === "split"){
+      topBar.hidden = false; bottomBar.hidden = false;
+      topBar.innerHTML = zoneHtml("left", true, true, false) + zoneHtml("center", false, false, false) + '<div class="zone"></div>';
+      bottomBar.innerHTML = '<div class="zone"></div>' + zoneHtml("center", false, false, false) + zoneHtml("right", false, false, true);
+    } else {
+      const bar = state.pos === "bottom" ? bottomBar : topBar;
+      const other = state.pos === "bottom" ? topBar : bottomBar;
+      other.hidden = true; bar.hidden = false;
+      bar.className = "bar " + (state.pos === "bottom" ? "bottom-bar" : "top-bar");
+      bar.innerHTML = zoneHtml("left", true, true, false) + zoneHtml("center", false, false, false) + zoneHtml("right", false, false, true);
+    }
+
+    setPressed(".seg-btn[data-pos]", el => el.dataset.pos === state.pos);
+    setPressed(".seg-btn[data-group]", el => el.dataset.group === state.group);
+    setPressed(".seg-btn[data-ws]", el => el.dataset.ws === state.ws);
+    buildModuleToggles();
+
+    const centerMods = Object.keys(MODULES).filter(k=>state.modules[k] && MODULES[k].zone==="center");
+    const rightMods = Object.keys(MODULES).filter(k=>state.modules[k] && MODULES[k].zone==="right");
+    const layerLine = state.pos === "split"
+      ? '// två instanser: en "layer": "top", en "layer": "bottom"'
+      : '"layer": "top",\n    "position": "'+state.pos+'",';
+
+    specCode.textContent =
+      "// waybar/config.jsonc\n" +
+      "{\n" +
+      "    " + layerLine + "\n" +
+      "    \"modules-left\": [\"hyprland/workspaces\", \"custom/dotfiles\"],\n" +
+      "    \"modules-center\": [" + centerMods.map(k=>'"custom/'+k+'"').join(", ") + "],\n" +
+      "    \"modules-right\": [" + rightMods.map(k=>'"'+(k==="network"?"network":k==="battery"?"battery":"custom/"+k)+'"').join(", ") + ", \"clock\"]\n" +
+      "}\n\n" +
+      "/* style.css */\n" +
+      "\"hyprland/workspaces\" { /* stil: " + state.ws + " */ }\n" +
+      (state.group === "grouped" ? ".modules-left, .modules-center, .modules-right {\n    background: alpha(@fg, 0.07);\n    border-radius: 8px;\n    padding: 2px 10px;\n}" : "/* rak rad, ingen kapsel-bakgrund per grupp */");
+  }
+
+  document.querySelectorAll(".seg-btn[data-pos]").forEach(btn=> btn.addEventListener("click", ()=>{ state.pos = btn.dataset.pos; render(); }));
+  document.querySelectorAll(".seg-btn[data-group]").forEach(btn=> btn.addEventListener("click", ()=>{ state.group = btn.dataset.group; render(); }));
+  document.querySelectorAll(".seg-btn[data-ws]").forEach(btn=> btn.addEventListener("click", ()=>{ state.ws = btn.dataset.ws; render(); }));
+
+  render();
+})();
+</script>
