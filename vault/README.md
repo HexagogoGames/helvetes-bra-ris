@@ -1,4 +1,4 @@
-# Vault — andra hjärnan för dotfiles
+# Vault
 
 Det här är ett kontinuerligt uppdaterat minne kring Jakobs Hyprland-rig: vad som är
 konfigurerat, varför, vilka beslut som tagits, och kända problem. Skriv i vanlig

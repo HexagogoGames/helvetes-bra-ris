@@ -2,6 +2,18 @@
 
 Nyast överst.
 
+## 2026-09-14 — Hyprland lua-migrering klar, backup borttagen
+
+Jakob startade om datorn. `hyprctl systeminfo` bekräftar `configProvider: lua`,
+`hyprctl configerrors` tomt, och autostart (waybar/swaync/eww/swaybg/cava) kom upp
+korrekt. Lua-configen är alltså verifierad i praktiken, inte bara syntaktiskt. Tog
+bort `hypr.conf-backup-20260913/` (repo + symlink i `~/.config/`) — behövs inte
+längre. Se [[../03-felsokning/hyprland-lua-migration]].
+
+Samtidigt: gjorde vault-hanteringen i `CLAUDE.md` till en tydlig, obligatorisk rutin
+(sköts automatiskt, utan att fråga om lov) istället för en rekommendation, och döpte
+om vault-rubrikerna till bara "Vault"/`vault/` (utan undertitel).
+
 ## 2026-09-14 — Hyprland lua-config verifierad giltig
 
 Körde `Hyprland --verify-config` mot `hypr/hyprland.lua` (riskfritt, startar ingen

@@ -9,20 +9,20 @@ ligger i den här mappen är exakt det som faktiskt körs — inte en kopia.
 - **Detta är en körande session.** Hyprland, waybar, eww, swaync, kitty m.fl. körs live
   medan du jobbar. Redigera filer fritt, men kör **aldrig** `hyprctl reload`, starta om
   waybar/eww/swaync, eller logga ut/starta om utan att uttryckligen fråga användaren
-  först — se [[vault/03-felsokning/hyprland-lua-migration]] för varför det just nu är
-  extra känsligt.
+  först — oavsett hur trivial ändringen känns.
 - Filerna nås via symlinkar (`~/.config/hypr` -> `~/dotfiles/hypr` osv). Det är
   transparent för programmen (XDG Base Directory-spec), men tänk på att en `mv`/`rm`
   av en symlink i `~/.config` inte är samma sak som att ändra filen i `~/dotfiles`.
-- `hypr.conf-backup-20260913/` är en **backup** av det gamla `.conf`-baserade systemet,
-  kvar tills lua-migreringen är verifierad. Rör den inte utan att fråga.
+- Hyprland kör på **lua-config** (`hypr/hyprland.lua` m.fl.) — migreringen från det
+  gamla `.conf`-baserade systemet är klar och verifierad med en riktig `hyprctl reload`
+  2026-09-14, se [[vault/03-felsokning/hyprland-lua-migration]]. Backupen
+  (`hypr.conf-backup-20260913/`) är borttagen.
 
 ## Vad som finns här
 
 | Mapp/fil i repot | Symlinkad till | Program |
 |---|---|---|
 | `hypr/` | `~/.config/hypr` | Hyprland (lua-config, se vault) |
-| `hypr.conf-backup-20260913/` | `~/.config/hypr.conf-backup-20260913` | gammal .conf-backup |
 | `kitty/` | `~/.config/kitty` | terminal |
 | `waybar/` | `~/.config/waybar` | statusbar |
 | `eww/` | `~/.config/eww` | widgets |
@@ -36,20 +36,24 @@ ligger i den här mappen är exakt det som faktiskt körs — inte en kopia.
 | `starship.toml` | `~/.config/starship.toml` | shell-prompt |
 | `bashrc` | `~/.bashrc` | shell |
 
-## vault/ — andra hjärnan
+## vault/
 
 `vault/` är en Obsidian-kompatibel anteckningssamling om hela riggen: varför saker är
 konfigurerade som de är, beslut som tagits, kända problem, tema/färgval. Den är tänkt
 att vara ett levande minne, inte statisk dokumentation.
 
-**Håll den uppdaterad kontinuerligt:**
+**Du sköter den här helt automatiskt, löpande, utan att fråga om lov eller vänta på
+att bli ombedd:**
 - Gjorde du en meningsfull ändring i en config? Uppdatera motsvarande fil i
-  `vault/01-appar/`.
-- Tog ni ett beslut, löste ett problem, eller ändrade riktning? Lägg en rad i
+  `vault/01-appar/` — direkt, som en del av samma svar.
+- Togs ett beslut, löstes ett problem, eller ändrades riktning (inklusive sådant som
+  kommer fram i en vanlig konversation, inte bara filändringar)? Lägg en rad i
   `vault/02-beslut/changelog.md` (nyast överst) eller en ny fil i `vault/03-felsokning/`
   om det var ett faktiskt fel som löstes.
 - Nya idéer/saker att göra senare → `vault/05-todo/wishlist.md`.
 - Länka mellan filer med `[[vault/mapp/namn]]`-stil wikilänkar där det är naturligt.
+- Trivial finjustering (en pixel hit eller dit) behöver inte loggas — men allt som
+  förklarar ett *varför* eller som du själv skulle vilja komma ihåg nästa gång ska in.
 
 Se `vault/README.md` för full struktur.
 

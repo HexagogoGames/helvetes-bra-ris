@@ -1,6 +1,21 @@
-# Hyprland: pågående lua-migrering (upptäckt 2026-09-14)
+# Hyprland: lua-migrering (klar 2026-09-14)
 
-## ✅ Verifierad 2026-09-14 — configen är giltig
+## ✅ Slutförd 2026-09-14 — verifierad med riktig omstart
+
+Jakob startade om datorn. Efter omstart:
+- `hyprctl systeminfo` visar `configProvider: lua` — lua-configen är nu det som
+  faktiskt är laddat, inte längre de gamla `.conf`-filerna.
+- `hyprctl configerrors` tomt.
+- Autostart fungerade: waybar, swaync, `eww daemon`, swaybg (wallpaper) och
+  cava-waybar-scriptet kör alla, med samma starttid som Hyprland-processen.
+- Monitor (eDP-1) detekterades korrekt trots att `monitors.lua` är 0 byte — bekräftar
+  att det var auto-detect, inget hål i migreringen.
+
+**Åtgärd:** `hypr.conf-backup-20260913/` är borttagen (både ur `~/dotfiles/` och
+symlinken i `~/.config/`) — den behövs inte längre som säkerhetsnät. Migreringen från
+`.conf`/hyprlang till lua är klar och verifierad i praktiken, inte bara syntaktiskt.
+
+## ✅ Verifierad 2026-09-14 (tidigare, före omstart) — configen är giltig
 
 Körde `Hyprland --config ~/.config/hypr/hyprland.lua --verify-config` (inbyggd,
 riskfri flagga: "Do not run Hyprland, only print if the config has any errors" —
@@ -46,26 +61,10 @@ använder, config-filer ska sluta användas").
   (jämförde `gaps_in`, `gaps_out`, `rounding`, `active_opacity`, `inactive_opacity` —
   identiska).
 
-## Risk
+## Risk (historisk — löst, se ✅ Slutförd ovan)
 
-Om Hyprland av någon anledning startar om (krasch, omstart av datorn, manuell
-`hyprctl reload`) **innan lua-configen är verifierad komplett**, och lua-configen inte
-kan läsas in korrekt (t.ex. pga tomma/felaktiga moduler), finns risk att Hyprland
-faller tillbaka på tomma/default-inställningar — dvs tappade keybinds, ingen
-autostart av waybar/swaync/wallpaper osv.
-
-## Vad som gjorts åt detta
-
-- Inget rört på WM-nivå — ingen `hyprctl reload`, ingen omstart. Bara filflytt till
-  `~/dotfiles/` med symlinkar tillbaka, som inte ändrar innehåll eller beteende.
-- `hypr.conf-backup-20260913/` flyttades in i dotfiles också (som `hypr.conf-backup-20260913/`,
-  symlinkad tillbaka) — kvar som säkerhetsnät tills lua-migreringen är
-  verifierad fungerande.
-
-## Nästa steg (för Jakob, inte gjort automatiskt)
-
-1. Dubbelkolla `monitors.lua` — ska den vara tom eller saknas innehåll?
-2. Testa `hyprctl reload` vid ett tillfälle där det är okej om något tillfälligt
-   struntar (inte mitt i annat arbete).
-3. När lua-configen är verifierad stabil: arkivera/ta bort `hypr.conf-backup-20260913/`
-   och uppdatera den här noten.
+Om Hyprland av någon anledning startade om **innan lua-configen var verifierad
+komplett**, och lua-configen inte kunde läsas in korrekt (t.ex. pga tomma/felaktiga
+moduler), fanns risk att Hyprland föll tillbaka på tomma/default-inställningar — dvs
+tappade keybinds, ingen autostart av waybar/swaync/wallpaper osv. Detta hände inte;
+omstarten gick bra, se toppen av noten.
