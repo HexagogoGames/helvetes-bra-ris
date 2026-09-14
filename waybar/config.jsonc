@@ -12,6 +12,7 @@
 
     "modules-center": [
         "mpris",
+        "custom/cava",
         "clock"
     ],
 
@@ -19,8 +20,6 @@
         "custom/dotfiles",
         "cpu",
         "custom/gpu",
-        "network",
-        "custom/cava",
         "pulseaudio",
         "custom/power-profile",
         "battery",
@@ -88,21 +87,6 @@
         "interval": 6,
         "on-click": "eww open system-menu --toggle"
     },
-
-    "network": {
-        "format-wifi": "󰖩 {signalStrength}%",
-        "format-ethernet": "󰈀",
-        "format-disconnected": "󰖪",
-        "tooltip": true,
-        "tooltip-format-wifi": "{essid}\nSignal: {signalStrength}%\nIP: {ipaddr}/{cidr}\nHastighet: {bandwidthUpBits}↑ {bandwidthDownBits}↓",
-        "tooltip-format-ethernet": "IP: {ipaddr}/{cidr}",
-        "tooltip-format-disconnected": "Ingen anslutning",
-        "on-click": "eww open wifi-menu --toggle"
-    },
-
-    "custom/sep1": { "format": "│", "tooltip": false },
-    "custom/sep2": { "format": "│", "tooltip": false },
-    "custom/sep3": { "format": "│", "tooltip": false },
 
     "custom/cava": {
         "exec": "~/.config/waybar/scripts/cava-waybar.sh",

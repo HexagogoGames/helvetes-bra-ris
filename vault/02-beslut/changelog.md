@@ -2,6 +2,17 @@
 
 Nyast överst.
 
+## 2026-09-15 — Städade bort dubbel wifi, cava bredare och flyttad
+
+Jakob påpekade att wifi fanns på två ställen: en egen `network`-ikon i waybar
+(öppnade `wifi-menu`) och en toggle inne i den nya systemmenyn. Tog bort
+`network`-modulen ur waybar helt — systemmenyns "Nätverk"-rad är nu klickbar
+och öppnar `wifi-menu` (med den riktiga nätverkslistan) istället för att
+duplicera logiken. Samtidigt: `custom/cava` flyttad till `modules-center`
+(mellan mpris och klockan) och gjord bredare (`bars` 8→18). Städade också bort
+kvarglömda `custom/sep1-3`-definitioner (redan overksamma sedan
+kapsel-grupperingen). Verifierat live med skärmdump.
+
 ## 2026-09-15 — Eww-systemmenyn byggd och live, waybar-städning + dekor
 
 Byggde den tidigare designade eww-systemmenyn på riktigt (inte bara Artifact-

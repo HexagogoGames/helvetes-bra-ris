@@ -164,16 +164,12 @@
     (box :orientation "horizontal" :space-evenly false :class "menu-item"
       (label :class "menu-item-label" :halign "start" :hexpand true :text "Temperatur")
       (label :class "menu-item-time" :text "${system_stats.temp}°C"))
-    (box :orientation "horizontal" :space-evenly false :class "menu-item"
-      (label :class "menu-item-label" :halign "start" :hexpand true :text "Nätverk")
-      (label :class "menu-item-time" :text "${system_stats.net}"))
+    (button :class "menu-item"
+            :onclick "eww close system-menu; eww open wifi-menu"
+      (box :orientation "horizontal" :space-evenly false
+        (label :class "menu-item-label" :halign "start" :hexpand true :text "Nätverk")
+        (label :class "menu-item-time" :text "${system_stats.net}")))
     (box :class "menu-sep")
-    (box :orientation "horizontal" :space-evenly false :class "menu-item toggle-row"
-      (label :class "menu-item-label" :halign "start" :hexpand true :text "Wifi")
-      (checkbox :class "toggle-switch"
-                :checked selected_wifi_enabled
-                :onchecked "nmcli radio wifi on; eww update selected_wifi_enabled=true"
-                :onunchecked "nmcli radio wifi off; eww update selected_wifi_enabled=false"))
     (box :orientation "horizontal" :space-evenly false :class "menu-item toggle-row"
       (label :class "menu-item-label" :halign "start" :hexpand true :text "Stör ej")
       (checkbox :class "toggle-switch"

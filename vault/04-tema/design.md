@@ -177,6 +177,14 @@ Samtidigt: waybar fick en diagonal gradient + guld-underglöd (mindre platt),
 `margin-left`/`margin-right` 10→0 (ingen gap mot skärmkant), och Hyprlands
 `gaps_in`/`gaps_out` 8/14 → 4/6 (mindre mellanrum mellan fönster).
 
+**Uppdaterat igen samma dag:** wifi fanns dubbelt (egen `network`-modul i
+waybar som öppnade `wifi-menu`, OCH en till toggle inne i den nya
+systemmenyn). Städat: `network`-modulen borttagen helt ur waybar, systemmenyns
+"Nätverk"-rad är nu klickbar och öppnar den fullständiga `wifi-menu` (med
+nätverkslista) istället för att duplicera en enkel på/av-toggle. `custom/cava`
+flyttad till `modules-center` (mellan mpris och klockan, "vänster om tid") och
+gjord bredare (`bars` 8→18 i `cava/waybar.conf`).
+
 ### Kvar att bestämma (fylls i allt eftersom)
 - [x] ~~btop/fastfetch/starship~~ (se ovan) — cava redan klar sedan runda 3 (waybar-
       visualisering, ingen ändring)
