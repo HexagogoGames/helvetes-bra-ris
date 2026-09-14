@@ -1,6 +1,32 @@
-# Changelog
+## 2026-09-15 — Reload genomförd: hyprpaper-schemat var fel, waybar mer transparent
 
-Nyast överst.
+Körde `hyprctl reload` + omstart av waybar/wob/eww/swaync/wallpaper-daemon (godkänt
+av Jakob). Upptäckte att `hyprpaper.conf` inte fungerade alls — den installerade
+hyprpaper-versionen (byggd mot hyprtoolkit) använder ett helt nytt config-schema
+(`wallpaper { monitor = ...; path = ...; fit_mode = cover }` istället för klassiska
+`preload=`/`wallpaper=`-rader). Se [[../03-felsokning/hyprpaper-nytt-config-schema]]
+för hur det spårades ner. Wallpapern syns nu bekräftat (skärmdump).
+
+Hittade och fixade tre filer som missats helt i förra implementationsomgången:
+`wob/wob.ini`, `cava/config`, `eww/eww.scss` (alla hade fortfarande hela den gamla
+cyan/blå paletten). La till en blur-`layer_rule` för eww-dropdown-fönstren som
+aldrig haft en.
+
+Jakob bad om mörkgröna borders istället för guld (gäller bara kant-egenskaper,
+inte fyllningar) — uppdaterat i Hyprland/kitty/rofi/swaync/wlogout/hyprlock/waybar.
+Förstärkte waybars workspace-dots (lövgröna istället för grå, större
+storleksskillnad aktiv/inaktiv, egen badge-bakgrund) efter att en zoomad
+skärmdump visade att de fanns men var för subtila.
+
+Verifierade `ttf-ibm-plex` installerat (Jakob körde själv) med en riktig
+kitty-skärmdump — starship/font/rundade hörn renderar korrekt.
+
+Sist: gjorde waybar mer transparent (0.6→0.38 alpha) och gav klickbara moduler
+en tydlig "knapp"-look (egen chip med kant, hover-lyft) istället för bara text på
+rad. Justerade `height` i config.jsonc 34→44 för att matcha den nya modulhöjden.
+
+**eww-systemmenyn (GNOME quick-settings-stil)** sparas medvetet till en egen
+designrunda efter att temat är klart — se [[../05-todo/wishlist]].
 
 ## 2026-09-14 — Temaomdesign implementerad: Glassy + egen "forest"-palett
 
