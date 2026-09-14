@@ -1,7 +1,9 @@
 # Todo / wishlist
 
-- [ ] Verifiera `monitors.lua` (0 byte) — medvetet tomt eller saknat innehåll?
-- [ ] Testa `hyprctl reload` vid lämpligt tillfälle, se
+- [x] ~~Verifiera `monitors.lua` (0 byte)~~ — bekräftat ofarligt, `--verify-config`
+      godkänner configen som den är (2026-09-14).
+- [ ] Testa en *riktig* `hyprctl reload` vid lämpligt tillfälle (syntax är verifierad,
+      men beteende i praktiken är inte det än) — se
       [[../03-felsokning/hyprland-lua-migration]].
 - [ ] Extrahera och dokumentera `rofi/colors.rasi`-paletten i
       [[../04-tema/design]] (troligen samma som resten, inte dubbelkollat).

@@ -2,6 +2,13 @@
 
 Nyast överst.
 
+## 2026-09-14 — Hyprland lua-config verifierad giltig
+
+Körde `Hyprland --verify-config` mot `hypr/hyprland.lua` (riskfritt, startar ingen
+compositor). Resultat: `config ok`, exit 0. Alla `.lua`-filer passerade även
+`luac5.4 -p`. Se [[../03-felsokning/hyprland-lua-migration]] för detaljer — kvarstår
+fortfarande att verifiera beteende i praktiken med en riktig reload.
+
 ## 2026-09-14 — Dotfiles-migrering till `~/dotfiles/`
 
 - Flyttade all rice-config (`hypr`, `hypr.conf-backup-20260913`, `kitty`, `waybar`,

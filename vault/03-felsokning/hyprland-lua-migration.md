@@ -1,5 +1,30 @@
 # Hyprland: pågående lua-migrering (upptäckt 2026-09-14)
 
+## ✅ Verifierad 2026-09-14 — configen är giltig
+
+Körde `Hyprland --config ~/.config/hypr/hyprland.lua --verify-config` (inbyggd,
+riskfri flagga: "Do not run Hyprland, only print if the config has any errors" —
+startar ingen compositor, rör inte den körande sessionen). Resultat:
+
+```
+config ok
+```
+
+exit code 0. Alla sex `.lua`-filer passerade även ren Lua-syntaxkoll (`luac5.4 -p`)
+individuellt. Bekräftat efteråt: ingen extra Hyprland-process kvar, ingen kvarlämnad
+loggfil, `hyprctl configerrors` på den live sessionen fortsatt tomt — verifieringen
+lämnade inga spår.
+
+**Slutsats:** `monitors.lua` (0 byte) är inget fel — Hyprland tolererar en tom
+modul (troligen auto-detect, inget explicit att sätta för den här monitor-riggen).
+Configen kan alltså läsas in felfritt av Hyprland idag.
+
+**Kvarstår ändå innan `hypr.conf-backup-20260913/` kan arkiveras:** `--verify-config`
+kollar bara att configen *parsar*, inte att keybinds/autostart faktiskt beter sig rätt
+i praktiken (t.ex. att alla `hl.exec_cmd`-anrop i `autostart.lua` faktiskt kör). En
+riktig `hyprctl reload` (eller omstart) i ett läge där du kan verifiera visuellt är
+fortfarande att rekommendera innan backupen tas bort.
+
 ## Status när detta skrevs
 
 Jakob migrerar Hyprland-configen från klassiskt `.conf`/hyprlang-format till det nya
