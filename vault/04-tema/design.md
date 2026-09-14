@@ -37,9 +37,21 @@ med låg alfa).
 **Mättnad:** antaget Medel (standardläget i Riggsmedjan, rördes inte explicit) —
 **dubbelkolla med Jakob.**
 
-### Kvar att bestämma (fylls i allt eftersom)
+**Typografi:** IBM Plex Mono överallt (UI + terminal, samma font). Textstorlek
+medel: waybar `13px`, kitty `12.0pt`. Inga ligaturer (fonten saknar dem). Ikonstil:
+glyf-ikoner i textflödet, som redan är konventionen i waybar.
 
-- [ ] Typografi (UI-font waybar/rofi/eww/swaync, terminal-font kitty, ligaturer, storlek)
+```
+/* waybar/style.css */
+* { font-family: "IBM Plex Mono", monospace; font-size: 13px; }
+```
+```
+# kitty.conf
+font_family      IBM Plex Mono
+font_size        12.0
+```
+
+### Kvar att bestämma (fylls i allt eftersom)
 - [ ] Waybar-layout (position, modulgruppering, workspace-indikatorstil, vilka moduler)
 - [x] ~~Wallpaper~~ — **Jakobs eget beslut, inte del av frågerundorna.** Bekräftat:
       verktyg blir **hyprpaper** (byte från `swaybg`, som är vad som faktiskt kör just

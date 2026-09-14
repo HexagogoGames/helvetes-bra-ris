@@ -2,6 +2,13 @@
 
 Nyast överst.
 
+## 2026-09-14 — Typografi beslutad: IBM Plex Mono, medel, glyf-ikoner
+
+Runda 2 (Bokstavssmedjan) klar: **IBM Plex Mono överallt** (UI + terminal), textstorlek
+**medel** (waybar 13px, kitty 12.0pt), **inga ligaturer** (fonten saknar dem), **glyf-
+ikoner** i waybar (befintlig konvention). Detaljer och färdiga config-snuttar i
+[[../04-tema/design]].
+
 ## 2026-09-14 — Wallpaper: Jakobs eget beslut, verktyg blir hyprpaper
 
 Jakob bestämmer wallpaper-bild och -konfiguration helt själv, inte via
