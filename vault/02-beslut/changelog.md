@@ -2,6 +2,12 @@
 
 Nyast överst.
 
+## 2026-09-14 — Lade till `.gitignore`
+
+Fanns ingen tidigare. Lade till `*.code-workspace` (fångar VS Codes tendens att
+återskapa en tom `rice.code-workspace`, se raden nedan) samt vanligt editor-/OS-skräp
+(`.vscode/`, swap-filer, `.DS_Store`).
+
 ## 2026-09-14 — Waybar-knappen öppnar dotfiles direkt, workspace-fil borttagen
 
 `custom/hyprland-config`-modulen i waybar döpt om till `custom/dotfiles` och

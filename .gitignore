@@ -1,0 +1,11 @@
+# VS Code kan återskapa en tom workspace-fil av sig själv (se
+# vault/02-beslut/changelog.md, 2026-09-14) — ingen sådan fil används längre,
+# ⚙-knappen i waybar öppnar mappen direkt istället.
+*.code-workspace
+
+# Editor-/OS-skräp som inte hör hemma i rice-configen
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
