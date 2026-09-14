@@ -2,6 +2,14 @@
 
 Nyast överst.
 
+## 2026-09-14 — Animationer beslutade, gradient-kant avfärdad
+
+Runda 4: fönster **popin** vid öppning/stängning, **slide** vid workspace-byte,
+tempo **snabbt/snappy** (~150-200ms). Den roterande gradient-kanten från mockuparna
+blir **inte** en skarp Hyprland-effekt — bara enkel solid accentkant
+(`col.active_border = fe8019`, redan beslutad i runda 1). Detaljer i
+[[../04-tema/design]].
+
 ## 2026-09-14 — Waybar-layout beslutad: topp, kapslar, punkter, + mpris
 
 Runda 3 (Panelsmedjan) klar: panel i **toppen**, moduler grupperade i **kapslar**

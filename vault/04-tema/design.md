@@ -77,14 +77,31 @@ bakgrund per zon: `.modules-left`/`.modules-center`/`.modules-right`). Workspace
 }
 ```
 
+**Gradient-kant:** avfärdad. Bara enkel solid accentfärgad kant
+(`col.active_border = fe8019`, redan i runda 1-specen) — ingen roterande/animerad
+kant i skarp config, det var bara mockup-smek i Riggsmedjan/Bokstavssmedjan.
+
+**Animationer:**
+- Fönster öppna/stäng: **popin** (växer från mindre storlek, t.ex. 80% → 100%)
+- Workspace-byte: **slide**
+- Tempo: **snabbt/snappy** — korta durationer (~150-200ms), rät/snäv easing,
+  inte den gamla `easeOutCubic ~300ms`-känslan från placeholder-configen.
+
+```
+-- hyprland.lua (riktning, exakta bezier-värden återstår vid implementation)
+hl.animation({ leaf = "windows", enabled = true, speed = 2, style = "popin 80%", bezier = "snappy" })
+hl.animation({ leaf = "workspaces", enabled = true, speed = 2, style = "slide", bezier = "snappy" })
+hl.curve("snappy", { type = "bezier", points = { { 0.2, 0.9 }, { 0.3, 1 } } })  -- kort, rät kurva, ej overshoot
+```
+
 ### Kvar att bestämma (fylls i allt eftersom)
+- [x] ~~Animationer~~ (se ovan)
+- [x] ~~Gradient-kant~~ (se ovan) — avfärdad, bara solid kant
 - [x] ~~Waybar-layout~~ (se ovan)
 - [x] ~~Wallpaper~~ — **Jakobs eget beslut, inte del av frågerundorna.** Bekräftat:
       verktyg blir **hyprpaper** (byte från `swaybg`, som är vad som faktiskt kör just
       nu, se [[../01-appar/hyprland]]/`ps aux`). Vilken bild och hur den konfigureras
       bestämmer Jakob själv och meddelar när det är klart.
-- [ ] Animationer (fönster öppna/stäng-stil, workspace-switch, hastighet/personlighet)
-- [ ] Gradient-kant på fokuserat fönster: verklig Hyprland-effekt eller bara mockup?
 - [ ] Rofi-layout (lista/grid, position)
 - [ ] Notiser (swaync): position, stil
 - [ ] Cursor-tema + storlek
