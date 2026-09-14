@@ -117,7 +117,26 @@ wallpaper som bakgrund. Ingen avatar, inget extra info-lager, inte en waybar-kop
 **wlogout:** **ikon-rad utan textetiketter** (som i Riggsmedjan-mockupen) — lås/logga
 ut/starta om/stäng av som rena cirkulära ikonknappar.
 
+**btop:** befintligt **Gruvbox community-tema** rakt av (inte en egen `.theme`-fil
+med exakta hex-värden — medvetet val, "i praktiken samma palett" räcker).
+Panelval/layout blev en egen sak, se nedan.
+
+**fastfetch:** **klassisk** — distro-logga (EndeavourOS ASCII/ANSI) till vänster,
+kärnspecs till höger (OS, kernel, uptime, paket, shell, DE, CPU/GPU, minne).
+
+**starship:** **medel** — katalog + git-status. Inga språkversions-badges
+(Python/Node osv), inget exit-code-märke.
+
+### Nytt eget projekt: eww-systemmeny (inte längre en btop-fråga)
+
+Svaret på "vilken btop-layout" blev egentligen en helt annan sak: en **GNOME quick-
+settings-stil eww-meny** (kompakt popup + utökad vy, info + snabb-åtgärder som
+wifi-toggle). Det är ett separat widget-projekt, inte en temafråga — flyttat till
+[[../05-todo/wishlist]] med det som redan är bestämt, får sin egen designrunda.
+
 ### Kvar att bestämma (fylls i allt eftersom)
+- [x] ~~btop/fastfetch/starship~~ (se ovan) — cava redan klar sedan runda 3 (waybar-
+      visualisering, ingen ändring)
 - [x] ~~Cursor~~ (se ovan)
 - [x] ~~hyprlock~~ (se ovan)
 - [x] ~~wlogout~~ (se ovan)
@@ -130,7 +149,14 @@ ut/starta om/stäng av som rena cirkulära ikonknappar.
       verktyg blir **hyprpaper** (byte från `swaybg`, som är vad som faktiskt kör just
       nu, se [[../01-appar/hyprland]]/`ps aux`). Vilken bild och hur den konfigureras
       bestämmer Jakob själv och meddelar när det är klart.
-- [ ] btop/fastfetch/cava/starship — matcha samma Gruvbox-palett
+## Alla frågerundor klara (2026-09-14)
+
+Temaomdesignen är nu fullständigt beslutad — se sektionerna ovan för allt (estetik,
+färg, typografi, waybar-layout, animationer, rofi/notiser, cursor/hyprlock/wlogout,
+btop/fastfetch/starship). Wallpaper är Jakobs eget beslut (hyprpaper, se ovan).
+Enda spinoff-projektet (eww-systemmeny) är flyttat till [[../05-todo/wishlist]] som
+en egen sak. **Nästa steg:** implementera alla besluten i de faktiska config-filerna
+— inte gjort ännu, bara beslutat/dokumenterat.
 
 ## Tidigare placeholder-tema (ersätts, kvar som historik)
 

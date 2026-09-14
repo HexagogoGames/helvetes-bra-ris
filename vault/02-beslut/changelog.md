@@ -2,6 +2,19 @@
 
 Nyast överst.
 
+## 2026-09-14 — Temaomdesign klar: btop/fastfetch/starship + nytt spinoff-projekt
+
+Sista rundan: **btop** befintligt Gruvbox-community-tema (inte eget hex-exakt tema),
+**fastfetch** klassisk (logga + specs), **starship** medel (katalog + git-status).
+Jakobs svar om btop-layout visade sig egentligen beskriva en helt annan sak — en
+**GNOME quick-settings-stil eww-systemmeny** (kompakt + utökad vy, info + snabb-
+åtgärder som wifi-toggle, inte btop-baserad). Flyttat till [[../05-todo/wishlist]]
+som ett eget framtida projekt istället för att klämmas in här.
+
+**Alla frågerundor för temaomdesignen är nu klara** — se [[../04-tema/design]] för
+den fullständiga sammanställningen. Nästa steg är att faktiskt implementera
+besluten i config-filerna (inte gjort än, bara beslutat).
+
 ## 2026-09-14 — Cursor, hyprlock, wlogout beslutade
 
 Runda 6: **cursor** Adwaita 24px (medvetet inget custom-tema, noll extra
