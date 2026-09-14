@@ -1,19 +1,24 @@
 * {
-    font-family: "JetBrainsMono Nerd Font";
+    font-family: "IBM Plex Mono", "JetBrainsMono Nerd Font", sans-serif;
 }
 
 window {
-    background-color: rgba(7, 9, 16, 0.85);
+    background-color: rgba(23, 33, 26, 0.55); /* mörkgrön, genomskinlig — layerrule-blur syns igenom */
 }
 
+/* Ikon-rad utan textetiketter (beslutat i temaomdesignen): "text" i layout.json
+   blir bara tooltip vid hover, wlogout renderar aldrig text på knappen självt —
+   ikonen kommer helt från background-image nedan (Adwaita symbolic-ikoner,
+   recolorable via `color`). */
 button {
-    color: #e8f1ff;
-    background-color: rgba(15, 19, 31, 0.9);
-    background-image: none;
-    border: 1px solid rgba(98, 230, 255, 0.3);
+    color: #ece3c6;
+    background-color: rgba(44, 58, 46, 0.7);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 30%;
+    border: 1px solid rgba(212, 162, 74, 0.3);
     border-radius: 20px;
     margin: 14px;
-    font-size: 20px;
     min-width: 140px;
     min-height: 140px;
     transition: all 150ms;
@@ -21,7 +26,28 @@ button {
 
 button:focus,
 button:hover {
-    background-color: rgba(98, 230, 255, 0.15);
-    border-color: #62e6ff;
-    color: #62e6ff;
+    background-color: rgba(212, 162, 74, 0.18);
+    border-color: #d4a24a;
+    color: #d4a24a;
+}
+
+button.lock {
+    background-image: image(-gtk-icontheme("system-lock-screen-symbolic"));
+}
+
+button.logout {
+    background-image: image(-gtk-icontheme("system-log-out-symbolic"));
+}
+
+button.suspend {
+    /* Adwaita saknar en dedikerad suspend-ikon — återanvänder månikonen */
+    background-image: image(-gtk-icontheme("weather-clear-night-symbolic"));
+}
+
+button.reboot {
+    background-image: image(-gtk-icontheme("system-reboot-symbolic"));
+}
+
+button.shutdown {
+    background-image: image(-gtk-icontheme("system-shutdown-symbolic"));
 }

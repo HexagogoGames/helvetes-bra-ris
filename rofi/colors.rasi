@@ -1,37 +1,36 @@
 * {
-    /* Base */
-    bg:              #070910e8;
-    bg-solid:        #070910ff;
-    bg-alt:          #0f131fe8;
-    bg-hover:        #20273ae0;
+    /* Base — mörkgrön skog (från forrest-background1) */
+    bg:              #17211ae8;
+    bg-solid:        #17211aff;
+    bg-alt:          #2c3a2ee8;
+    bg-hover:        #3a4a3de0;
 
     /* Text */
-    fg:              #e8f1ff;
-    fg-muted:        #71809d;
+    fg:              #ece3c6;
+    fg-muted:        #93a08c;
 
     /* Main accents */
-    cyan:            #62e6ff;
-    cyan-soft:       #2ca9c9;
+    gold:            #d4a24a;
+    gold-soft:       #b8863a;
 
-    purple:          #a970ff;
-    purple-soft:     #7048b8;
+    leaf:            #7fa66b;
+    leaf-soft:       #5c8a4c;
 
-    /* Hyprland accent */
-    orange:          #ff9e3d;
+    purple:          #a97ca0;
 
     /* Status */
-    red:             #ff5470;
-    green:           #6dffb8;
+    red:             #c1543f;
+    green:           #8fbf6f;
 
     /* Borders */
-    border:          #62e6ff5a;
-    border-strong:   #62e6ffaa;
+    border:          #93a08c59;
+    border-strong:   #d4a24aaa;
 
     /* Selection */
-    selected-bg:     #62e6ff23;
-    selected-bg-solid: #142832ff;
-    selected-bg-2:   #a970ff19;
-    selected-border: #62e6ffaa;
+    selected-bg:       #d4a24a23;
+    selected-bg-solid: #33341dff;
+    selected-bg-2:     #a97ca019;
+    selected-border:   #d4a24aaa;
 
     /* Transparent */
     transparent:     #00000000;

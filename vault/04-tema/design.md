@@ -10,12 +10,38 @@ beslut.
 
 ### Beslutat hittills
 
-**Estetik: Vibrant.** Mättade accentfärger, rounding 14px, `border_size = 3`,
-`gaps_in = 8` / `gaps_out = 12`, lätt blur (size 3, passes 1),
-`active_opacity = 0.97` / `inactive_opacity = 0.78`. Fokuserat fönster tänkt att få
-en roterande gradient-kant (accent → accent2 → accent, animerad) snarare än en
-statisk kantfärg — **oklart ännu om det ska implementeras skarpt i Hyprland eller om
-det bara var mockup-smek; fråga kvar.**
+**Estetik: Glassy** (bytt från Vibrant 2026-09-14, allt annat i den här filen
+opåverkat). Blur bakom paneler/fönster, halvgenomskinliga ytor, mjukt rundade hörn.
+`rounding = 18px`, `border_size = 1`, `gaps_in = 8` / `gaps_out = 14`, blur på
+(`size = 8`, `passes = 3`), `active_opacity = 0.92` / `inactive_opacity = 0.62`.
+Ingen gradient-kant (se beslut nedan, oberoende av estetik-val) — bara solid
+accentfärgad kant.
+
+**Färgschema: bytt från Gruvbox Dark → egen "forest"-palett** (2026-09-14, samma
+dag). Jakob la in sin egen wallpaper (`images/backgrounds/forrest background1.avif`,
+konverterad till PNG eftersom hyprpaper inte länkar mot libavif) och bad om en
+mörkgrön/genomskinlig palett som matchar bilden. Extraherade riktiga dominant-färger
+ur fotot (`magick ... -colors 12 -unique-colors`) och byggde paletten på dem istället
+för att gissa gröna toner:
+
+| Roll | Hex | Källa |
+|---|---|---|
+| Bakgrund | `#17211a` | mörkaste skuggtonen i fotot |
+| Yta (paneler/fönster/rofi-element) | `#2c3a2e` | mossgrön mellanton |
+| Text | `#ece3c6` | varm krämvit, "solljus genom lövverk" |
+| Text (dämpad) | `#93a08c` | gråaktig salvia/mossgrå ur fotot |
+| Accent 1 (guld — aktiv kant, highlights) | `#d4a24a` | uppjusterad från fotots solbelysta ockra |
+| Accent 2 (löv-grön, sekundär) | `#7fa66b` | livligare grön än fotots dämpade toner |
+| Röd (varning/kritisk) | `#c1543f` | rostig tegel-röd, matchar jordton-familjen |
+| Grön (status ok/laddar) | `#8fbf6f` | ljusare löv-grön, skild från accent 2 |
+
+`col.active_border = rgba(d4a24aff)`, `col.inactive_border = rgba(93a08c33)`.
+Gruvbox-planen (inkl. btop community-temat) är överspelad — se implementationsloggen
+nedan.
+
+**Wallpaper:** klart. `hyprpaper` (ersatte `swaybg` i `autostart.lua`), config i
+`hypr/hyprpaper.conf`, bild `images/backgrounds/forrest-background1.png` (Jakobs eget
+val, konverterad från `.avif`).
 
 **Läge: Mörkt.**
 
@@ -149,14 +175,58 @@ wifi-toggle). Det är ett separat widget-projekt, inte en temafråga — flyttat
       verktyg blir **hyprpaper** (byte från `swaybg`, som är vad som faktiskt kör just
       nu, se [[../01-appar/hyprland]]/`ps aux`). Vilken bild och hur den konfigureras
       bestämmer Jakob själv och meddelar när det är klart.
-## Alla frågerundor klara (2026-09-14)
+## Implementation klar (2026-09-14)
 
-Temaomdesignen är nu fullständigt beslutad — se sektionerna ovan för allt (estetik,
-färg, typografi, waybar-layout, animationer, rofi/notiser, cursor/hyprlock/wlogout,
-btop/fastfetch/starship). Wallpaper är Jakobs eget beslut (hyprpaper, se ovan).
-Enda spinoff-projektet (eww-systemmeny) är flyttat till [[../05-todo/wishlist]] som
-en egen sak. **Nästa steg:** implementera alla besluten i de faktiska config-filerna
-— inte gjort ännu, bara beslutat/dokumenterat.
+Alla beslut ovan är nu genomförda i de faktiska config-filerna, inte bara
+dokumenterade. Filer som ändrades:
+
+- `hypr/hyprland.lua` — gaps/rounding/border/blur/opacity (Glassy), kantfärger
+  (forest-palett), snappy-animationskurva (`hl.curve("snappy", ...)`), lägre
+  animation-speed-värden.
+- `hypr/hyprpaper.conf` — **ny fil**, wallpaper.
+- `hypr/autostart.lua` — `swaybg` → `hyprpaper`, la till `hyprctl setcursor Adwaita 24`.
+- `hypr/hyprlock.conf` — recolor + blur size/passes uppjusterat till samma som resten.
+- `hypr/rules.lua` — rofi-opacity 0.88 → 0.82.
+- `kitty/kitty.conf` — IBM Plex Mono, `symbol_map` mot JetBrainsMono Nerd Font för
+  ikonglyfer (Plex saknar dem), full ANSI-ompalettering, `background_opacity 0.85`.
+- `waybar/config.jsonc` — `mpris`-modul tillagd, `hyprland/workspaces` till
+  punkt-format + `persistent-workspaces`, tog bort `custom/sep1-3` (onödiga med
+  kapsel-gruppering).
+- `waybar/style.css` — full recolor, `.modules-left/-center/-right`-kapslar,
+  punkt-workspace-stil, font-stack med Nerd Font-fallback.
+- `rofi/colors.rasi` — full recolor, döpte om variabler (`orange`→`gold`,
+  `cyan`→`leaf`, matchar faktiska hexvärden nu).
+- `rofi/config.rasi` — grid-läge (7 kolumner, ikon-över-text), centrerad, 82%×82%
+  av skärmen, `@orange`→`@gold`-referensen fixad.
+- `swaync/style.css` — full recolor, samt en CSS-baserad hover-expand-approximation
+  (⚠️ inte swaync-standard, se kommentar i filen och flagga nedan).
+- `wlogout/style.css` — full recolor, ikon-rad utan text via
+  `-gtk-icontheme()` (Adwaita symbolic-ikoner; suspend saknar egen ikon i Adwaita,
+  återanvänder månikonen `weather-clear-night-symbolic`).
+- `btop/btop.conf` — `color_theme = "forest"`, `shown_boxes = "cpu mem"` (minimal).
+- `btop/themes/forest.theme` — **ny fil**, egen tema-fil (inte ett nedladdat
+  community-tema — se överspelnings-noten ovan).
+- `fastfetch/config.jsonc` — logga/keys recolor (hex direkt, inte ANSI-namn).
+- `starship.toml` — recolor, struktur oförändrad (katalog + git-status, "medel").
+
+**Validerat innan commit:** `Hyprland --verify-config` → `config ok`, `luac5.4 -p`
+på alla `.lua`-filer, JSON/JSONC-parsning av `waybar/config.jsonc`,
+`fastfetch/config.jsonc`, `swaync/config.json`. Inget av detta är laddat i den
+körande sessionen än — kräver reload/omstart, som inte görs utan att fråga.
+
+### ⚠️ Kvarstår / att verifiera
+
+- **`ttf-ibm-plex` (och/eller `ttf-ibmplex-mono-nerd`) är inte installerat.**
+  Kräver `sudo` — jag kan inte köra det själv i den här sessionen. Jakob behöver
+  köra `sudo pacman -S ttf-ibm-plex` manuellt innan IBM Plex Mono faktiskt
+  renderas (fallback blir annars en generisk monospace-font tills dess).
+- **swaync hover-to-expand** är en CSS-approximation (max-height/opacity-trick),
+  inte en dokumenterad swaync-funktion — verifiera att den känns bra i praktiken,
+  se kommentar i `swaync/style.css`.
+- **Rofi grid** ser bara bra ut om `Qogir-Dark`-ikontemat faktiskt har bra
+  ikontäckning för installerade appar — inte dubbelkollat.
+- **eww-systemmenyn** (GNOME quick-settings-stil) är fortfarande ett separat,
+  obörjat projekt — se [[../05-todo/wishlist]].
 
 ## Tidigare placeholder-tema (ersätts, kvar som historik)
 

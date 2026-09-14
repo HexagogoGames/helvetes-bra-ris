@@ -1,33 +1,33 @@
 format = """
-[](fg:#62e6ff)[ $directory](bg:#62e6ff fg:#070910)[](fg:#62e6ff bg:#a970ff)[$git_branch$git_status ](bg:#a970ff fg:#070910)[](fg:#a970ff)
+[](fg:#d4a24a)[ $directory](bg:#d4a24a fg:#17211a)[](fg:#d4a24a bg:#7fa66b)[$git_branch$git_status ](bg:#7fa66b fg:#17211a)[](fg:#7fa66b)
 $character"""
 
 [character]
-success_symbol = "[❯](bold #62e6ff)"
-error_symbol = "[❯](bold #ff5470)"
+success_symbol = "[❯](bold #d4a24a)"
+error_symbol = "[❯](bold #c1543f)"
 
 [directory]
-style = "bg:#62e6ff fg:#070910"
+style = "bg:#d4a24a fg:#17211a"
 truncation_length = 3
 truncate_to_repo = true
 format = "[$path ]($style)"
 
 [git_branch]
 symbol = " "
-style = "bg:#a970ff fg:#070910"
+style = "bg:#7fa66b fg:#17211a"
 format = "[$symbol$branch]($style)"
 
 [git_status]
-style = "bg:#a970ff fg:#070910"
+style = "bg:#7fa66b fg:#17211a"
 format = "[$all_status$ahead_behind ]($style)"
 
 [cmd_duration]
 min_time = 2000
 format = "  [$duration]($style) "
-style = "fg:#71809d"
+style = "fg:#93a08c"
 
 [time]
 disabled = false
 format = "[$time]($style) "
-style = "fg:#71809d"
+style = "fg:#93a08c"
 time_format = "%H:%M"

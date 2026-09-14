@@ -11,27 +11,47 @@
     ],
 
     "modules-center": [
+        "mpris",
         "clock"
     ],
 
     "modules-right": [
         "custom/dotfiles",
-        "custom/sep1",
         "cpu",
         "memory",
         "temperature",
         "custom/gpu",
-        "custom/sep2",
         "network",
         "custom/cava",
         "pulseaudio",
-        "custom/sep3",
         "custom/power-profile",
         "battery"
     ],
 
     "hyprland/workspaces": {
-        "tooltip": true
+        "tooltip": true,
+        "format": "{icon}",
+        "format-icons": {
+            "default": "●",
+            "active": "●",
+            "empty": "●"
+        },
+        "persistent-workspaces": {
+            "*": 3
+        }
+    },
+
+    "mpris": {
+        "format": "{player_icon} {dynamic}",
+        "format-paused": "{status_icon} {dynamic}",
+        "player-icons": {
+            "default": "♪"
+        },
+        "status-icons": {
+            "paused": "⏸"
+        },
+        "tooltip-format": "{player} — {dynamic}",
+        "max-length": 30
     },
 
     "custom/dotfiles": {

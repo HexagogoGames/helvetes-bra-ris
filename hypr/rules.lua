@@ -4,7 +4,7 @@ hl.window_rule({
     match = {
         class = "^(Rofi)$",
     },
-    opacity = 0.88,
+    opacity = 0.82,
 })
 
 hl.window_rule({

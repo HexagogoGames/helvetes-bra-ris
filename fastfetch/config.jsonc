@@ -3,14 +3,14 @@
     "logo": {
         "source": "endeavouros",
         "color": {
-            "1": "cyan",
-            "2": "magenta"
+            "1": "#d4a24a",
+            "2": "#7fa66b"
         }
     },
     "display": {
         "separator": "  ",
         "color": {
-            "keys": "cyan"
+            "keys": "#d4a24a"
         }
     },
     "modules": [

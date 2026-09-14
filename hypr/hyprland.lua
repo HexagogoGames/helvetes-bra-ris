@@ -11,60 +11,63 @@ require("rules")
 -- Source: ~/.config/hypr/autostart.conf — convert this file to Lua and ensure it is on Lua's package.path.
 require("autostart")
 
-hl.curve("easeOutCubic", { type = "bezier", points = { { 0.33, 1 }, { 0.68, 1 } } })
-hl.curve("easeInOutCubic", { type = "bezier", points = { { 0.65, 0 }, { 0.35, 1 } } })
+-- Snabb/snappy tempo (~150-200ms), rät kurva utan overshoot — se
+-- vault/04-tema/design.md för resonemanget bakom bytet från easeOutCubic (~300ms)
+hl.curve("snappy", { type = "bezier", points = { { 0.2, 0.9 }, { 0.3, 1 } } })
 hl.animation({
     leaf = "windows",
     enabled = true,
-    speed = 4,
-    bezier = "easeOutCubic",
+    speed = 3,
+    bezier = "snappy",
     style = "popin 80%",
 })
 hl.animation({
     leaf = "windowsOut",
     enabled = true,
-    speed = 4,
-    bezier = "easeOutCubic",
+    speed = 3,
+    bezier = "snappy",
     style = "popin 80%",
 })
 hl.animation({
     leaf = "border",
     enabled = true,
-    speed = 6,
+    speed = 4,
     bezier = "default",
 })
 hl.animation({
     leaf = "fade",
     enabled = true,
-    speed = 4,
-    bezier = "easeOutCubic",
+    speed = 3,
+    bezier = "snappy",
 })
 hl.animation({
     leaf = "workspaces",
     enabled = true,
-    speed = 4,
-    bezier = "easeInOutCubic",
+    speed = 3,
+    bezier = "snappy",
     style = "slide",
 })
 hl.animation({
     leaf = "specialWorkspace",
     enabled = true,
-    speed = 4,
-    bezier = "easeOutCubic",
+    speed = 3,
+    bezier = "snappy",
     style = "slidevert",
 })
 
 hl.config({
     general = {
-        gaps_in = 5,
-        gaps_out = 10,
-        border_size = 2,
+        gaps_in = 8,
+        gaps_out = 14,
+        border_size = 1,
         layout = "dwindle",
+        ["col.active_border"] = "rgba(d4a24aff)",
+        ["col.inactive_border"] = "rgba(93a08c33)",
     },
     decoration = {
-        rounding = 8,
-        active_opacity = 1.0,
-        inactive_opacity = 0.94,
+        rounding = 18,
+        active_opacity = 0.92,
+        inactive_opacity = 0.62,
         shadow = {
             enabled = true,
             range = 12,
@@ -73,8 +76,8 @@ hl.config({
         },
         blur = {
             enabled = true,
-            size = 6,
-            passes = 2,
+            size = 8,
+            passes = 3,
             new_optimizations = true,
             ignore_opacity = true,
         },

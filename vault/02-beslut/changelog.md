@@ -2,6 +2,35 @@
 
 Nyast överst.
 
+## 2026-09-14 — Temaomdesign implementerad: Glassy + egen "forest"-palett
+
+Jakob bytte estetik Vibrant → Glassy, la in sin egen wallpaper
+(`forrest background1.avif`, konverterad till PNG) och bad om en mörkgrön/
+genomskinlig palett hämtad ur bilden istället för Gruvbox Dark. Extraherade
+riktiga dominant-färger ur fotot med ImageMagick och byggde paletten på dem
+(botten `#17211a`, guld-accent `#d4a24a`, löv-grön `#7fa66b`, se
+[[../04-tema/design]] för fullständig tabell).
+
+**Implementerade allt i skarpa config-filer** (inte bara beslutat): hyprland.lua
+(gaps/rounding/blur/opacity/animationer/kantfärger), hyprpaper.conf (ny),
+autostart.lua (swaybg→hyprpaper, cursor-setup), hyprlock.conf, kitty.conf (IBM
+Plex Mono + symbol_map-fallback för ikoner), waybar config.jsonc+style.css
+(mpris, punkt-workspaces, kapslar), rofi (grid-läge, recolor), swaync (recolor +
+hover-expand-försök), wlogout (recolor + `-gtk-icontheme()`-ikoner), btop (eget
+"forest"-tema, minimal layout), fastfetch, starship.toml.
+
+Validerat: `Hyprland --verify-config` → `config ok`, Lua-syntax, JSON/JSONC.
+**Inget laddat i den körande sessionen än** — väntar på godkännande för
+reload/omstart. Kvarstår: `ttf-ibm-plex` måste installeras manuellt (kräver
+sudo), swaync-hovern är en CSS-approximation att verifiera i praktiken.
+
+## 2026-09-14 — Estetik ändrad Vibrant → Glassy, påbörjar implementation
+
+Jakob bytte sista minuten-beslut: **Glassy** istället för Vibrant (rounding 18,
+border_size 1, blur på/size 8/passes 3, active/inactive opacity 0.92/0.62, gaps
+8/14). Allt annat i [[../04-tema/design]] oförändrat. Alla beslut är nu klara —
+påbörjar faktisk implementation i config-filerna.
+
 ## 2026-09-14 — Temaomdesign klar: btop/fastfetch/starship + nytt spinoff-projekt
 
 Sista rundan: **btop** befintligt Gruvbox-community-tema (inte eget hex-exakt tema),
