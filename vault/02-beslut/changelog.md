@@ -2,6 +2,15 @@
 
 Nyast överst.
 
+## 2026-09-15 — Power-knappar i systemmenyn (vila/starta om/stäng av)
+
+La till Vila, Starta om, Stäng av i eww-systemmenyn (samma `systemctl`-kommandon
+som wlogout redan använder) — Jakob ville ha dem åtkomliga där också, inte bara
+via wlogout-overlayn. Starta om/Stäng av fick en röd varningsfärg (`.menu-item
+danger`) för att skilja dem visuellt från de mindre drastiska knapparna, ingen
+extra bekräftelsedialog (matchar wlogouts eget beteende — direkt vid klick).
+Verifierat med skärmdump (klickade inte på dem, av uppenbara skäl).
+
 ## 2026-09-15 — Städade bort dubbel wifi, cava bredare och flyttad
 
 Jakob påpekade att wifi fanns på två ställen: en egen `network`-ikon i waybar

@@ -185,7 +185,17 @@
       (label :class "menu-item-label" :halign "start" :text "Inställningar"))
     (button :class "menu-item"
             :onclick "hyprlock &"
-      (label :class "menu-item-label" :halign "start" :text "Lås skärm"))))
+      (label :class "menu-item-label" :halign "start" :text "Lås skärm"))
+    (button :class "menu-item"
+            :onclick "systemctl suspend"
+      (label :class "menu-item-label" :halign "start" :text "Vila"))
+    (box :class "menu-sep")
+    (button :class "menu-item danger"
+            :onclick "systemctl reboot"
+      (label :class "menu-item-label" :halign "start" :text "Starta om"))
+    (button :class "menu-item danger"
+            :onclick "systemctl poweroff"
+      (label :class "menu-item-label" :halign "start" :text "Stäng av"))))
 
 (defwindow system-menu
   :monitor 0

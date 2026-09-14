@@ -182,3 +182,13 @@ window, .background {
     background-color: #d4a24a;
     border-color: #d4a24a;
 }
+
+/* Varningsfarg for mer drastiska knappar (starta om/stang av) - samma
+   rost-rod som resten av temat (kritiskt batteri osv). */
+.menu-item.danger .menu-item-label {
+    color: #c1543f;
+}
+
+.menu-item.danger:hover {
+    background-color: rgba(193, 84, 63, 0.14);
+}
