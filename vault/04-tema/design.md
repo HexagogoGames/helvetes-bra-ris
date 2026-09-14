@@ -94,7 +94,23 @@ hl.animation({ leaf = "workspaces", enabled = true, speed = 2, style = "slide", 
 hl.curve("snappy", { type = "bezier", points = { { 0.2, 0.9 }, { 0.3, 1 } } })  -- kort, rät kurva, ej overshoot
 ```
 
+**Rofi:** `grid`-läge, storlek nära fullskärm (~85-90% av skärmen) — "massor med appar
+synliga samtidigt", centrerad. Live-filtrering medan man skriver är rofis
+standardbeteende oavsett läge (icke-träffar försvinner automatiskt) — kräver ingen
+extra konfiguration. **Ikonberoende:** grid ser bara bra ut om apparna faktiskt har
+riktiga ikoner installerade (GTK icon theme) — kolla det vid implementation, annars
+blir det tomma rutor med text under.
+
+**Notiser (swaync):** position topp-höger. Standardvy **kompakt** (ikon + titel + en
+rad), som ska **expandera vid hover** och visa fullständig detaljerad info.
+⚠️ **Att verifiera vid implementation:** hover-to-expand är inte ett dokumenterat
+standardläge i swaync — kan kräva CSS/JS-hack i `swaync/style.css`/`config.json`,
+eller så får click-to-expand bli den realistiska kompromissen om hover visar sig
+opraktiskt (t.ex. notisen försvinner/timeout medan musen är på väg dit).
+
 ### Kvar att bestämma (fylls i allt eftersom)
+- [x] ~~Rofi-layout~~ (se ovan)
+- [x] ~~Notiser~~ (se ovan)
 - [x] ~~Animationer~~ (se ovan)
 - [x] ~~Gradient-kant~~ (se ovan) — avfärdad, bara solid kant
 - [x] ~~Waybar-layout~~ (se ovan)
@@ -102,8 +118,6 @@ hl.curve("snappy", { type = "bezier", points = { { 0.2, 0.9 }, { 0.3, 1 } } })  
       verktyg blir **hyprpaper** (byte från `swaybg`, som är vad som faktiskt kör just
       nu, se [[../01-appar/hyprland]]/`ps aux`). Vilken bild och hur den konfigureras
       bestämmer Jakob själv och meddelar när det är klart.
-- [ ] Rofi-layout (lista/grid, position)
-- [ ] Notiser (swaync): position, stil
 - [ ] Cursor-tema + storlek
 - [ ] hyprlock-stil
 - [ ] wlogout-layout (ikon-set, bekräftelsedialoger)

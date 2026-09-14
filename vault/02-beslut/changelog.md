@@ -2,6 +2,14 @@
 
 Nyast överst.
 
+## 2026-09-14 — Rofi + notiser beslutade
+
+Runda 5: **rofi** blir `grid`-läge nära fullskärm, centrerad — live-filtrering medan
+man skriver är rofis standardbeteende, ingen extra konfig krävs. **Notiser**
+(swaync) topp-höger, kompakt som standard men ska expandera vid hover för
+detaljerad vy — flaggat i [[../04-tema/design]] som osäkert (inte standard-swaync,
+verifieras vid implementation). Ikonberoende för rofi grid också flaggat.
+
 ## 2026-09-14 — Animationer beslutade, gradient-kant avfärdad
 
 Runda 4: fönster **popin** vid öppning/stängning, **slide** vid workspace-byte,
