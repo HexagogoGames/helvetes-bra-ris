@@ -2,6 +2,16 @@
 
 Nyast överst.
 
+## 2026-09-14 — Temaomdesign påbörjad: Vibrant + Gruvbox Dark
+
+Jakob beslutade att göra om hela tema/layout-designen från grunden — allt tidigare
+var placeholder. Byggde en interaktiv Artifact ("Riggsmedjan",
+[[../05-todo/temaverkstad]]) för att utforska estetik × färgschema × mättnad live.
+Första beslutet: **estetik Vibrant, mörkt läge, Gruvbox Dark-palett** (accent
+`#fe8019`, rounding 14, border_size 3, gaps 8/12, lätt blur, active/inactive
+opacity 0.97/0.78). Detaljer i [[../04-tema/design]]. Fortsätter runda för runda
+(typografi, waybar-layout, wallpaper, animationer, rofi/notiser, osv.).
+
 ## 2026-09-14 — Lade till `.gitignore`
 
 Fanns ingen tidigare. Lade till `*.code-workspace` (fångar VS Codes tendens att
