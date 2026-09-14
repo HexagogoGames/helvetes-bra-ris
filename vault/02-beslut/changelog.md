@@ -2,6 +2,17 @@
 
 Nyast överst.
 
+## 2026-09-14 — Waybar-knappen öppnar dotfiles direkt, workspace-fil borttagen
+
+`custom/hyprland-config`-modulen i waybar döpt om till `custom/dotfiles` och
+`on-click` ändrad från `code --new-window ~/dotfiles/rice.code-workspace` till
+`code --new-window ~/dotfiles` — öppnar repot direkt istället för via en separat
+multi-root-workspace-fil. `rice.code-workspace` borttagen (innehöll bl.a. en
+föråldrad referens till den redan borttagna `hypr.conf-backup-20260913/`, och hette
+mappen `vault (anteckningar)` internt — därav döptes vault-rubrikerna om tidigare
+idag). Uppdaterade CSS-selektorer i `waybar/style.css` och noterna i
+[[../01-appar/waybar]] och [[../00-oversikt/dotfiles-struktur]] i samma veva.
+
 ## 2026-09-14 — Hyprland lua-migrering klar, backup borttagen
 
 Jakob startade om datorn. `hyprctl systeminfo` bekräftar `configProvider: lua`,

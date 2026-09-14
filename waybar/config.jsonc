@@ -15,7 +15,7 @@
     ],
 
     "modules-right": [
-        "custom/hyprland-config",
+        "custom/dotfiles",
         "custom/sep1",
         "cpu",
         "memory",
@@ -34,11 +34,11 @@
         "tooltip": true
     },
 
-    "custom/hyprland-config": {
+    "custom/dotfiles": {
         "format": "⚙",
         "tooltip": true,
-        "tooltip-format": "Öppna rice-workspace (dotfiles)",
-        "on-click": "code --new-window ~/dotfiles/rice.code-workspace"
+        "tooltip-format": "Öppna dotfiles",
+        "on-click": "code --new-window ~/dotfiles"
     },
 
     "clock": {

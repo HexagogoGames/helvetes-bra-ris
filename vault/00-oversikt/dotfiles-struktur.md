@@ -11,11 +11,12 @@ Enkelt, explicit, och lätt att förstå/felsöka för en person — varje symli
 manuellt och kan verifieras med `readlink -f`. Stow hade gett samma resultat men med
 ett extra abstraktionslager.
 
-## `rice.code-workspace`
+## Öppna dotfiles snabbt
 
-En VS Code multi-root-workspace i repo-roten som öppnar alla rice-mappar (inkl.
-`vault/`) i ett fönster. Nås via ⚙-knappen längst till vänster i waybar
-(`custom/hyprland-config`-modulen i `waybar/config.jsonc`).
+⚙-knappen längst till vänster i waybar (`custom/dotfiles` i `waybar/config.jsonc`)
+kör `code --new-window ~/dotfiles` — öppnar hela repot i VS Code. Fanns tidigare som
+en separat `rice.code-workspace`-multi-root-fil, men den togs bort 2026-09-14 som
+onödigt lager (mappen visar samma innehåll direkt).
 
 ## Vad som *inte* flyttades in
 

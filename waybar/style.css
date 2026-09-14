@@ -34,7 +34,7 @@ window#waybar {
 #pulseaudio,
 #custom-power-profile,
 #battery,
-#custom-hyprland-config {
+#custom-dotfiles {
     padding: 0 10px;
     border-radius: 8px;
 }
@@ -47,7 +47,7 @@ window#waybar {
 #pulseaudio:hover,
 #custom-power-profile:hover,
 #battery:hover,
-#custom-hyprland-config:hover {
+#custom-dotfiles:hover {
     background: rgba(255, 255, 255, 0.06);
 }
 

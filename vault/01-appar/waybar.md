@@ -4,8 +4,9 @@ Statusbar. Config: `waybar/config.jsonc` + `waybar/style.css`.
 
 ## Moduler (custom, vänster→höger ordning i bar)
 
-- **`custom/hyprland-config`** (⚙) — öppnar `~/dotfiles/rice.code-workspace` i VS Code.
-  Uppdaterad 2026-09-14 när workspace-filen flyttades in i dotfiles.
+- **`custom/dotfiles`** (⚙) — öppnar `~/dotfiles` i VS Code (`code --new-window ~/dotfiles`).
+  Bytte namn från `custom/hyprland-config` och slutade peka på `rice.code-workspace`
+  2026-09-14 — workspace-filen togs bort, onödigt lager när mappen kan öppnas direkt.
 - **`custom/gpu`** — kör `scripts/gpu.sh`, klick öppnar `intel_gpu_top` i ett flytande
   kitty-fönster (`--class btop-float`).
 - **`custom/cava`** — ljudvisualisering, kör `scripts/cava-waybar.sh` som i sin tur
