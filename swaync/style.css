@@ -8,7 +8,7 @@
 @define-color orange      #d4a24a;
 @define-color red         #c1543f;
 @define-color green       #8fbf6f;
-@define-color border      rgba(212, 162, 74, 0.35);
+@define-color border      rgba(63, 92, 66, 0.6);
 
 * {
     font-family: "IBM Plex Mono", "JetBrainsMono Nerd Font", sans-serif;
@@ -124,7 +124,7 @@
 .notification-action:hover,
 .notification-default-action:hover {
     background: @cyan;
-    color: #07090f;
+    color: #17211a;
 }
 
 /* ===== Control center ===== */
@@ -161,7 +161,7 @@
 
 .widget-title > button:hover {
     background: @cyan;
-    color: #07090f;
+    color: #17211a;
 }
 
 .widget-dnd {

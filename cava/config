@@ -14,8 +14,8 @@ channels = mono
 [color]
 gradient = 1
 gradient_count = 2
-gradient_color_1 = '#62e6ff'
-gradient_color_2 = '#a970ff'
+gradient_color_1 = '#d4a24a'
+gradient_color_2 = '#7fa66b'
 background = 'default'
 
 [smoothing]

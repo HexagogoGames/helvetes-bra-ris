@@ -216,10 +216,10 @@ körande sessionen än — kräver reload/omstart, som inte görs utan att fråg
 
 ### ⚠️ Kvarstår / att verifiera
 
-- **`ttf-ibm-plex` (och/eller `ttf-ibmplex-mono-nerd`) är inte installerat.**
-  Kräver `sudo` — jag kan inte köra det själv i den här sessionen. Jakob behöver
-  köra `sudo pacman -S ttf-ibm-plex` manuellt innan IBM Plex Mono faktiskt
-  renderas (fallback blir annars en generisk monospace-font tills dess).
+- ~~`ttf-ibm-plex` inte installerat~~ — **löst.** Jakob körde `sudo pacman -S
+  ttf-ibm-plex` själv. Verifierat visuellt: öppnade en riktig kitty-ruta (`grim`
+  + skärmdump), starship-prompten renderar korrekt med guld/grön-paletten,
+  rundade hörn (18px) syns på fönstret.
 - **swaync hover-to-expand** är en CSS-approximation (max-height/opacity-trick),
   inte en dokumenterad swaync-funktion — verifiera att den känns bra i praktiken,
   se kommentar i `swaync/style.css`.
@@ -227,6 +227,34 @@ körande sessionen än — kräver reload/omstart, som inte görs utan att fråg
   ikontäckning för installerade appar — inte dubbelkollat.
 - **eww-systemmenyn** (GNOME quick-settings-stil) är fortfarande ett separat,
   obörjat projekt — se [[../05-todo/wishlist]].
+
+### Efterjusteringar (samma dag, efter första implementationen)
+
+**Borders bytta guld → mörkgrön** (`#3f5c42`). Gäller specifikt kant-egenskaper,
+inte fyllningar/text/ikoner (de är fortfarande guld där de var det): Hyprlands
+`col.active_border`, kittys `active_border_color`, rofis `border-strong`/
+`selected-border`, swaycs `@border`, wlogouts button-border, waybar-tooltipens
+kant, hyprlocks `outer_color`.
+
+**Tre filer som missades i den stora implementationsomgången, hittade via en
+bredare grep-sökning efteråt och nu fixade:**
+- `wob/wob.ini` — hade fortfarande hela den gamla cyan/mörkblå paletten
+  (`border_color`, `background_color`, `bar_color`). Nu forest-palett + grön kant.
+- `cava/config` (den fristående, inte `waybar.conf`) — gradient var fortfarande
+  gammal cyan/lila. Nu guld→löv-grön.
+- `eww/eww.scss` — **hela** wifi-/volym-/batteri-menyerna var fortfarande på den
+  gamla paletten (missades helt i första omgången). Full recolor + `IBM Plex
+  Mono`-fontstack. Upptäckte samtidigt att dessa eww-fönster (namespace
+  `eww-dropdown`) aldrig hade en blur-`layer_rule` — tillagd i `rules.lua` så
+  Glassy-bluren faktiskt gäller dem också.
+- Två kvarglömda `#07090f`-textfärger i `swaync/style.css` (hover-text på
+  knappar) → `#17211a`.
+
+**Workspace-indikatorn förstärkt** (Jakob tyckte punkterna var för otydliga —
+bekräftat med en zoomad skärmdump, de fanns men var för subtila): inaktiva
+punkter lövgröna istället för gråa (mer färgkontrast mot mörkgrön bakgrund),
+storlek 10px→15px, aktiv 13px→23px (mycket tydligare skillnad), aktiv workspace
+får nu även en egen rund guld-tonad badge-bakgrund istället för bara textfärg.
 
 ## Tidigare placeholder-tema (ersätts, kvar som historik)
 

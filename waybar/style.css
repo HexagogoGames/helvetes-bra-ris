@@ -24,28 +24,32 @@ window#waybar {
     padding: 0 6px;
 }
 
-/* Workspaces: punkt-stil (inga siffror). Aktiv = större/fylld, tomma = svaga. */
+/* Workspaces: punkt-stil (inga siffror). Aktiv = tydligt större/guld med egen
+   badge-bakgrund, inaktiva = lövgröna (mer färg/kontrast än grått mot mörkgrön bg). */
 #workspaces button {
-    padding: 0 6px;
-    border-radius: 8px;
-    color: #93a08c;
-    font-size: 10px;
-    opacity: 0.55;
+    padding: 0 7px;
+    border-radius: 50%;
+    color: #7fa66b;
+    font-size: 15px;
+    opacity: 0.8;
+    min-width: 26px;
+    min-height: 26px;
 }
 
 #workspaces button:hover {
-    background: rgba(212, 162, 74, 0.14);
-    opacity: 0.85;
+    background: rgba(212, 162, 74, 0.16);
+    opacity: 1;
 }
 
 #workspaces button.active {
     color: #d4a24a;
+    background: rgba(212, 162, 74, 0.2);
     opacity: 1;
-    font-size: 13px;
+    font-size: 23px;
 }
 
 #workspaces button.persistent {
-    opacity: 0.4;
+    opacity: 0.55;
 }
 
 #clock,
@@ -132,7 +136,7 @@ window#waybar {
 /* Tooltips (used across every module) */
 tooltip {
     background: rgba(28, 38, 30, 0.92);
-    border: 1px solid rgba(212, 162, 74, 0.35);
+    border: 1px solid rgba(63, 92, 66, 0.6);
     border-radius: 10px;
 }
 

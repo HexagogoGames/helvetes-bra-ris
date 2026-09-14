@@ -1,6 +1,6 @@
 * {
     all: unset;
-    font-family: "JetBrainsMono Nerd Font";
+    font-family: "IBM Plex Mono", "JetBrainsMono Nerd Font", sans-serif;
     font-size: 13px;
 }
 
@@ -33,22 +33,22 @@ window, .background {
 }
 
 .menu-card {
-    background-color: rgba(7, 9, 16, 0.90);
-    border: 1px solid rgba(98, 230, 255, 0.30);
-    border-radius: 16px;
+    background-color: rgba(23, 33, 26, 0.65); /* glassy, blur via layerrule (namespace eww-dropdown) */
+    border: 1px solid rgba(63, 92, 66, 0.7);
+    border-radius: 18px;
     padding: 14px;
     min-width: 280px;
 }
 
 .menu-header {
-    color: #e8f1ff;
+    color: #ece3c6;
     font-weight: bold;
     padding-bottom: 10px;
 }
 
 .menu-sep {
     min-height: 1px;
-    background-color: rgba(255, 255, 255, 0.08);
+    background-color: rgba(236, 227, 198, 0.08);
     margin-bottom: 8px;
 }
 
@@ -59,38 +59,38 @@ window, .background {
 }
 
 .menu-item:hover {
-    background-color: rgba(255, 255, 255, 0.06);
+    background-color: rgba(236, 227, 198, 0.06);
 }
 
 .menu-item.active {
-    background-color: rgba(20, 40, 50, 1.0);
+    background-color: rgba(58, 74, 61, 0.9);
 }
 
 .menu-item-label {
-    color: #e8f1ff;
+    color: #ece3c6;
 }
 
 .menu-item.active .menu-item-label {
-    color: #62e6ff;
+    color: #d4a24a;
 }
 
 .menu-item-time {
-    color: #71809d;
+    color: #93a08c;
 }
 
 .menu-item-icon {
-    color: #71809d;
+    color: #93a08c;
     padding: 0px 8px;
 }
 
 .icon-btn {
     padding: 8px;
     border-radius: 10px;
-    color: #e8f1ff;
+    color: #ece3c6;
 }
 
 .icon-btn:hover {
-    background-color: rgba(255, 255, 255, 0.08);
+    background-color: rgba(236, 227, 198, 0.08);
 }
 
 .volume-scale {
@@ -100,50 +100,50 @@ window, .background {
 .volume-scale trough {
     min-height: 6px;
     border-radius: 999px;
-    background-color: rgba(255, 255, 255, 0.10);
+    background-color: rgba(236, 227, 198, 0.10);
 }
 
 .volume-scale highlight {
     min-height: 6px;
     border-radius: 999px;
-    background-color: #62e6ff;
+    background-color: #d4a24a;
 }
 
 .volume-scale slider {
     min-width: 14px;
     min-height: 14px;
     border-radius: 999px;
-    background-color: #e8f1ff;
+    background-color: #ece3c6;
 }
 
 .wifi-status-label {
-    color: #71809d;
+    color: #93a08c;
     padding: 4px 0px 10px 0px;
 }
 
 .wifi-status-success {
-    color: #6dffb8;
+    color: #8fbf6f;
 }
 
 .wifi-status-error {
-    color: #ff5470;
+    color: #c1543f;
 }
 
 .wifi-password-input {
-    background-color: rgba(255, 255, 255, 0.06);
-    color: #e8f1ff;
-    border: 1px solid rgba(98, 230, 255, 0.30);
+    background-color: rgba(236, 227, 198, 0.06);
+    color: #ece3c6;
+    border: 1px solid rgba(63, 92, 66, 0.7);
     border-radius: 10px;
     padding: 8px 12px;
     margin-bottom: 8px;
 }
 
 .wifi-connect-btn {
-    background-color: rgba(98, 230, 255, 0.14);
-    color: #62e6ff;
+    background-color: rgba(212, 162, 74, 0.14);
+    color: #d4a24a;
 }
 
 .wifi-connect-btn:hover {
-    background-color: #62e6ff;
-    color: #07090f;
+    background-color: #d4a24a;
+    color: #17211a;
 }

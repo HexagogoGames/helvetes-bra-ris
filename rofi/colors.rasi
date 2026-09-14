@@ -24,13 +24,13 @@
 
     /* Borders */
     border:          #93a08c59;
-    border-strong:   #d4a24aaa;
+    border-strong:   #3f5c42aa;
 
     /* Selection */
     selected-bg:       #d4a24a23;
     selected-bg-solid: #33341dff;
     selected-bg-2:     #a97ca019;
-    selected-border:   #d4a24aaa;
+    selected-border:   #3f5c42aa;
 
     /* Transparent */
     transparent:     #00000000;

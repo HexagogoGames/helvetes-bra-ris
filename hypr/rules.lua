@@ -36,3 +36,8 @@ hl.layer_rule({
     blur = true,
 })
 
+hl.layer_rule({
+    match = { namespace = "^(eww-dropdown)$" },
+    blur = true,
+})
+
