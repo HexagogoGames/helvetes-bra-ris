@@ -1,3 +1,18 @@
+# Changelog
+
+Nyast överst.
+
+## 2026-09-15 — swaync förenklad: bort med hover-expand, mindre storlek
+
+Jakob gillade inte att swaycs kontrollcenter tog upp typ halva skärmen. Orsaken:
+`fit-to-screen: true` gjorde att det sträckte sig oavsett satt höjd. Satt till
+`false`, dragit ner `control-center-width/height` och
+`notification-window-width` (400/600/400 → 340/420/340). Tog bort hela
+hover-to-expand-CSS-hacket (avfärdat — GTK-CSS saknar en riktig
+line-clamp-egenskap, och click-to-expand bedömdes inte vara "lätt" nog för att
+vara värt det). Verifierat med riktiga skärmdumpar av både en testnotis och
+kontrollcentret — kompakt nu.
+
 ## 2026-09-15 — Reload genomförd: hyprpaper-schemat var fel, waybar mer transparent
 
 Körde `hyprctl reload` + omstart av waybar/wob/eww/swaync/wallpaper-daemon (godkänt

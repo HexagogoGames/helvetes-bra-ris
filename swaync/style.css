@@ -13,26 +13,13 @@
 * {
     font-family: "IBM Plex Mono", "JetBrainsMono Nerd Font", sans-serif;
     font-size: 13px;
-    transition: background 180ms ease-out, opacity 180ms ease-out, min-height 180ms ease-out;
+    transition: background 180ms ease-out, opacity 180ms ease-out;
 }
 
-/* Kompakt som standard, expanderar vid hover (beslutat i temaomdesignen).
-   ⚠️ Inte ett dokumenterat swaync-standardläge — det här är en CSS-approximation
-   (döljer/krymper .body vid vila, visar den vid :hover). Fungerar för text som
-   redan finns i notisen, men lägger inte till NY information vid hover (swaync
-   skickar inte "detaljerad vy"-data separat). Verifiera i praktiken; om det känns
-   för ryckigt/opraktiskt är click-to-expand (byt :hover mot en GTK-state-klass)
-   den realistiska reträtten. */
-.notification-content .body {
-    max-height: 1.2em;
-    overflow: hidden;
-    opacity: 0.75;
-}
-
-.notification:hover .notification-content .body {
-    max-height: 12em;
-    opacity: 1;
-}
+/* Enkelt och kompakt, ingen hover-expand (avfärdad — kändes för klumpig/
+   opålitlig som ren CSS-approximation, och GTK-CSS har ingen riktig
+   line-clamp-egenskap att ersätta den med). Brödtexten visas som den är;
+   det smalare notis-/kontrollcenter-fönstret (340px) håller det kompakt. */
 
 /* ===== Popup notifications ===== */
 

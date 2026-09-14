@@ -220,9 +220,16 @@ körande sessionen än — kräver reload/omstart, som inte görs utan att fråg
   ttf-ibm-plex` själv. Verifierat visuellt: öppnade en riktig kitty-ruta (`grim`
   + skärmdump), starship-prompten renderar korrekt med guld/grön-paletten,
   rundade hörn (18px) syns på fönstret.
-- **swaync hover-to-expand** är en CSS-approximation (max-height/opacity-trick),
-  inte en dokumenterad swaync-funktion — verifiera att den känns bra i praktiken,
-  se kommentar i `swaync/style.css`.
+- ~~swaync hover-to-expand~~ — **avfärdad 2026-09-15.** Jakob gillade inte att
+  kontrollcentret tog upp typ halva skärmen och ville hellre ha det enkelt.
+  Orsaken var `fit-to-screen: true` i `config.json` (gjorde att kontrollcentret
+  sträckte sig oavsett `control-center-height`) — satt till `false`, och
+  `control-center-width/height`/`notification-window-width` neddragna
+  (400/600/400 → 340/420/340). Hover-expand-CSS:n borttagen helt (GTK-CSS har
+  ingen riktig line-clamp-egenskap att ersätta den med ändå). Click-to-expand
+  bedömdes inte vara "lätt" (kräver swaync-scripting, inte ren CSS) — hoppat
+  över per Jakobs egen "om lätt"-brasklapp. Verifierat med riktiga
+  notis-/kontrollcenter-skärmdumpar: kompakt, som avsett.
 - **Rofi grid** ser bara bra ut om `Qogir-Dark`-ikontemat faktiskt har bra
   ikontäckning för installerade appar — inte dubbelkollat.
 - **eww-systemmenyn** (GNOME quick-settings-stil) är fortfarande ett separat,
