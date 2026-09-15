@@ -18,6 +18,23 @@ ligger i den här mappen är exakt det som faktiskt körs — inte en kopia.
   2026-09-14, se [[vault/03-felsokning/hyprland-lua-migration]]. Backupen
   (`hypr.conf-backup-20260913/`) är borttagen.
 
+## Var extra noggrann när något kan gå sönder
+
+Lärdom från 2026-09-15 (se [[vault/03-felsokning/logind-omstart-svart-skarm]]):
+jag sa att `sudo systemctl restart systemd-logind` "brukar vara ofarligt" — det var
+fel, det rev sönder Jakobs aktiva grafiska session och tvingade fram en omstart via
+TTY. Innan du föreslår eller ber Jakob köra ett kommando som rör en levande session
+(logind, display manager, kärnbyte, disk/partition, nätverk han är uppkopplad
+genom, systemd-enheter som andra tjänster beror på) — tänk igenom vad som faktiskt
+händer om det stör den aktiva sessionen, säg det rakt ut om du är osäker istället
+för att gissa "det brukar vara ofarligt", och föreslå hellre en vanlig omstart av
+hela datorn när det är ett säkrare sätt att få samma effekt.
+
+Ge aldrig ett kommando som är mer än en enkel enradare utan att också förklara,
+i vanlig text, vad det gör — särskilt om det innehåller `sudo`, skriver till en
+systemfil, startar om en tjänst, eller har flera steg (t.ex. en heredoc). Jakob ska
+förstå vad han kör innan han kör det, inte bara klistra in blint.
+
 ## Vad som finns här
 
 | Mapp/fil i repot | Symlinkad till | Program |
