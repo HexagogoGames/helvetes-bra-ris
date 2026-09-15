@@ -1,0 +1,11 @@
+/* Solida bastoner - alpha-varianter byggs med GTK-funktionen alpha() i
+   style.css istället för separata rgba()-literaler, så bara den här filen
+   behöver bytas ut vid dynamiskt tema (se vault/04-tema/dynamiskt-tema.md). */
+@define-color bg        #17211a;
+@define-color fg        #ece3c6;
+@define-color fg-dim    #93a08c;
+@define-color accent    #d4a24a;
+@define-color accent2   #7fa66b;
+@define-color red       #c1543f;
+@define-color green     #8fbf6f;
+@define-color border-c  #3f5c42;

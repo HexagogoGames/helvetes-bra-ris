@@ -1,3 +1,8 @@
+/* Färgerna själva ligger i colors.css (genereras om av wallust vid
+   bakgrundsbyte, eller kopieras från wallust/anchor/ för ankarbilden) -
+   se vault/04-tema/dynamiskt-tema.md. Alpha-varianter byggs med GTK-funktionen alpha(). */
+@import url("colors.css");
+
 * {
     /* IBM Plex Mono saknar Nerd Font-ikonglyfer (t.ex. 󰘚/󰍛/󰔏 nedan) — Pango
        faller tillbaka till JetBrainsMono Nerd Font per-glyf automatiskt. */
@@ -7,17 +12,17 @@
 }
 
 window#waybar {
-    /* Svag diagonal gradient (mörkgrön → lövgrön-ton → mörkgrön) istället för
+    /* Svag diagonal gradient (bakgrund → kant-ton → bakgrund) istället för
        en helt platt yta — mer "rice", fortfarande tydligt genomskinlig. */
     background: linear-gradient(100deg,
-        rgba(23, 33, 26, 0.42) 0%,
-        rgba(63, 92, 66, 0.32) 45%,
-        rgba(23, 33, 26, 0.42) 100%);
-    border: 1px solid rgba(236, 227, 198, 0.12);
+        alpha(@bg, 0.42) 0%,
+        alpha(@border-c, 0.32) 45%,
+        alpha(@bg, 0.42) 100%);
+    border: 1px solid alpha(@fg, 0.12);
     border-radius: 18px;
     padding: 0 8px;
-    /* Varm guld-underglöd + vanlig djupskugga */
-    box-shadow: 0 1px 0 rgba(212, 162, 74, 0.22), 0 4px 18px rgba(0, 0, 0, 0.28);
+    /* Varm accent-underglöd + vanlig djupskugga */
+    box-shadow: 0 1px 0 alpha(@accent, 0.22), 0 4px 18px rgba(0, 0, 0, 0.28);
 }
 
 /* Kapsel-gruppering: varje zon (vänster/center/höger) får en egen rundad
@@ -25,18 +30,18 @@ window#waybar {
 .modules-left,
 .modules-center,
 .modules-right {
-    background: rgba(236, 227, 198, 0.045);
+    background: alpha(@fg, 0.045);
     border-radius: 12px;
     margin: 5px 4px;
     padding: 0 4px;
 }
 
-/* Workspaces: punkt-stil (inga siffror). Aktiv = tydligt större/guld med egen
-   badge-bakgrund, inaktiva = lövgröna (mer färg/kontrast än grått mot mörkgrön bg). */
+/* Workspaces: punkt-stil (inga siffror). Aktiv = tydligt större/accent med egen
+   badge-bakgrund, inaktiva = accent2 (mer färg/kontrast än grått mot bg). */
 #workspaces button {
     padding: 0 7px;
     border-radius: 50%;
-    color: #7fa66b;
+    color: @accent2;
     font-size: 15px;
     opacity: 0.8;
     min-width: 26px;
@@ -44,13 +49,13 @@ window#waybar {
 }
 
 #workspaces button:hover {
-    background: rgba(212, 162, 74, 0.16);
+    background: alpha(@accent, 0.16);
     opacity: 1;
 }
 
 #workspaces button.active {
-    color: #d4a24a;
-    background: rgba(212, 162, 74, 0.2);
+    color: @accent;
+    background: alpha(@accent, 0.2);
     opacity: 1;
     font-size: 23px;
 }
@@ -69,7 +74,7 @@ window#waybar {
 #mpris {
     padding: 0 10px;
     border-radius: 8px;
-    color: #ece3c6;
+    color: @fg;
 }
 
 /* "Knappar": klickbara moduler får en egen chip (bakgrund+kant), inte bara
@@ -83,8 +88,8 @@ window#waybar {
     margin: 4px 2px;
     padding: 3px 11px;
     border-radius: 10px;
-    background: rgba(236, 227, 198, 0.05);
-    border: 1px solid rgba(63, 92, 66, 0.5);
+    background: alpha(@fg, 0.05);
+    border: 1px solid alpha(@border-c, 0.5);
     transition: background 150ms ease-out, border-color 150ms ease-out, margin-top 150ms ease-out;
 }
 
@@ -94,71 +99,71 @@ window#waybar {
 #pulseaudio:hover,
 #battery:hover,
 #custom-dotfiles:hover {
-    background: rgba(212, 162, 74, 0.14);
-    border-color: rgba(212, 162, 74, 0.55);
+    background: alpha(@accent, 0.14);
+    border-color: alpha(@accent, 0.55);
     margin-top: 2px;
 }
 
 #custom-dotfiles {
-    color: #d4a24a;
+    color: @accent;
 }
 
 #custom-systemstats {
-    color: #7fa66b;
-    background: rgba(127, 166, 107, 0.14);
-    border-color: rgba(127, 166, 107, 0.6);
+    color: @accent2;
+    background: alpha(@accent2, 0.14);
+    border-color: alpha(@accent2, 0.6);
 }
 
 #custom-systemstats:hover {
-    background: rgba(127, 166, 107, 0.24);
-    border-color: #7fa66b;
+    background: alpha(@accent2, 0.24);
+    border-color: @accent2;
 }
 
 #temperature.critical {
-    color: #c1543f;
+    color: @red;
 }
 
 #battery.warning {
-    color: #d4a24a;
+    color: @accent;
 }
 
 #battery.critical {
-    color: #c1543f;
+    color: @red;
 }
 
 #battery.charging {
-    color: #8fbf6f;
+    color: @green;
 }
 
 #custom-cava {
-    color: #d4a24a;
+    color: @accent;
     padding: 0 10px;
     font-size: 13px;
 }
 
 #mpris {
-    color: #7fa66b;
+    color: @accent2;
 }
 
 #mpris.paused {
-    color: #93a08c;
+    color: @fg-dim;
 }
 
 #clock {
     font-weight: 600;
     font-size: 15px;
     padding: 0 16px;
-    color: #d4a24a;
+    color: @accent;
 }
 
 /* Tooltips (used across every module) */
 tooltip {
-    background: rgba(28, 38, 30, 0.92);
-    border: 1px solid rgba(63, 92, 66, 0.6);
+    background: alpha(@bg, 0.92);
+    border: 1px solid alpha(@border-c, 0.6);
     border-radius: 10px;
 }
 
 tooltip label {
-    color: #ece3c6;
+    color: @fg;
     padding: 4px 6px;
 }

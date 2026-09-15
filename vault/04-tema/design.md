@@ -210,11 +210,12 @@ helt för notis-fönstret istället), och notis-bakgrunden fick högre alpha
 
 ### Estetisk preferens noterad 2026-09-15: mörkt/mulet/sinister vinner
 
-När `vårskog`-bilderna (se [[../02-beslut/changelog]], översvämmad skog i
-april, mulet/regnigt) började loopa som wallpaper sa Jakob (trodde det var
-höst, var faktiskt vår): "gillar det för det är lite mörkare och mer
-sinister, med regn och träsk". Bekräftar riktningen för hela riggen (mörkgrön/
-dämpad, inte ljus/snöig) — de **stående vinterbilderna** (ljus snö, som första
+När `höstskog`-bilderna (se [[../02-beslut/changelog]], översvämmad skog,
+mulet/regnigt, fotograferade i april men faktiskt höstmotiv — jag gissade
+först fel på "vårskog" utifrån EXIF-datumet, rättat av Jakob) började loopa
+som wallpaper sa Jakob: "gillar det för det är lite mörkare och mer sinister,
+med regn och träsk". Bekräftar riktningen för hela riggen (mörkgrön/dämpad,
+inte ljus/snöig) — de **stående vinterbilderna** (ljus snö, som första
 sorteringsförsöket lyfte fram estetiskt innan det byttes till ett tekniskt
 kriterium) är alltså **inte** rätt känsla ändå, oavsett komposition. Om fler
 wallpaper-bilder läggs till framöver: prioritera mulet/regnigt/träsk-aktigt

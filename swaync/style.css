@@ -1,14 +1,7 @@
-@define-color bg          rgba(28, 38, 30, 0.68);
-@define-color bg-alt      rgba(44, 58, 46, 0.85);
-@define-color bg-hover    rgba(58, 74, 61, 0.9);
-@define-color fg          #ece3c6;
-@define-color fg-muted    #93a08c;
-@define-color cyan        #7fa66b;
-@define-color purple      #a97ca0;
-@define-color orange      #d4a24a;
-@define-color red         #c1543f;
-@define-color green       #8fbf6f;
-@define-color border      rgba(63, 92, 66, 0.6);
+/* Färgerna själva ligger i colors.css (genereras om av wallust vid
+   bakgrundsbyte, eller kopieras från wallust/anchor/ för ankarbilden) -
+   se vault/04-tema/dynamiskt-tema.md. */
+@import url("colors.css");
 
 * {
     font-family: "IBM Plex Mono", "JetBrainsMono Nerd Font", sans-serif;
@@ -37,7 +30,7 @@
     /* Egen, mer solid bakgrund (inte @bg) - notis-fönstret har ingen blur
        längre (se rules.lua), så samma låga alpha som förut kändes för
        genomskinligt/svårläst utan blur som mjukade upp det. */
-    background: rgba(28, 38, 30, 0.92);
+    background: @notif-bg;
     border: 1px solid @border;
     border-radius: 16px;
     padding: 4px;
@@ -114,7 +107,7 @@
 .notification-action:hover,
 .notification-default-action:hover {
     background: @cyan;
-    color: #17211a;
+    color: @bg-solid;
 }
 
 /* ===== Control center ===== */
@@ -151,7 +144,7 @@
 
 .widget-title > button:hover {
     background: @cyan;
-    color: #17211a;
+    color: @bg-solid;
 }
 
 .widget-dnd {

@@ -1,3 +1,24 @@
+# Changelog
+
+Nyast överst.
+
+## 2026-09-15 — Strömknappen stänger inte längre av direkt vid kort tryck
+
+Jakob råkade klicka på strömknappen och datorn stängdes av direkt. Orsak:
+`systemd-logind` hanterar strömknappen (`HandlePowerKey=poweroff`, aldrig
+ändrat från förvalet) helt utanför Hyprland — Hyprland ser aldrig
+knapptrycket, så ingen keybind kunde fånga det tidigare.
+
+Fix (systemd 261 stödjer att skilja kort/lång tryckning nativt):
+- `hypr/keybinds.lua`: `XF86PowerOff` bunden till samma wlogout-kommando som
+  `Super+Shift+E`.
+- Jakob skapar själv `/etc/systemd/logind.conf.d/power-button.conf`
+  (`HandlePowerKey=ignore`, `HandlePowerKeyLongPress=poweroff`) och kör
+  `sudo systemctl restart systemd-logind` (eller väntar till nästa omstart -
+  känslig tjänst, inte något jag kör live åt honom).
+
+Resultat: kort tryck öppnar power-menyn, långt tryck stänger av på riktigt.
+
 ## 2026-09-15 — Wallpaper loopar nu genom alla bilder (hyprpaper stödjer det nativt)
 
 Jakob tog bort `forrest-background1.png` själv (inte hans egen bild) och
@@ -8,10 +29,20 @@ pekar på en **mapp** istället för en fil skapas en timer
 (`CImagesData`/`onRepeatTimer`) som växlar bild var `timeout`-sekund.
 
 Ändrade `hyprpaper.conf`: `path` pekar nu på hela
-`images/backgrounds/`-mappen (de 7 kvarvarande vårskog-/höst-utsikt-bilderna),
+`images/backgrounds/`-mappen (de 7 kvarvarande höstskog-/höst-utsikt-bilderna),
 `timeout = 1200` (20 min), `order = default` (filnamnsordning). Verifierat
 live: dödade och startade om hyprpaper, skärmdump bekräftar en av
-vårskog-bilderna visas fint fylld.
+höstskog-bilderna visas fint fylld.
+
+## 2026-09-15 — Rättat felnamngivning: bilderna är höst, inte vår
+
+Jag gissade att de fyra översvämmade skogsbilderna (fotograferade 2024-04-14,
+döpta `vårskog-1.jpg`…`vårskog-4.jpg`) var vårbilder utifrån EXIF-datumet, och
+skrev det i [[../04-tema/design|design.md]]. Jakob rättade: de är faktiskt
+höstbilder. Döpte om till `höstskog-1.jpg`…`höstskog-4.jpg` och fixade
+referensen i `hypr/colors.lua` (ankarbild-kommentaren) och texten i
+`design.md`. Lärdom: fråga hellre än att lita på EXIF-datum för att gissa
+årstid/motiv i egna foton.
 
 ## 2026-09-15 — Sorterade Jakobs mobilfoton i images/, på rätt kriterium andra försöket
 

@@ -67,14 +67,19 @@ hl.animation({
     style = "slidevert",
 })
 
+-- Kantfärger i egen fil (dynamiskt tema per bakgrund, se
+-- vault/04-tema/dynamiskt-tema.md) - hyprctl reload räcker för att plocka
+-- upp ändringar här, ingen omstart av hela Hyprland behövs.
+local colors = require("colors")
+
 hl.config({
     general = {
         gaps_in = 4,
         gaps_out = 6,
         border_size = 1,
         layout = "dwindle",
-        ["col.active_border"] = "rgba(3f5c42ff)",
-        ["col.inactive_border"] = "rgba(93a08c33)",
+        ["col.active_border"] = colors.active_border,
+        ["col.inactive_border"] = colors.inactive_border,
     },
     decoration = {
         rounding = 18,
