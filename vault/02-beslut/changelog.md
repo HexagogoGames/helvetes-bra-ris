@@ -2,6 +2,22 @@
 
 Nyast överst.
 
+## 2026-09-15 — Full resursgenomgång: wob var död, ac-sound-watch sårbar
+
+Jakob bad om en fullständig genomgång efter cava-läckan. Hittade två till
+strömmande skript med samma sårbarhetsmönster: `wob-init.sh` (samma
+`tail -f | wob`-pipe som cava hade — och visade sig vara **helt död**, ingen
+läste längre från pipen, så volym-/ljusstyrke-OSD:n visade ingenting) och
+`ac-sound-watch.sh` (oändlig `while true` för laddar-ljud, bara en instans
+men samma latenta risk). Båda fick samma self-cleanup-tillägg som
+`cava-waybar.sh`. Startade om `wob` och verifierade OSD-stapeln fungerar
+igen med en skärmdump.
+
+Bredare koll utöver det: inga dubbla waybar/eww/swaync/hyprpaper-instanser,
+inga zombie-processer, minnet dominerat av Firefox/VS Code/Claude (inte
+riggen). Inget annat läcker just nu. Se
+[[../03-felsokning/cava-process-lacka]] för allt i detalj.
+
 ## 2026-09-15 — Hittade och fixade en riktig resursläcka: 22 cava-processer
 
 Jakob undrade om 12% GPU var mycket för idle desktop och bad om en generell

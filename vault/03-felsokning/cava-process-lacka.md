@@ -37,10 +37,31 @@ gång (inte en växande hög).
 
 En strömmande waybar-`custom`-modul (exec som aldrig avslutar, bara pipar
 kontinuerligt) behöver städa upp efter sig själv vid start — waybar
-garanterar inte att döda den vid omstart. Värt att dubbelkolla om fler
-`custom`-moduler i framtiden får samma mönster (just nu är cava den enda
-strömmande modulen; `custom/gpu`/`custom/systemstats`/`custom/power-profile`
-kör alla som vanliga interval-baserade `exec` som avslutar varje gång, inte
-strömmande — inte samma risk).
+garanterar inte att döda den vid omstart.
+
+**Uppföljning samma dag:** Jakob bad om en fullständig genomgång av allt som
+skulle kunna läcka på samma sätt. Hittade två till skript med exakt samma
+sårbarhetsmönster (strömmande/oändlig bakgrundsloop som inte städar sig
+själv):
+
+- `hypr/scripts/wob-init.sh` — `tail -f wob.sock | wob` (samma
+  pipe-mönster som cava). Visade sig dessutom vara **helt död** vid
+  granskningen (ingen process läste från pipen längre — volym-/
+  ljusstyrke-OSD:n visade alltså ingenting), troligen dödad under
+  kvällens testande utan att startas om igen.
+- `hypr/scripts/ac-sound-watch.sh` — `while true; do sleep 1; ...; done`,
+  spelar ljud vid in-/urkoppling av laddaren. Bara en instans körde vid
+  granskningen, men samma latenta risk: två samtidiga instanser hade spelat
+  varje ljud dubbelt.
+
+Båda fick samma self-cleanup-tillägg som `cava-waybar.sh` (döda gamla
+instanser av sig själv/sin pipe-partner innan start). `wob` omstartad och
+verifierad fungerande igen (skärmdump av OSD-stapeln vid volymändring).
+
+Övriga `custom`-moduler (`custom/gpu`, `custom/systemstats`) kör som vanliga
+interval-baserade `exec` som avslutar varje gång, inte strömmande — inte
+samma risk. Ingen ytterligare läcka hittad i en bredare processgenomgång
+(inga dubbletter av waybar/eww/swaync/hyprpaper, inga zombies, minnet
+dominerat av Firefox/VS Code/Claude, inte riggen).
 
 Se [[../02-beslut/changelog]] för åtgärden i stort.
