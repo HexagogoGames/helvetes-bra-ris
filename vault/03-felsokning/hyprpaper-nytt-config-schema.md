@@ -77,3 +77,23 @@ felstavad. `strings <binär>` + källkoden på GitHub (`ConfigManager.cpp`) är
 snabbare än att gissa sig fram rad för rad.
 
 Se [[../04-tema/design]] för wallpaper-beslutet i stort.
+
+## Bugg 2026-09-15: svart bakgrund efter namnbyte av bildfiler live
+
+Döpte om `vårskog-1..4.jpg` → `höstskog-1..4.jpg` i `images/backgrounds/`
+medan hyprpaper redan kördes med den mappen i bildspelet. Bakgrunden blev
+helsvart efter nästa bildväxling.
+
+**Orsak** (bekräftat i `src/ui/UI.cpp`): katalogens filnamn läses in **en
+gång** vid start till en fast vektor (`CWallpaperTarget::CImagesData::images`)
+— det finns ingen omskanning. När timern (`onRepeatTimer`) växlar till ett
+cachat, nu icke-existerande filnamn misslyckas bildladdningen tyst, och det
+enda som syns är en hårdkodad svart bakgrundsrektangel (`m_bg`,
+`0xFF000000`) som annars ligger dold bakom bilden.
+
+**Fix:** starta om hyprpaper (`pkill -x hyprpaper; hyprpaper &`) så mappen
+skannas om från grunden.
+
+**Lärdom:** döp aldrig om eller ta bort filer i `images/backgrounds/` medan
+hyprpaper kör utan att starta om den direkt efteråt — annars pekar den
+cachade bildlistan förr eller senare på en fil som inte längre finns.
