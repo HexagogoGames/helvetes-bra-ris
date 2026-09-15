@@ -2,6 +2,29 @@
 
 Nyast överst.
 
+## 2026-09-15 — Sorterade Jakobs egna mobilfoton i images/
+
+Jakob lade in 14 egna mobilfoton (Samsung) i `images/backgrounds/` och bad om
+en sortering: ta bort de som inte passar som bakgrund, döp om de som blir kvar.
+
+**Borttagna (10, flyttade till papperskorgen — inte permanent raderade, eget
+foto-material är oersättligt):**
+- 7 st från 2024-04-14: nästan identiska, mulna bilder av samma översvämmade
+  skogsparti, med en gul mätsticka synlig i vattnet (ser ut som
+  dokumentation/lantmäteri snarare än ett medvetet bildval), dov palett.
+- 1 st (`20250216_161204.jpg`): en person syns i bild, delvis skymd bakom ett
+  träd — olämpligt både kompositionsmässigt (personen är motivet, inte
+  landskapet) och integritetsmässigt för en bakgrundsbild.
+- 3 st från 2025-10-28: fina höstfärger men tagna genom ett fönster mot
+  grannhus/tomt (privat egendom i bild, fönsterkarm/balkongräcke skymmer
+  delar av bilden) — passar varken temat (skog, inte bostadsområde) eller
+  integritetsmässigt.
+
+**Behållna och omdöpta (4, kronologisk ordning):** `20250216_16074{4,6}.jpg`
+och `20250216_16{0750,1753}.jpg` → `vinterskog-{1,2,3,4}.jpg`. Snöig
+tallskog, bra ljus (två med bakljus/blå himmel), rena kompositioner, ingen
+person i bild.
+
 ## 2026-09-15 — Spotify + eget Spicetify-tema (Svensk skog) live
 
 Jakob installerade `spotify-launcher` (officiella `extra`-repot) och
