@@ -2,28 +2,37 @@
 
 Nyast överst.
 
-## 2026-09-15 — Sorterade Jakobs egna mobilfoton i images/
+## 2026-09-15 — Sorterade Jakobs mobilfoton i images/, på rätt kriterium andra försöket
 
-Jakob lade in 14 egna mobilfoton (Samsung) i `images/backgrounds/` och bad om
+Jakob lade in 15 egna mobilfoton (Samsung) i `images/backgrounds/` och bad om
 en sortering: ta bort de som inte passar som bakgrund, döp om de som blir kvar.
 
-**Borttagna (10, flyttade till papperskorgen — inte permanent raderade, eget
-foto-material är oersättligt):**
-- 7 st från 2024-04-14: nästan identiska, mulna bilder av samma översvämmade
-  skogsparti, med en gul mätsticka synlig i vattnet (ser ut som
-  dokumentation/lantmäteri snarare än ett medvetet bildval), dov palett.
-- 1 st (`20250216_161204.jpg`): en person syns i bild, delvis skymd bakom ett
-  träd — olämpligt både kompositionsmässigt (personen är motivet, inte
-  landskapet) och integritetsmässigt för en bakgrundsbild.
-- 3 st från 2025-10-28: fina höstfärger men tagna genom ett fönster mot
-  grannhus/tomt (privat egendom i bild, fönsterkarm/balkongräcke skymmer
-  delar av bilden) — passar varken temat (skog, inte bostadsområde) eller
-  integritetsmässigt.
+**Första försöket var fel typ av bedömning** — sorterade estetiskt (mulen
+stämning, om en person syntes i bild, om motivet var "skog nog"). Jakob
+rättade: han gillade alla bilderna estetiskt, och var ute efter en **ren
+teknisk bedömning** av vilka som faktiskt passar den här skärmens upplösning/
+proportioner (2256×1504, liggande, 3:2). Återställde allt till original
+(inklusive de 10 som redan flyttats till papperskorgen) och gjorde om.
 
-**Behållna och omdöpta (4, kronologisk ordning):** `20250216_16074{4,6}.jpg`
-och `20250216_16{0750,1753}.jpg` → `vinterskog-{1,2,3,4}.jpg`. Snöig
-tallskog, bra ljus (två med bakljus/blå himmel), rena kompositioner, ingen
-person i bild.
+**Den tekniska bedömningen:** med `fit_mode = cover` (hyprpaper) skalas bilden
+så den fyller skärmen utan kanter, och förlusten beror på käll-bildens
+orientering/proportion relativt skärmens 3:2:
+- **Liggande** (4032×3024, 4:3) → cover-fit beskär bara **~11%** av bilden.
+- **Stående** (3024×4032 eller 2208×2944) → cover-fit beskär hela **~50%** —
+  antingen toppen eller botten av motivet försvinner helt.
+Upplösningen var gott och väl tillräcklig på alla bilder oavsett — ingen
+behöver skalas upp, bara ren orientering avgjorde.
+
+**Borttagna (8, liggande→stående, flyttade till papperskorgen — inte
+permanent raderade, eget fotomaterial är oersättligt):** de 8 stående
+bilderna (3 från 2024-04-14, alla 5 kvarvarande från 2025-02-16 inkl. de
+fyra som första försöket kallade "vinterskog").
+
+**Behållna och omdöpta (7, alla liggande, ~11% beskärning):**
+- `20240414_18{2049,5239,5241,5553}.jpg` → `vårskog-{1,2,3,4}.jpg`
+  (kronologisk ordning, våröversvämmad skog).
+- `20251028_0926{35,42,47}.jpg` → `höst-utsikt-{1,2,3}.jpg` (kronologisk
+  ordning, höstutsikt).
 
 ## 2026-09-15 — Spotify + eget Spicetify-tema (Svensk skog) live
 
