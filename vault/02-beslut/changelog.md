@@ -1,6 +1,17 @@
-# Changelog
+## 2026-09-15 — Wallpaper loopar nu genom alla bilder (hyprpaper stödjer det nativt)
 
-Nyast överst.
+Jakob tog bort `forrest-background1.png` själv (inte hans egen bild) och
+frågade om de kvarvarande bilderna kan loopa som bakgrund. Kollade
+källkoden (`src/ui/UI.cpp`) istället för att gissa: den installerade
+hyprpaper-versionen har **inbyggt bildspel** — om `path` i `wallpaper { }`
+pekar på en **mapp** istället för en fil skapas en timer
+(`CImagesData`/`onRepeatTimer`) som växlar bild var `timeout`-sekund.
+
+Ändrade `hyprpaper.conf`: `path` pekar nu på hela
+`images/backgrounds/`-mappen (de 7 kvarvarande vårskog-/höst-utsikt-bilderna),
+`timeout = 1200` (20 min), `order = default` (filnamnsordning). Verifierat
+live: dödade och startade om hyprpaper, skärmdump bekräftar en av
+vårskog-bilderna visas fint fylld.
 
 ## 2026-09-15 — Sorterade Jakobs mobilfoton i images/, på rätt kriterium andra försöket
 

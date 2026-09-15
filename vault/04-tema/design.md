@@ -208,6 +208,18 @@ innehåll — `ignorezero` stöds inte av vår lua-bindning, så blur stängdes 
 helt för notis-fönstret istället), och notis-bakgrunden fick högre alpha
 (0.68→0.92) eftersom den utan blur kändes för genomskinlig/svårläst.
 
+### Estetisk preferens noterad 2026-09-15: mörkt/mulet/sinister vinner
+
+När `vårskog`-bilderna (se [[../02-beslut/changelog]], översvämmad skog i
+april, mulet/regnigt) började loopa som wallpaper sa Jakob (trodde det var
+höst, var faktiskt vår): "gillar det för det är lite mörkare och mer
+sinister, med regn och träsk". Bekräftar riktningen för hela riggen (mörkgrön/
+dämpad, inte ljus/snöig) — de **stående vinterbilderna** (ljus snö, som första
+sorteringsförsöket lyfte fram estetiskt innan det byttes till ett tekniskt
+kriterium) är alltså **inte** rätt känsla ändå, oavsett komposition. Om fler
+wallpaper-bilder läggs till framöver: prioritera mulet/regnigt/träsk-aktigt
+över ljust/snöigt/soligt.
+
 ### Kvar att bestämma (fylls i allt eftersom)
 - [x] ~~btop/fastfetch/starship~~ (se ovan) — cava redan klar sedan runda 3 (waybar-
       visualisering, ingen ändring)

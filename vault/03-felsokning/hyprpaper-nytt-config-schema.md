@@ -1,4 +1,4 @@
-# hyprpaper: nytt config-schema (upptäckt 2026-09-14)
+# hyprpaper: nytt config-schema (upptäckt 2026-09-14, utökad 2026-09-15)
 
 ## Problem
 
@@ -47,6 +47,26 @@ wallpaper {
 
 Efter detta försvann felmeddelandet, loggen visade `layer: got fractional scale`
 + `configure layer`, och en skärmdump bekräftade att bilden faktiskt syns.
+
+## Bonus-fynd 2026-09-15: inbyggt bildspel
+
+Samma ombyggnad har ett fält till som inte är dokumenterat någonstans:
+`path` kan peka på en **mapp** istället för en enskild fil. Bekräftat i
+källkoden (`src/ui/UI.cpp`): om fler än en bild matchar skapas en
+`CImagesData` + en timer (`onRepeatTimer`) som växlar bild var
+`timeout`-sekund. Extra fält i `wallpaper { }`: `timeout` (sekunder,
+standard 30 om `path` är en mapp med flera bilder), `order`
+(`default`/`random`/`random-shuffle`), `recursive` (skanna undermappar).
+
+```
+wallpaper {
+    monitor = eDP-1
+    path = /home/jakob/dotfiles/images/backgrounds
+    fit_mode = cover
+    timeout = 1200
+    order = default
+}
+```
 
 ## Lärdom
 
