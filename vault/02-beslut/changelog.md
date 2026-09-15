@@ -2,6 +2,21 @@
 
 Nyast överst.
 
+## 2026-09-15 — Hittade och fixade en riktig resursläcka: 22 cava-processer
+
+Jakob undrade om 12% GPU var mycket för idle desktop och bad om en generell
+resurs-felsökning ("om något i min rice tar för mycket vill jag att det ska
+ändras på"). Hittade **22 st körande `cava`-processer**, varav bara 2 hörde
+till den faktiska waybar-instansen — resten föräldralösa efter upprepade
+waybar-omstarter under kvällen. Orsak: `cava-waybar.sh` körs som en
+strömmande modul som aldrig dör med waybar (blir barn till `init` istället)
+— **händer vid varje waybar-omstart**, inklusive Jakobs egen
+`Super+Shift+R`-genväg, inte bara under den här sessionen.
+
+Fixat: skriptet dödar nu sina egna gamla instanser innan det startar en ny.
+Testat med 3 omstarter i rad — exakt en ren instans kvar varje gång. Se
+[[../03-felsokning/cava-process-lacka]] för detaljer.
+
 ## 2026-09-15 — GNOME quick-settings-layout i systemmenyn (egen palett)
 
 Jakob ville låna layouten från GNOMEs quick-settings-panel för Wifi/Stör ej —
