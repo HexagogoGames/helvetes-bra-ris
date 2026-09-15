@@ -7,19 +7,6 @@ punkten är klar, eller flytta den till [[../02-beslut/changelog]] med datum.
 
 ## Aktivt öppna
 
-- **Strömknappen stänger fortfarande av direkt vid kort tryck.**
-  `systemd-logind` har fortfarande sitt förvalda `HandlePowerKey=poweroff`
-  (bekräftat 2026-09-15: `/etc/systemd/logind.conf.d/` finns inte ens).
-  Jakob behöver skapa
-  `/etc/systemd/logind.conf.d/power-button.conf`:
-  ```
-  [Login]
-  HandlePowerKey=ignore
-  HandlePowerKeyLongPress=poweroff
-  ```
-  och köra `sudo systemctl restart systemd-logind` (eller vänta till nästa
-  omstart). Se [[../02-beslut/changelog]] 2026-09-15.
-
 - **Uppstarts-/suspendproblem (Surface Laptop 6, s2idle).** 2026-09-15: locket
   stängdes, datorn gick i `s2idle`-viloläge och vaknade aldrig — total låsning
   (inga lampor/fläktar), krävde 20-30 sek intryckt power-knapp för att
@@ -36,3 +23,8 @@ punkten är klar, eller flytta den till [[../02-beslut/changelog]] med datum.
   `updpkgsums && makepkg -si` i `~/.cache/yay/wallust`.
 - ~~Dynamiskt wallust-tema inte aktiverat~~ — löst 2026-09-15, aktiverat live
   (`wallpaper-cycle.timer` kör nu, klockstyrt varje heltimme).
+- ~~Strömknappen stänger av direkt vid kort tryck~~ — löst 2026-09-15,
+  `logind.conf.d/power-button.conf` på plats och bekräftat aktivt. Se
+  [[../03-felsokning/logind-omstart-svart-skarm]] för en läskig bieffekt
+  under själva installationen (löste sig med en ren omstart, ingen
+  dataförlust).

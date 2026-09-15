@@ -2,6 +2,25 @@
 
 Nyast överst.
 
+## 2026-09-15 — Strömknappsfixen klar (efter en läskig svart skärm på vägen)
+
+Jakob körde de tre kommandona för `logind.conf.d/power-button.conf`. Det
+sista (`sudo systemctl restart systemd-logind`) gav en svart skärm med
+blinkande markör — jag hade felaktigt sagt att det brukar vara ofarligt.
+Orsak (bekräftat i journalctl): omstart av logind river sönder den aktiva
+grafiska sessionen (GDM-greetern startade om, drog med sig Hyprland-
+sessionen). Jakob loggade in via TTY och körde `reboot` själv — en ren,
+avsiktlig omstart, ingen krasch, ingen dataförlust. Se
+[[../03-felsokning/logind-omstart-svart-skarm]] för fullständig logg och
+lärdom (framöver: be alltid om en vanlig omstart istället för att döda
+logind-processen live).
+
+Efter omstarten: config bekräftat på plats, `systemd-logind` stabil
+(`NRestarts=0`), Hyprland/waybar/swaync/hyprpaper alla friska,
+`wallpaper-cycle.timer` överlevde och siktar fortfarande rätt. Strömknappen
+fungerar nu som tänkt: kort tryck öppnar wlogout-menyn, långt tryck stänger
+av på riktigt. Struken från [[../05-todo/vantar-pa-jakob]].
+
 ## 2026-09-15 — Uppstartsproblem (s2idle) + bakgrunden gick sönder igen efter tvingad omstart
 
 Jakob stängde locket, datorn gick i `s2idle`-viloläge (`systemd-logind`-logg:
