@@ -2,7 +2,32 @@
 
 Nyast överst.
 
+## 2026-09-15 — Rättelse: strömknappsfixen fungerar inte alls, tidigare diagnos ofullständig
+
+Jakob testade med ett kort tryck efter gårdagens (samma dags) fix —
+ingenting hände. Grävde vidare: `PNP0C0C` (ACPI:s standard-ID för en
+strömknapp) finns inte alls i `/sys/bus/acpi/devices/`, bara locket
+(`PNP0C0D`). Strömknappen ger alltså **ingen input-händelse
+överhuvudtaget** som `systemd-logind` eller Hyprland kan se — varken
+`hypr/keybinds.lua`s `XF86PowerOff`-bind eller
+`logind.conf.d/power-button.conf` kan trigga på något som aldrig når dem.
+Se [[../03-felsokning/strömknapp-syns-inte]].
+
+Det betyder att min tidigare diagnos ("logind vinner racet mot Hyprland",
+se posten nedan) var ofullständig — om logind aldrig såg knappen via en
+normal input-enhet kan den inte ha varit mekanismen som stängde av datorn
+direkt. Det skedde troligen i firmware/EC, under OS-nivå, samma lager som
+`s2idle`-uppvaknandeproblemet. Båda problemen pekar nu mot samma fix:
+`linux-surface`-kärnan (Surface-specifika drivrutiner för att exponera
+knappen alls) — se [[../05-todo/vantar-pa-jakob]], inte påbörjat, Jakob
+vill vänta.
+
+`hypr/keybinds.lua`- och `logind.conf.d`-ändringarna ligger kvar (tekniskt
+korrekta, ofarliga), men gör ingenting förrän kärnan är bytt.
+
 ## 2026-09-15 — Strömknappsfixen klar (efter en läskig svart skärm på vägen)
+
+**Rättad ovan 2026-09-15 — fixen fungerar inte, se posten överst.**
 
 Jakob körde de tre kommandona för `logind.conf.d/power-button.conf`. Det
 sista (`sudo systemctl restart systemd-logind`) gav en svart skärm med
