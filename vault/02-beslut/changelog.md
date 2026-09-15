@@ -2,6 +2,31 @@
 
 Nyast överst.
 
+## 2026-09-15 — Uppstartsproblem (s2idle) + bakgrunden gick sönder igen efter tvingad omstart
+
+Jakob stängde locket, datorn gick i `s2idle`-viloläge (`systemd-logind`-logg:
+"Lid closed. Suspending..." kl 06:40:45) och vaknade aldrig — helt dött,
+inga lampor/fläktar, krävde 20-30 sek intryckt strömknapp utan laddare för
+att hård-resetta. Kör vanlig `linux`-kärna utan Surface-specifika
+EC-patchar - troligen ett känt `s2idle`/EC-låsningsproblem på Surface-
+hårdvara. Inte relaterat till dotfiles-configen. Rekommenderad fix
+(`linux-surface`-kärnan) och statusen på detta ligger i
+[[../05-todo/vantar-pa-jakob]] — stort systembeslut, inte påbörjat.
+
+Samma omstart avslöjade en separat, självförvållad bugg: `hyprpaper.conf`
+pekade sedan tidigare samma dag på `.current.jpg`, en symlink som
+`wallpaper-cycle.sh` skulle skapa vid sin första körning — men skriptet hade
+bara committats, aldrig körts (väntade på Jakobs OK, se
+[[../04-tema/dynamiskt-tema]]). Efter omstarten fanns alltså ingen giltig
+bildväg → svart bakgrund. Se
+[[../03-felsokning/hyprpaper-current-symlink-saknades]]. Fix: skapade
+symlinken manuellt mot ankarbilden och startade om hyprpaper — inget av det
+dynamiska temasystemet aktiverades i samband med detta.
+
+Lade även till `vault/05-todo/vantar-pa-jakob.md` (och en regel om den i
+`CLAUDE.md`) — en samlad lista över allt som väntar på en åtgärd från Jakob
+själv, så det inte försvinner i löpande text.
+
 ## 2026-09-15 — Strömknappen stänger inte längre av direkt vid kort tryck
 
 Jakob råkade klicka på strömknappen och datorn stängdes av direkt. Orsak:

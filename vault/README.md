@@ -14,7 +14,9 @@ men kräver inte Obsidian för att vara användbar.
 - **`03-felsokning/`** — dokumenterade problem och hur de löstes/löses. Sök hit först
   när något strular.
 - **`04-tema/`** — färgpalett, typsnitt, estetiska val, så de går att återanvända.
-- **`05-todo/`** — saker att göra/undersöka senare.
+- **`05-todo/`** — saker att göra/undersöka senare. Se särskilt
+  [[05-todo/vantar-pa-jakob|vantar-pa-jakob.md]]: allt som kräver en åtgärd
+  från Jakob själv (sudo, ett beslut, en bekräftelse) — inte bara idéer.
 
 ## Regel för uppdatering
 
