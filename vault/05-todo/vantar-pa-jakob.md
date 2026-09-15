@@ -9,10 +9,12 @@ punkten är klar, eller flytta den till [[../02-beslut/changelog]] med datum.
 
 - **`linux-surface`-kärnan — nu roten till TVÅ separata problem, inte bara
   ett.** Kör vanlig `linux`-kärna utan Surface-specifika drivrutiner
-  (`surface_aggregator` m.fl.). Rekommenderad fix: installera
-  `linux-surface`-kärnan (https://github.com/linux-surface/linux-surface,
-  kräver eget repo/nyckel, sudo, och ett omstart-val av kärna). **Inte
-  påbörjat** — stort systembeslut, Jakob sa "senare".
+  (`surface_aggregator` m.fl.). Färdig installationsplan (research klar
+  2026-09-15, verifierad mot den här maskinen — Secure Boot avstängt,
+  dracut redan initramfs-verktyg, en känd Surface Laptop 6-specifik
+  kärnparameter som kan vara direkt relevant för strömknappsproblemet):
+  se [[linux-surface-installation]]. **Inte påbörjat** — stort
+  systembeslut, Jakob sa "senare".
   1. *Uppstarts-/suspendproblem (`s2idle`)*: 2026-09-15, locket stängdes,
      datorn gick i viloläge och vaknade aldrig — total låsning, krävde
      20-30 sek intryckt strömknapp för hård-reset.
