@@ -22,10 +22,17 @@
 - [ ] Ta ställning till om `~/.gitconfig` ska in i dotfiles-repot.
 - [x] ~~Skapa GitHub-repo och pusha~~ — `HexagogoGames/helvetes-bra-ris`, klart
       2026-09-14.
-- [ ] **Spotify + Spicetify.** Jakob installerar själv (`sudo pacman -S
-      spotify-launcher`, `yay -S spicetify-cli` — kräver sudo/interaktivitet,
-      kan inte köras av Claude). När det är klart: bygg ett eget spicetify-
-      tema (`color.ini` + ev. `user.css`) mot exakt paletten i
-      [[../04-tema/svensk-skog-palett]], inte ett färdigt community-tema.
-      Verifiera spicetifys faktiska config-mapp/format live innan filer
-      skrivs (samma försiktighet som hyprpaper-schemat — gissa inte).
+- [x] ~~Spotify + Spicetify~~ — **klart och live 2026-09-15.** Jakob
+      installerade `spotify-launcher` (finns i officiella `extra`-repot,
+      ingen AUR behövdes för Spotify självt) + `yay -S spicetify-cli`.
+      Claude laddade ner/startade klienten (`spotify-launcher --no-exec`
+      för att inte tvinga fram GUI-fönstret i onödan, sen en riktig start
+      för att skapa prefs-filen), Jakob loggade in själv. Byggde ett eget
+      tema `~/.config/spicetify/Themes/SvenskSkog/` (`color.ini` mot
+      [[../04-tema/svensk-skog-palett]], `user.css` baserad på
+      spicetifys egen `SpicetifyDefault`-mall) — verifierat mot den
+      riktiga referensmallen i `/opt/spicetify-cli/Themes/SpicetifyDefault/`
+      istället för att gissa color.ini-formatet. `spicetify backup apply`
+      kört, bekräftat live med skärmdump (mörkgrön bakgrund, guld
+      progressbar). **Ligger inte i dotfiles-repot än** — frågade Jakob om
+      det ska flyttas in dit (som resten av riggen), svar utestående.

@@ -2,6 +2,21 @@
 
 Nyast överst.
 
+## 2026-09-15 — Spotify + eget Spicetify-tema (Svensk skog) live
+
+Jakob installerade `spotify-launcher` (officiella `extra`-repot) och
+`spicetify-cli` (AUR via yay) själv. Claude laddade ner Spotify-klienten
+(`spotify-launcher --no-exec` för att inte öppna ett onödigt GUI-fönster),
+startade den sedan på riktigt för att skapa prefs-filen, och byggde ett eget
+tema i `~/.config/spicetify/Themes/SvenskSkog/` mot den riktiga
+referensmallen i `/opt/spicetify-cli/Themes/SpicetifyDefault/` (inte gissat
+color.ini-format) — `color.ini` mot exakt
+[[../04-tema/svensk-skog-palett]]-paletten, `user.css` baserad på spicetifys
+egna sensible defaults. Jakob loggade in själv, `spicetify backup apply`
+kört, bekräftat live med skärmdump (mörkgrön bakgrund, guld progressbar,
+musik spelar). Ligger fortfarande inte i dotfiles-repot än — frågat om det ska
+flyttas in.
+
 ## 2026-09-15 — Paletten officiellt döpt "Svensk skog", Spotify-plan i wishlist
 
 Jakob döpte färgschemat till **"Svensk skog"** och ville ha det formaliserat
