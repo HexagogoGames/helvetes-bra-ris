@@ -183,6 +183,48 @@ window, .background {
     border-color: #d4a24a;
 }
 
+/* GNOME quick-settings-stil: fyrkantiga toggle-brickor sida vid sida,
+   i var palett (morkgront/guld) istallet for GNOME:s bla/gra. */
+.tile-grid {
+    margin: 4px 0px 8px 0px;
+}
+
+.tile {
+    min-width: 96px;
+    min-height: 72px;
+    border-radius: 14px;
+    background-color: rgba(236, 227, 198, 0.06);
+    border: 1px solid rgba(63, 92, 66, 0.6);
+    margin: 0px 4px;
+    padding: 8px;
+    transition: background-color 150ms ease-out, border-color 150ms ease-out;
+}
+
+.tile:hover {
+    background-color: rgba(236, 227, 198, 0.1);
+}
+
+.tile-icon {
+    font-size: 22px;
+    color: #93a08c;
+}
+
+.tile-label {
+    font-size: 11px;
+    color: #93a08c;
+    margin-top: 4px;
+}
+
+.tile.active {
+    background-color: #d4a24a;
+    border-color: #d4a24a;
+}
+
+.tile.active .tile-icon,
+.tile.active .tile-label {
+    color: #17211a;
+}
+
 /* Varningsfarg for mer drastiska knappar (starta om/stang av) - samma
    rost-rod som resten av temat (kritiskt batteri osv). */
 .menu-item.danger .menu-item-label {

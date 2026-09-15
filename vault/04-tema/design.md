@@ -185,6 +185,35 @@ nätverkslista) istället för att duplicera en enkel på/av-toggle. `custom/cav
 flyttad till `modules-center` (mellan mpris och klockan, "vänster om tid") och
 gjord bredare (`bars` 8→18 i `cava/waybar.conf`).
 
+**custom/power-profile borttagen:** fanns två vägar att ändra power-profile
+(batteriets högerklick + en egen modul) — battery-menu hade redan en
+fullständig väljare, så modulen och dess två skript togs bort helt.
+
+**Systemmeny-ikonen** (📊-emoji) byttes mot en riktig Nerd Font-glyf
+(tachometer, U+F0E4) — konsekvent med barens övriga monokroma ikoner.
+Verifierade glyfen fanns i fonten först (`fc-list ":charset=F0E4"`).
+
+**GNOME quick-settings-layout (samma dag, senare):** Jakob ville låna själva
+layouten från GNOMEs quick-settings-panel — inte panelen bokstavligen (den
+sitter hårdkodad i gnome-shell, går inte att återanvända i Hyprland), utan
+**mönstret**: fyrkantiga toggle-brickor sida vid sida istället för radlista.
+Byggt i vår egen palett, inte GNOME:s blå/grå (bekräftat med Jakob). Wifi och
+Stör ej är nu `.tile`-brickor i `eww.scss` — aktiv fylls solid guld med mörk
+text/ikon, inaktiv är dämpad.
+
+Upptäckt på vägen: **jag kan inte skriva Nerd Font PUA-glyfer (U+E000–U+F8FF)
+direkt i mina svar** — tecknet blev en tyst tom sträng i filen, syntes bara
+osynligt eftersom min egen terminalvy saknar typsnittet. Lösning: injicera
+exakt codepoint via `python3` (`'\U0000XXXX'`-escape, 8 hex-siffror) istället
+för att skriva glyfen själv, verifierat med en hexdump efteråt. La till Vila/
+Starta om/Stäng av (samma `systemctl`-kommandon som wlogout) i systemmenyn,
+med röd varningsfärg på de två sistnämnda. swaync fick två till fixar samma
+dag: blur-ytan sträckte sig ner till skärmens botten trots litet notiskort
+(Hyprlands `layerrule = blur` täcker hela layer-ytan, inte bara synligt
+innehåll — `ignorezero` stöds inte av vår lua-bindning, så blur stängdes av
+helt för notis-fönstret istället), och notis-bakgrunden fick högre alpha
+(0.68→0.92) eftersom den utan blur kändes för genomskinlig/svårläst.
+
 ### Kvar att bestämma (fylls i allt eftersom)
 - [x] ~~btop/fastfetch/starship~~ (se ovan) — cava redan klar sedan runda 3 (waybar-
       visualisering, ingen ändring)

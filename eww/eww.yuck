@@ -170,12 +170,19 @@
         (label :class "menu-item-label" :halign "start" :hexpand true :text "Nätverk")
         (label :class "menu-item-time" :text "${system_stats.net}")))
     (box :class "menu-sep")
-    (box :orientation "horizontal" :space-evenly false :class "menu-item toggle-row"
-      (label :class "menu-item-label" :halign "start" :hexpand true :text "Stör ej")
-      (checkbox :class "toggle-switch"
-                :checked dnd_active
-                :onchecked "swaync-client -d > /dev/null; eww update dnd_active=true"
-                :onunchecked "swaync-client -d > /dev/null; eww update dnd_active=false"))
+    ;; GNOME quick-settings-stil: fyrkantiga toggle-brickor sida vid sida
+    ;; istället för radlista - i vår palett, inte GNOME:s blå/grå.
+    (box :orientation "horizontal" :space-evenly true :class "tile-grid"
+      (button :class "tile ${selected_wifi_enabled ? "active" : ""}"
+              :onclick "nmcli radio wifi ${selected_wifi_enabled ? "off" : "on"}; eww update selected_wifi_enabled=${selected_wifi_enabled ? "false" : "true"}"
+        (box :orientation "vertical" :space-evenly false :halign "center"
+          (label :class "tile-icon" :text "")
+          (label :class "tile-label" :text "Wifi")))
+      (button :class "tile ${dnd_active ? "active" : ""}"
+              :onclick "swaync-client -d > /dev/null; eww update dnd_active=${dnd_active ? "false" : "true"}"
+        (box :orientation "vertical" :space-evenly false :halign "center"
+          (label :class "tile-icon" :text "")
+          (label :class "tile-label" :text "Stör ej"))))
     (box :class "menu-sep")
     (button :class "menu-item"
             :onclick "pavucontrol &"

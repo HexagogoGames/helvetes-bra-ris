@@ -1,18 +1,18 @@
 {
     "layer": "top",
     "position": "top",
-    "height": 44,
-    "margin-top": 8,
-    "margin-left": 0,
-    "margin-right": 0,
+    "height": 38,
+    "margin-top": 2,
+    "margin-left": 2,
+    "margin-right": 2,
 
     "modules-left": [
-        "hyprland/workspaces"
+        "hyprland/workspaces",
+        "mpris",
+        "custom/cava"
     ],
 
     "modules-center": [
-        "mpris",
-        "custom/cava",
         "clock"
     ],
 

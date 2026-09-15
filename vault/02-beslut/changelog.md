@@ -2,6 +2,20 @@
 
 Nyast överst.
 
+## 2026-09-15 — GNOME quick-settings-layout i systemmenyn (egen palett)
+
+Jakob ville låna layouten från GNOMEs quick-settings-panel för Wifi/Stör ej —
+inte panelen bokstavligen (sitter hårdkodad i gnome-shell), utan mönstret:
+fyrkantiga toggle-brickor sida vid sida istället för radlista, aktiv fylls
+solid (i vår guld-palett, bekräftat med Jakob — inte GNOME:s blå/grå).
+Implementerat som `.tile-grid`/`.tile` i `eww.scss`.
+
+Hittade en genuin begränsning på vägen: **Nerd Font PUA-glyfer (U+E000–
+U+F8FF) går inte att skriva direkt i mina svar** — blir tysta tomma strängar
+i filen. Löst genom att injicera exakt codepoint via en liten `python3`-
+engångskörning (`'\U0000XXXX'`-escape) istället, verifierat med hexdump att
+rätt UTF-8-bytes faktiskt landade. Se [[../04-tema/design]] för detaljer.
+
 ## 2026-09-15 — Hittade den riktiga swaync-bulan (blur, inte storlek), bytte ikon
 
 Jakob rapporterade att swaync-notiser fortfarande "sträckte sig över för stor
