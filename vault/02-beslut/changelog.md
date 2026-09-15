@@ -14,8 +14,10 @@ color.ini-format) — `color.ini` mot exakt
 [[../04-tema/svensk-skog-palett]]-paletten, `user.css` baserad på spicetifys
 egna sensible defaults. Jakob loggade in själv, `spicetify backup apply`
 kört, bekräftat live med skärmdump (mörkgrön bakgrund, guld progressbar,
-musik spelar). Ligger fortfarande inte i dotfiles-repot än — frågat om det ska
-flyttas in.
+musik spelar). Flyttade sedan in temat i dotfiles-repot
+(`spicetify/Themes/SvenskSkog/`, symlinkad till `~/.config/spicetify/Themes/
+SvenskSkog`) på Jakobs begäran — bara själva temat, inte `CustomApps`/
+`Extensions`/`config-xpui.ini`. Tillagd i CLAUDE.md:s mappningstabell.
 
 ## 2026-09-15 — Paletten officiellt döpt "Svensk skog", Spotify-plan i wishlist
 

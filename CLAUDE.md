@@ -35,6 +35,7 @@ ligger i den här mappen är exakt det som faktiskt körs — inte en kopia.
 | `fastfetch/` | `~/.config/fastfetch` | systeminfo-fetch |
 | `starship.toml` | `~/.config/starship.toml` | shell-prompt |
 | `bashrc` | `~/.bashrc` | shell |
+| `spicetify/Themes/SvenskSkog/` | `~/.config/spicetify/Themes/SvenskSkog` | Spotify-tema (via spicetify-cli) |
 
 ## vault/
 

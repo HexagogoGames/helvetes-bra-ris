@@ -34,5 +34,8 @@
       riktiga referensmallen i `/opt/spicetify-cli/Themes/SpicetifyDefault/`
       istället för att gissa color.ini-formatet. `spicetify backup apply`
       kört, bekräftat live med skärmdump (mörkgrön bakgrund, guld
-      progressbar). **Ligger inte i dotfiles-repot än** — frågade Jakob om
-      det ska flyttas in dit (som resten av riggen), svar utestående.
+      progressbar). **Flyttad in i dotfiles-repot** (`spicetify/Themes/
+      SvenskSkog/`, symlinkad tillbaka till `~/.config/spicetify/Themes/
+      SvenskSkog`) — bara själva temat, inte `CustomApps`/`Extensions`/
+      `config-xpui.ini` (maskinspecifikt/nedladdad tredjepartskod, inte
+      värt att versionera).
