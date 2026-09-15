@@ -1,0 +1,16 @@
+/* Genererad av wallust ur aktuell bakgrundsbild - redigera inte för hand,
+   skrivs över vid nästa bakgrundsbyte. Källa:
+   wallust/templates/swaync-colors.css. Se vault/04-tema/dynamiskt-tema.md. */
+@define-color bg          rgba({{ background | rgb }}, 0.68);
+@define-color bg-solid    {{background}};
+@define-color notif-bg    rgba({{ background | rgb }}, 0.92);
+@define-color bg-alt      rgba({{ background | lighten(0.12) | rgb }}, 0.85);
+@define-color bg-hover    rgba({{ background | lighten(0.2) | rgb }}, 0.9);
+@define-color fg          {{foreground}};
+@define-color fg-muted    {{ foreground | darken(0.35) }};
+@define-color cyan        {{ color6 | saturate(-0.5) | darken(0.15) }};
+@define-color purple      {{ color5 | saturate(-0.65) | darken(0.1) }};
+@define-color orange      {{ color3 | saturate(-0.5) | darken(0.05) }};
+@define-color red         {{ color1 | saturate(-0.5) }};
+@define-color green       {{ color2 | saturate(-0.5) }};
+@define-color border      rgba({{ color8 | rgb }}, 0.6);

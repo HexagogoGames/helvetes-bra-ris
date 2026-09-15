@@ -1,0 +1,39 @@
+* {
+    /* Genererad av wallust ur aktuell bakgrundsbild - redigera inte för
+       hand, skrivs över vid nästa bakgrundsbyte. Källa:
+       wallust/templates/rofi-colors.rasi. Se vault/04-tema/dynamiskt-tema.md. */
+    bg:              #{{ background | strip }}e8;
+    bg-solid:        #{{ background | strip }}ff;
+    bg-alt:          #{{ background | lighten(0.12) | strip }}e8;
+    bg-hover:        #{{ background | lighten(0.2) | strip }}e0;
+
+    /* Text */
+    fg:              #{{ foreground | strip }};
+    fg-muted:        #{{ foreground | darken(0.35) | strip }};
+
+    /* Main accents */
+    gold:            #{{ color3 | saturate(-0.5) | darken(0.05) | strip }};
+    gold-soft:       #{{ color3 | saturate(-0.5) | darken(0.25) | strip }};
+
+    leaf:            #{{ color4 | saturate(-0.5) | darken(0.05) | strip }};
+    leaf-soft:       #{{ color4 | saturate(-0.5) | darken(0.25) | strip }};
+
+    purple:          #{{ color5 | saturate(-0.65) | darken(0.1) | strip }};
+
+    /* Status */
+    red:             #{{ color1 | saturate(-0.5) | strip }};
+    green:           #{{ color2 | saturate(-0.5) | strip }};
+
+    /* Borders */
+    border:          #{{ foreground | darken(0.35) | strip }}59;
+    border-strong:   #{{ color8 | strip }}aa;
+
+    /* Selection */
+    selected-bg:       #{{ color3 | saturate(-0.5) | darken(0.05) | strip }}23;
+    selected-bg-solid: #{{ background | darken(0.1) | strip }}ff;
+    selected-bg-2:     #{{ color5 | saturate(-0.65) | darken(0.1) | strip }}19;
+    selected-border:   #{{ color8 | strip }}aa;
+
+    /* Transparent */
+    transparent:     #00000000;
+}

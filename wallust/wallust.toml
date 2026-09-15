@@ -1,0 +1,33 @@
+# wallust-konfiguration för dynamiskt tema per bakgrundsbild.
+# Se vault/04-tema/dynamiskt-tema.md för hela arkitekturen.
+#
+# Den här mappen är symlinkad till ~/.config/wallust (samma mönster som
+# resten av dotfiles-repot) - "template"-sökvägarna nedan är relativa till
+# wallust/templates/ i det här repot.
+
+backend = "fastresize"
+# lchansi/ansidark (istället för salience/saliencedark) bevarar ANSI:s
+# klassiska färgordning (color1=röd, color2=grön osv) - våra templates
+# förutsätter det (se t.ex. "red"/"green" i waybar-colors.css). salience
+# sorterar istället efter hur framträdande en färg är i bilden, vilket kan
+# ge t.ex. en blå ton i color1-facket - fel för våra syften.
+color_space = "lchansi"
+palette = "ansidark"
+# OBS: den globala `saturation`-inställningen har ingen märkbar effekt med
+# ansidark (testat 2026-09-15, färgerna förblev lika mättade) - avmättning
+# görs istället per färgroll i varje mall med filtret `saturate(-0.5)`
+# (negativt värde minskar mättnaden, se wallust/src/colors.rs). Jakob
+# föredrar dämpat/mulet framför klart/neonaktigt, se
+# vault/04-tema/design.md ("mörkt/mulet/sinister vinner").
+
+[templates]
+waybar = { template = 'waybar-colors.css', target = '/home/jakob/dotfiles/waybar/colors.css' }
+kitty  = { template = 'kitty-colors.conf', target = '/home/jakob/dotfiles/kitty/colors.conf' }
+swaync = { template = 'swaync-colors.css', target = '/home/jakob/dotfiles/swaync/colors.css' }
+hypr   = { template = 'hypr-colors.lua',   target = '/home/jakob/dotfiles/hypr/colors.lua' }
+rofi   = { template = 'rofi-colors.rasi',  target = '/home/jakob/dotfiles/rofi/colors.rasi' }
+
+[hooks]
+# Inga hooks härifrån - hypr/scripts/wallpaper-cycle.sh sköter omstart av
+# waybar/swaync/hyprpaper och hyprctl reload separat, EFTER att wallust
+# skrivit templates. Hooks här skulle race:a mot skriptets egen ordning.

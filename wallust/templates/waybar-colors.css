@@ -1,0 +1,11 @@
+/* Genererad av wallust ur den aktuella bakgrundsbilden - redigera inte för
+   hand, skrivs över vid nästa bakgrundsbyte. Källa:
+   wallust/templates/waybar-colors.css. Se vault/04-tema/dynamiskt-tema.md. */
+@define-color bg        {{background}};
+@define-color fg        {{foreground}};
+@define-color fg-dim    {{ foreground | darken(0.35) }};
+@define-color accent    {{ color3 | saturate(-0.5) | darken(0.05) }};
+@define-color accent2   {{ color4 | saturate(-0.5) | darken(0.05) }};
+@define-color red       {{ color1 | saturate(-0.5) }};
+@define-color green     {{ color2 | saturate(-0.5) }};
+@define-color border-c  {{color8}};

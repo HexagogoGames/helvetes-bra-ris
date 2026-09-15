@@ -9,3 +9,17 @@
 *.swo
 *~
 .DS_Store
+
+# Dynamiskt wallust-tema (se vault/04-tema/dynamiskt-tema.md): dessa fem
+# filer skrivs om av wallpaper-cycle.sh vid varje bakgrundsbyte (antingen av
+# wallust eller kopierat från wallust/anchor/) - wallust/anchor/* och
+# wallust/templates/* är den faktiska källan till sanning i git, inte dessa.
+/waybar/colors.css
+/kitty/colors.conf
+/swaync/colors.css
+/hypr/colors.lua
+/rofi/colors.rasi
+
+# Symlink som pekar på vilken bakgrundsbild som visas just nu (skapas/ändras
+# av wallpaper-cycle.sh)
+/images/backgrounds/.current.jpg

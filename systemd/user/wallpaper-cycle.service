@@ -1,0 +1,13 @@
+[Unit]
+Description=Rotera bakgrundsbild + dynamiskt wallust-tema (dotfiles-rice)
+
+[Service]
+Type=oneshot
+ExecStart=%h/dotfiles/hypr/scripts/wallpaper-cycle.sh
+# Skriptet startar medvetet om hyprpaper/waybar/swaync som frikopplade,
+# långlivade processer (setsid + disown) och avslutar sedan själv. Med
+# standard KillMode=control-group skulle systemd döda hela cgroupen -
+# inklusive de nystartade processerna - så fort skriptet är klart.
+# KillMode=process gör att bara skriptets egen huvudprocess spåras/dödas,
+# aldrig dess frikopplade barn. Se vault/04-tema/dynamiskt-tema.md.
+KillMode=process
