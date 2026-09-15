@@ -34,7 +34,10 @@
 }
 
 .notification {
-    background: @bg;
+    /* Egen, mer solid bakgrund (inte @bg) - notis-fönstret har ingen blur
+       längre (se rules.lua), så samma låga alpha som förut kändes för
+       genomskinligt/svårläst utan blur som mjukade upp det. */
+    background: rgba(28, 38, 30, 0.92);
     border: 1px solid @border;
     border-radius: 16px;
     padding: 4px;
