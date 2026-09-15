@@ -2,6 +2,19 @@
 
 Nyast överst.
 
+## 2026-09-15 — Paletten officiellt döpt "Svensk skog", Spotify-plan i wishlist
+
+Jakob döpte färgschemat till **"Svensk skog"** och ville ha det formaliserat
+i vault. Skapade [[../04-tema/svensk-skog-palett]] som den nya kanoniska
+referensen (hex-tabell inkl. border-färgen som saknades i den gamla tabellen,
+border-regeln, var den används) — `design.md` länkar dit istället för att
+duplicera. Städade två föråldrade referenser till "Gruvbox Dark" i
+`wishlist.md` som blivit fel sedan färgbytet till Svensk skog.
+
+Jakob vill installera Spotify + Spicetify (kräver `sudo`/AUR, körs av honom
+själv) och få ett eget spicetify-tema i exakt Svensk skog-paletten senare —
+lagt i [[../05-todo/wishlist]].
+
 ## 2026-09-15 — Full resursgenomgång: wob var död, ac-sound-watch sårbar
 
 Jakob bad om en fullständig genomgång efter cava-läckan. Hittade två till

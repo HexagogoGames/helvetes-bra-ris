@@ -17,25 +17,19 @@ opåverkat). Blur bakom paneler/fönster, halvgenomskinliga ytor, mjukt rundade 
 Ingen gradient-kant (se beslut nedan, oberoende av estetik-val) — bara solid
 accentfärgad kant.
 
-**Färgschema: bytt från Gruvbox Dark → egen "forest"-palett** (2026-09-14, samma
-dag). Jakob la in sin egen wallpaper (`images/backgrounds/forrest background1.avif`,
-konverterad till PNG eftersom hyprpaper inte länkar mot libavif) och bad om en
-mörkgrön/genomskinlig palett som matchar bilden. Extraherade riktiga dominant-färger
-ur fotot (`magick ... -colors 12 -unique-colors`) och byggde paletten på dem istället
-för att gissa gröna toner:
+**Färgschema: bytt från Gruvbox Dark → egen palett, officiellt döpt "Svensk
+skog"** (2026-09-14/15). Jakob la in sin egen wallpaper
+(`images/backgrounds/forrest background1.avif`, konverterad till PNG eftersom
+hyprpaper inte länkar mot libavif) och bad om en mörkgrön/genomskinlig palett
+som matchar bilden. Extraherade riktiga dominant-färger ur fotot
+(`magick ... -colors 12 -unique-colors`) istället för att gissa gröna toner.
 
-| Roll | Hex | Källa |
-|---|---|---|
-| Bakgrund | `#17211a` | mörkaste skuggtonen i fotot |
-| Yta (paneler/fönster/rofi-element) | `#2c3a2e` | mossgrön mellanton |
-| Text | `#ece3c6` | varm krämvit, "solljus genom lövverk" |
-| Text (dämpad) | `#93a08c` | gråaktig salvia/mossgrå ur fotot |
-| Accent 1 (guld — aktiv kant, highlights) | `#d4a24a` | uppjusterad från fotots solbelysta ockra |
-| Accent 2 (löv-grön, sekundär) | `#7fa66b` | livligare grön än fotots dämpade toner |
-| Röd (varning/kritisk) | `#c1543f` | rostig tegel-röd, matchar jordton-familjen |
-| Grön (status ok/laddar) | `#8fbf6f` | ljusare löv-grön, skild från accent 2 |
+**Fullständig, officiell referens: [[svensk-skog-palett]]** — hex-tabell,
+border-regeln (grön kant men guld/löv-fyllningar), var den används, och att
+det mesta framöver ska matcha den (t.ex. det planerade Spicetify-temat, se
+[[../05-todo/wishlist]]).
 
-`col.active_border = rgba(d4a24aff)`, `col.inactive_border = rgba(93a08c33)`.
+`col.active_border = rgba(3f5c42ff)`, `col.inactive_border = rgba(93a08c33)`.
 Gruvbox-planen (inkl. btop community-temat) är överspelad — se implementationsloggen
 nedan.
 
