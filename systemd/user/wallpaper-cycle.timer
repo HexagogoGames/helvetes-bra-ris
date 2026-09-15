@@ -1,13 +1,13 @@
 [Unit]
-Description=Kör wallpaper-cycle.service var 20:e minut
+Description=Kör wallpaper-cycle.service varje heltimme
 
 [Timer]
-# Liten fördröjning efter inloggning så Hyprland/waybar hunnit starta klart
-# innan första bytet, sedan var 20:e minut löpande.
-OnStartupSec=2min
-OnUnitActiveSec=20min
-# Ingen Persistent=true - ett missat byte (t.ex. efter suspend) ska inte
-# trigga ett abrupt bakgrundsbyte direkt vid uppvaknande.
+# Klockstyrt (inte relativt senaste körning) - byter varje heltimme: 00, 01,
+# 02 osv, oavsett när sessionen startade.
+OnCalendar=hourly
+# Ingen Persistent=true - ett missat byte (t.ex. efter suspend över en
+# heltimme) ska inte trigga ett abrupt bakgrundsbyte direkt vid uppvaknande,
+# bara vänta till nästa heltimme.
 
 [Install]
 WantedBy=timers.target

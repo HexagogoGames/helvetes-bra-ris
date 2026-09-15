@@ -15,7 +15,10 @@ egna färger, **utom** en vald ankarbild som alltid behåller den handgjorda
 - **Vilka appar som får dynamiska färger just nu:** waybar, kitty, rofi,
   swaync, Hyprlands kantfärger. **Inte** (ännu): wlogout, hyprlock, btop,
   fastfetch, starship, eww, cava, wob.
-- **Intervall:** 20 minuter (samma som bildloopen redan körde på).
+- **Intervall:** klockstyrt, varje heltimme (`OnCalendar=hourly`) — ändrat
+  2026-09-15 från det ursprungliga 20-minutersvalet ("går det inte bara att
+  koppla till klockan? så varje timme byts det") efter att systemet redan var
+  aktiverat live.
 
 ## Arkitektur
 
@@ -32,7 +35,7 @@ wallust/
     └── (samma 5 filnamn som ovan)
 
 hypr/scripts/wallpaper-cycle.sh   orkestreringsskriptet, se nedan
-systemd/user/wallpaper-cycle.{service,timer}   kör skriptet var 20:e minut
+systemd/user/wallpaper-cycle.{service,timer}   kör skriptet varje heltimme
 ```
 
 `~/.config/wallust` är symlinkad till `wallust/` i det här repot (samma
@@ -49,7 +52,7 @@ källan till sanning i git (`git rm --cached`, `.gitignore`).
 ## Orkestreringsskriptet (`hypr/scripts/wallpaper-cycle.sh`)
 
 Körs som ett **systemd --user oneshot-jobb** (`wallpaper-cycle.service` +
-`.timer`, `OnUnitActiveSec=20min`) — medvetet **inte** en egen
+`.timer`, `OnCalendar=hourly` — klockstyrt, se ovan) — medvetet **inte** en egen
 `while true; do sleep 1200; done`-loop. Vi har redan städat upp tre separata
 läckande bakgrundsprocess-buggar den här sessionen (cava, wob,
 ac-sound-watch, se [[../03-felsokning/cava-process-lacka]]) orsakade av precis

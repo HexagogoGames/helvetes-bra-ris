@@ -20,13 +20,6 @@ punkten är klar, eller flytta den till [[../02-beslut/changelog]] med datum.
   och köra `sudo systemctl restart systemd-logind` (eller vänta till nästa
   omstart). Se [[../02-beslut/changelog]] 2026-09-15.
 
-- **Dynamiskt wallust-tema är byggt men inte aktiverat live.** Allt är
-  committat ([[../04-tema/dynamiskt-tema]]), men `wallpaper-cycle.sh` har
-  aldrig körts och `systemd/user/wallpaper-cycle.timer` är inte startad/
-  aktiverad. Väntar på Jakobs OK att köra
-  `systemctl --user enable --now wallpaper-cycle.timer` (görs av mig när han
-  ger klartecken, kräver inte sudo).
-
 - **Uppstarts-/suspendproblem (Surface Laptop 6, s2idle).** 2026-09-15: locket
   stängdes, datorn gick i `s2idle`-viloläge och vaknade aldrig — total låsning
   (inga lampor/fläktar), krävde 20-30 sek intryckt power-knapp för att
@@ -41,3 +34,5 @@ punkten är klar, eller flytta den till [[../02-beslut/changelog]] med datum.
 
 - ~~wallust AUR-bygge (checksummefel)~~ — löst 2026-09-15,
   `updpkgsums && makepkg -si` i `~/.cache/yay/wallust`.
+- ~~Dynamiskt wallust-tema inte aktiverat~~ — löst 2026-09-15, aktiverat live
+  (`wallpaper-cycle.timer` kör nu, klockstyrt varje heltimme).
