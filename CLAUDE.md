@@ -53,6 +53,8 @@ förstå vad han kör innan han kör det, inte bara klistra in blint.
 | `starship.toml` | `~/.config/starship.toml` | shell-prompt |
 | `bashrc` | `~/.bashrc` | shell |
 | `spicetify/Themes/SvenskSkog/` | `~/.config/spicetify/Themes/SvenskSkog` | Spotify-tema (via spicetify-cli) |
+| `wallust/` | `~/.config/wallust` | Dynamiskt tema per bakgrund, se [[vault/04-tema/dynamiskt-tema]] |
+| `systemd/user/*.{service,timer}` | enskilda filer symlinkade till `~/.config/systemd/user/` (inte hela mappen — den har annat innehåll, t.ex. `ssh-agent.socket`) | `wallpaper-cycle` |
 
 ## vault/
 
