@@ -2,6 +2,30 @@
 
 Nyast överst.
 
+## 2026-09-16 — `linux-surface` installerad, strömknappen bekräftat löst
+
+Jakob installerade `linux-surface` själv (research/checklista fanns redan
+i [[../05-todo/linux-surface-installation]]). Kör nu
+`6.19.8-arch1-3-surface`, `surface_aggregator`+HID/batteri/fan-moduler
+laddade, `acpi_osi="Windows 2022"` + `pci=hpiosize=0` bekräftat i
+`/proc/cmdline`, Secure Boot fortfarande avstängt (inget MOK-steg
+behövdes). Hela dotfiles-riggen (Hyprland/waybar/hyprpaper/
+wallpaper-cycle.timer) överlevde kärnbytet utan problem.
+
+**Strömknappen fungerar nu** — bekräftat live av Jakob. En ny `gpio-keys`-
+enhet med `KEY_POWER` dök upp (fanns inte med den vanliga kärnan, se
+[[../03-felsokning/strömknapp-syns-inte]]), `systemd-logind` bevakar den,
+och den redan befintliga `hypr/keybinds.lua`/`logind.conf.d`-configen
+(gjord 2026-09-15, overifierbar då) fungerar nu i praktiken: kort tryck
+öppnar wlogout-menyn.
+
+**Suspend/vila (`s2idle`) är INTE verifierat löst** — Jakob har uttryckligen
+inte rört det problemet. `hypridle`s auto-vila efter 15 min inaktivitet är
+fortfarande aktiv utan bekräftad fungerande uppvakning. Se
+[[../03-felsokning/s2idle-vaknar-aldrig]] och
+[[../05-todo/vantar-pa-jakob]] — rör inte vila oövervakat tills det är
+testat.
+
 ## 2026-09-15 — Rättelse: strömknappsfixen fungerar inte alls, tidigare diagnos ofullständig
 
 Jakob testade med ett kort tryck efter gårdagens (samma dags) fix —

@@ -52,3 +52,36 @@ config i den här dotfiles-repot kan komma runt det.
 Se [[../05-todo/vantar-pa-jakob]] — `linux-surface`-installationen är nu
 den gemensamma boven bakom både detta och `s2idle`-uppvaknandeproblemet.
 Jakob har sagt att han vill titta på det "senare", inte påbörjat.
+
+## Löst 2026-09-16
+
+Jakob installerade `linux-surface` själv (kärna `6.19.8-arch1-3-surface`).
+Efter det:
+
+```
+$ lsmod | grep surface
+surface_aggregator, surface_hid, surface_hid_core,
+surface_aggregator_registry, surface_platform_profile,
+surface_battery, surface_charger, surface_fan, surface_temp, ...
+```
+
+En ny input-enhet dök upp som inte fanns med den vanliga kärnan:
+
+```
+N: Name="gpio-keys"
+S: Sysfs=.../MSHW0040:00/gpio-keys.2.auto/input/input2
+B: KEY=10000000000000 0    <- avkodat: KEY_POWER (116)
+```
+
+`systemd-logind` loggade direkt `Watching system buttons on
+/dev/input/event2 (gpio-keys)`, och `hyprctl binds` visade
+`XF86PowerOff`-keybinden fortfarande registrerad. Jakob bekräftade sedan
+live: **ett kort tryck fungerar nu** (öppnar wlogout-menyn). Hela
+`vantar-pa-jakob`-punkten om strömknappen är struken.
+
+En bonusenhet (`gpio-keys` #1) exponerade samtidigt volym upp/ner som
+riktiga knappar — fanns inte heller innan.
+
+Se [[s2idle-vaknar-aldrig]] — det närbesläktade suspend/vila-problemet är
+**inte** verifierat löst av samma kärnbyte, uttryckligen inte rört av
+Jakob än.
