@@ -7,23 +7,20 @@ punkten är klar, eller flytta den till [[../02-beslut/changelog]] med datum.
 
 ## Aktivt öppna
 
-- **`s2idle`-viloläget är INTE verifierat säkert än — rör det inte
-  oövervakat.** Jakob installerade `linux-surface` 2026-09-16 (se
-  [[../02-beslut/changelog]]), men har **inte rört
-  suspend/vila-problemet specifikt** ("jag har inte rört suspend/vila
-  problemet"). `hypridle.conf` har fortfarande kvar sin regel
-  `timeout = 1200 → systemctl suspend` (somnar automatiskt efter 20 min
-  inaktivitet, oavsett lock). `/proc/acpi/wakeup` visar fortfarande inga
-  registrerade väck-källor för lock/knapp ens med surface-kärnan (kan bero
-  på att `surface_aggregator` hanterar det på ett annat sätt jag inte kan
-  se härifrån — eller inte). **Okänt om resume faktiskt fungerar nu.**
-  Rekommendation som väntar på svar: testa vila **medvetet och kort**
-  (stäng locket ~10 sek och öppna igen, redo att nödstoppa) innan man
-  litar på det, ELLER inaktivera `systemctl suspend`-regeln i hypridle
-  som säkerhetsåtgärd tills det är bekräftat. Se
-  [[../03-felsokning/s2idle-vaknar-aldrig]].
+*(inget just nu — se "Löst" nedan för det senaste)*
 
 ## Löst (kvar som referens en kort tid)
+
+- ~~`s2idle`-viloläget vaknar inte~~ — **verkar löst, bekräftat med ett
+  kontrollerat test 2026-09-16.** Körde `systemctl suspend` medvetet;
+  skärmen släcktes på riktigt och Jakob lyckades väcka den själv.
+  Kärnloggen bekräftar en fullständig cykel: `PM: suspend entry (s2idle)`
+  21:54:54 → `PM: suspend exit` 21:55:30 (36 sek). Hela riggen frisk
+  efteråt (Hyprland/waybar/hyprpaper/hypridle, wifi återanslutet). **Enda
+  reservationen:** det var ett kort, medvetet test — inte en lång
+  vila/övernattning eller lock-stängning som de facto orsakade de
+  ursprungliga låsningarna. Håll ett öga på det några dagar innan man
+  litar på det helt. Se [[../03-felsokning/s2idle-vaknar-aldrig]].
 
 - ~~Strömknappen syns inte/gör inget~~ — **löst och bekräftat 2026-09-16.**
   `linux-surface` exponerade en ny `gpio-keys`-enhet med `KEY_POWER` (se

@@ -59,3 +59,29 @@ vila medvetet och kort (stäng locket ~10 sekunder, öppna igen, redo att
 nödstoppa om det inte vaknar) innan man litar på det, eller inaktivera
 `systemctl suspend`-regeln i hypridle som säkerhetsåtgärd tills det är
 bekräftat. Se [[../05-todo/vantar-pa-jakob]].
+
+## Kontrollerat test 2026-09-16 — verkar löst
+
+Körde `systemctl suspend` medvetet (inte via hypridles automatik) medan
+Jakob var redo att väcka den. Resultat: skärmen släcktes på riktigt, och
+Jakob lyckades komma tillbaka in själv utan att behöva hård-resetta.
+Kärnloggen bekräftar en fullständig, ren cykel:
+
+```
+21:54:54  kernel: PM: suspend entry (s2idle)
+21:55:30  kernel: PM: suspend exit
+```
+
+36 sekunders faktisk vila, inte en total låsning. Hela riggen
+(Hyprland/waybar/hyprpaper/hypridle) frisk direkt efteråt, wifi
+återanslöt av sig självt. Det är den första lyckade suspend/resume-cykeln
+sedan problemet först upptäcktes — `linux-surface`s
+`surface_aggregator`-stack (se [[strömknapp-syns-inte]]) verkar ha löst
+det, precis som hoppats, trots att `/proc/acpi/wakeup` fortfarande inte
+visar några explicita väck-källor (SAM hanterar det tydligen ändå, utanför
+den generiska ACPI-listan).
+
+**Reservation:** ett kort, medvetet test bevisar inte att långa
+viloperioder eller lock-stängning (den faktiska ursprungliga triggern)
+beter sig identiskt. Bör observeras några dagar i vanlig användning innan
+det räknas som helt pålitligt.

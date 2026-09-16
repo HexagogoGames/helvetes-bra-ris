@@ -2,6 +2,18 @@
 
 Nyast överst.
 
+## 2026-09-16 — s2idle-viloläget verkar löst av linux-surface (kontrollerat test lyckades)
+
+Körde ett medvetet, övervakat test: `systemctl suspend` medan Jakob var
+redo att väcka datorn. Skärmen släcktes på riktigt och Jakob kom tillbaka
+in själv — första lyckade suspend/resume-cykeln sedan problemet
+upptäcktes. Kärnloggen bekräftar: `PM: suspend entry (s2idle)` 21:54:54 →
+`PM: suspend exit` 21:55:30. Hela riggen frisk efteråt. Se
+[[../03-felsokning/s2idle-vaknar-aldrig]] för detaljer och reservationen
+(kort test, inte samma sak som en lång vila/lock-stängning över natten —
+håll ett öga på det några dagar). Strök sista öppna punkten i
+[[../05-todo/vantar-pa-jakob]].
+
 ## 2026-09-16 — Längre hypridle-tider (dimma/lås/skärm-av/vila)
 
 Jakob ville ha längre tid innan skärmen dimmas/låses/somnar. Ändrade
