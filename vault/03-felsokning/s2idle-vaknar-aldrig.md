@@ -23,7 +23,11 @@ listener {
     on-timeout = systemctl suspend
 }
 ```
-Datorn somnar automatiskt (samma trasiga `s2idle`) efter **15 minuters
+(Uppdaterad 2026-09-16 till `timeout = 1200`/20 min på Jakobs begäran, i
+samband med att dimma/lås/skärm-av också fick längre tider — se
+[[../02-beslut/changelog]]. Ändrar inget i sak: samma `systemctl suspend`,
+samma osäkra uppvakning.)
+Datorn somnar automatiskt (samma trasiga `s2idle`) efter **20 minuters
 inaktivitet**, helt oavsett om locket är öppet eller stängt. Det gör det
 här till ett systematiskt, garanterat återkommande problem — inte ett
 sällsynt edge-case.

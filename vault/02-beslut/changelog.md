@@ -2,6 +2,16 @@
 
 Nyast överst.
 
+## 2026-09-16 — Längre hypridle-tider (dimma/lås/skärm-av/vila)
+
+Jakob ville ha längre tid innan skärmen dimmas/låses/somnar. Ändrade
+`hypr/hypridle.conf`: dimma 5→5 min (oförändrad), lås 5,5→10 min,
+skärm av 6→15 min, vila 15→20 min. Startade om `hypridle` live (lågriskigt,
+det är bara en idle-bevakare utan sessionsansvar, inte samma sak som
+`systemd-logind`) — alla fyra regler bekräftat registrerade om i loggen,
+inga fel. `systemctl suspend`-regeln (nu 20 min) är fortfarande samma
+otestade `s2idle`-anrop, se [[../03-felsokning/s2idle-vaknar-aldrig]].
+
 ## 2026-09-16 — `linux-surface` installerad, strömknappen bekräftat löst
 
 Jakob installerade `linux-surface` själv (research/checklista fanns redan

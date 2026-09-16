@@ -12,7 +12,7 @@ punkten är klar, eller flytta den till [[../02-beslut/changelog]] med datum.
   [[../02-beslut/changelog]]), men har **inte rört
   suspend/vila-problemet specifikt** ("jag har inte rört suspend/vila
   problemet"). `hypridle.conf` har fortfarande kvar sin regel
-  `timeout = 900 → systemctl suspend` (somnar automatiskt efter 15 min
+  `timeout = 1200 → systemctl suspend` (somnar automatiskt efter 20 min
   inaktivitet, oavsett lock). `/proc/acpi/wakeup` visar fortfarande inga
   registrerade väck-källor för lock/knapp ens med surface-kärnan (kan bero
   på att `surface_aggregator` hanterar det på ett annat sätt jag inte kan
