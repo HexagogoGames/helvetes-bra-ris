@@ -55,7 +55,10 @@ hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("~/.config/hypr/scripts/osd-bri
 
 -- Strömknapp: kort tryck öppnar power-menyn (samma som Super+Shift+E).
 -- Långt tryck (systemd-logind, se logind.conf.d/) stänger av på riktigt.
-hl.bind("XF86PowerOff", hl.dsp.exec_cmd("wlogout -b 5 -l ~/.config/wlogout/layout.json -C ~/.config/wlogout/style.css"), { locked = true })
+-- Går via ett litet skript (inte wlogout direkt) som filtrerar bort
+-- "eko"-tryckningen som knappen genererar när den väcker datorn ur vila -
+-- se vault/03-felsokning/strömknapp-ekar-efter-vila.md.
+hl.bind("XF86PowerOff", hl.dsp.exec_cmd("~/.config/hypr/scripts/power-button.sh"), { locked = true })
 
 -- Mediauppspelning
 hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
