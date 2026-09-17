@@ -2,6 +2,27 @@
 
 Nyast överst.
 
+## 2026-09-16 — Full rutingenomgång: allt friskt, ett medvetet obeslutat GRUB-val
+
+Gick igenom hela riggen på begäran (processer/läckor, git-status,
+diskutrymme, misslyckade tjänster, journal-storlek, pacman-orphans,
+kärnfel/ACPI, batteri/temp). Allt friskt. Städade samtidigt två rejält
+föråldrade vault-noter (`kitty.md`, `hyprland.md` — gammalt
+placeholder-tema, `swaybg`, saknat wallust-system) och la till
+`wallust/`/`systemd/` i CLAUDE.md:s filtabell.
+
+**Fynd:** `linux-surface` (6.19.8) har lägre versionsnummer än vanliga
+`linux` (7.2.4) — GRUB föredrar högst versionsnummer som förval, så
+`linux` startar sannolikt automatiskt om Jakob inte aktivt väljer
+`linux-surface` i menyn vid varje omstart. Erbjöd en ofarlig fix
+(`GRUB_DEFAULT=saved`+`GRUB_SAVEDEFAULT=true`, rör inte aktiv session).
+**Jakob valde att hålla koll själv istället** — inte ett problem, ett
+medvetet val. Inget att åtgärda här om han inte ändrar sig.
+
+Mindre kvarstående (ej brådskande, inte åtgärdat): `libwacom-surface`
+(pennstöd) aldrig installerad, två föräldralösa paket (`rust`,
+`hyprwayland-scanner`) kvar sen wallust-bygget.
+
 ## 2026-09-16 — s2idle-viloläget verkar löst av linux-surface (kontrollerat test lyckades)
 
 Körde ett medvetet, övervakat test: `systemctl suspend` medan Jakob var
