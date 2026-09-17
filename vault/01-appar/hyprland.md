@@ -15,25 +15,38 @@ formatet) — se [[../03-felsokning/hyprland-lua-migration]] för status och kä
   ankarbilden — inte gitspårad längre, se [[../04-tema/dynamiskt-tema]].
 - `monitors.lua` — monitor-setup. **Tom just nu**, se felsökningsnoten.
 - `input.lua` — tangentbord/mus-inställningar.
-- `keybinds.lua` — alla keybindings, inkl. `XF86PowerOff` → wlogout-menyn
-  (2026-09-15, se [[../02-beslut/changelog]]).
+- `keybinds.lua` — alla keybindings, inkl. `XF86PowerOff` → `power-button.sh`
+  (2026-09-15/18, se [[../02-beslut/changelog]]) och skärmdump →
+  `screenshot.sh` (2026-09-18).
 - `rules.lua` — fönsterregler.
 - `autostart.lua` — vad som startar vid `hyprland.start`: `hyprpaper`
   (wallpaper, ersatte `swaybg` 2026-09-14), `hyprctl setcursor Adwaita 24`,
-  `hypridle`, `ac-sound-watch.sh`, `wob-init.sh`, `eww daemon`, `waybar`,
-  `swaync`, polkit-agent, samt `ssh-add` av `id_ed25519` mot
+  `hypridle`, `hyprsunset` (blåljusfilter, ny 2026-09-18),
+  `ac-sound-watch.sh`, `wob-init.sh`, `eww daemon`, `waybar`, `swaync`,
+  polkit-agent, samt `ssh-add` av `id_ed25519` mot
   `$XDG_RUNTIME_DIR/ssh-agent.socket`.
 - `hyprlock.conf` / `hypridle.conf` — skärmlås/idle (fortfarande i klassiskt
   hyprlang-format, inte lua — separata program, inte del av migreringen).
   `hypridle.conf`-tider (uppdaterade 2026-09-16): dimma 5 min, lås 10 min,
-  skärm av 15 min, `systemctl suspend` 20 min.
+  skärm av 15 min, `systemctl suspend` 20 min. `hyprlock.conf`s bakgrund
+  pekar på samma `.current.jpg`-symlink som hyprpaper (fixat 2026-09-18, se
+  [[../03-felsokning/hyprlock-svart-bakgrund]]).
 - `hyprpaper.conf` — bakgrundsbild, pekar på en stabil symlink
   (`images/backgrounds/.current.jpg`) som `wallpaper-cycle.sh` uppdaterar,
   se [[../04-tema/dynamiskt-tema]].
+- `hyprsunset.conf` — **ny 2026-09-18**, blåljusfilter. Två profiler: normal
+  från 07:30, varmare (4500K) från 20:00. Se
+  https://wiki.hypr.land/Hypr-Ecosystem/hyprsunset/ för formatet (`profile
+  { time = HH:MM; temperature = N; identity = bool }`) — går även att styra
+  live via `hyprctl hyprsunset temperature/gamma/identity/reset/profile`.
 - `scripts/` — `ac-sound-watch.sh`, `osd-brightness.sh`, `osd-volume.sh`,
-  `wob-init.sh`, `wallpaper-cycle.sh` (ny 2026-09-15, orkestrerar dynamiskt
-  tema + bakgrundsbyte, körs av `systemd/user/wallpaper-cycle.timer` — inte
-  av Hyprland/`autostart.lua`).
+  `wob-init.sh`, `wallpaper-cycle.sh` (orkestrerar dynamiskt tema +
+  bakgrundsbyte, körs av `systemd/user/wallpaper-cycle.timer` — inte av
+  Hyprland/`autostart.lua`), `power-button.sh` (2026-09-18, filtrerar bort
+  strömknappens "eko" efter vila, se
+  [[../03-felsokning/strömknapp-ekar-efter-vila]]), `screenshot.sh`
+  (2026-09-18, skärmdump + urklipp + notis med "Redigera"-knapp som öppnar
+  `satty`).
 - `sounds/` — ljudfiler för notiser/events.
 
 ## Relaterat

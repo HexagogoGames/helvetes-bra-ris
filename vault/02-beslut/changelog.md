@@ -2,6 +2,26 @@
 
 Nyast överst.
 
+## 2026-09-18 — Skärmdumps-annotering (satty) + blåljusfilter (hyprsunset)
+
+Efter internet-researchen om vanliga rice-verktyg (se wishlisten) valde
+Jakob två: skärmdumpsannotering med en klickbar "Redigera"-notis, och
+`hyprsunset`. Båda finns i officiella `extra`-förrådet.
+
+- `hypr/scripts/screenshot.sh` (ny): tar skärmdump (område eller helskärm),
+  kopierar till urklipp, visar en notis med en "Redigera"-knapp
+  (`notify-send -A`, `--wait` implicit) som öppnar bilden i `satty` om man
+  klickar den. `keybinds.lua` uppdaterad att peka hit istället för de gamla
+  inline `grim`/`slurp`-kommandona.
+- `hypr/hyprsunset.conf` (ny): två profiler, normal från 07:30, 4500K från
+  20:00. Verifierade det faktiska configformatet direkt mot Hyprland-wikins
+  HTML (en tidigare WebFetch-sammanfattning av samma sida hittade på ett
+  felaktigt, "för perfekt" format som inte stämde - dubbelkollade rådata
+  istället). Tillagd i `autostart.lua`.
+
+**Inte installerat än** — `satty`/`hyprsunset` kräver `sudo pacman -S`, se
+[[../05-todo/vantar-pa-jakob]]. Ingetdera fungerar förrän paketen finns.
+
 ## 2026-09-16 — Full rutingenomgång: allt friskt, ett medvetet obeslutat GRUB-val
 
 Gick igenom hela riggen på begäran (processer/läckor, git-status,

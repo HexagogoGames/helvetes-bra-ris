@@ -29,11 +29,12 @@ hl.bind(mod .. " + SHIFT + 5", hl.dsp.window.move({ workspace = 5 }))
 hl.bind(mod .. " + SHIFT + R", hl.dsp.exec_cmd("sh -c 'pkill waybar; sleep 0.2; waybar & hyprctl reload'"))
 hl.bind(mod .. " + SHIFT + E", hl.dsp.exec_cmd("wlogout -b 5 -l ~/.config/wlogout/layout.json -C ~/.config/wlogout/style.css"))
 
--- Screenshot selected area → clipboard and save to pictures
-hl.bind(mod .. " + SHIFT + S", hl.dsp.exec_cmd("sh -c 'file=\"$HOME/Bilder/Screenshot-$(date +%Y-%m-%d_%H-%M-%S).png\"; grim -g \"$(slurp)\" \"$file\" && wl-copy < \"$file\"'"))
+-- Skärmdump av valt område → urklipp + fil + notis med "Redigera" (satty).
+-- Kräver satty (se vault/05-todo/vantar-pa-jakob.md om det inte är installerat än).
+hl.bind(mod .. " + SHIFT + S", hl.dsp.exec_cmd("~/.config/hypr/scripts/screenshot.sh region"))
 
--- Full screenshot → clipboard
-hl.bind(mod .. " + SHIFT + F", hl.dsp.exec_cmd("grim - | wl-copy"))
+-- Helskärmsskärmdump, samma notis+redigera-flöde
+hl.bind(mod .. " + SHIFT + F", hl.dsp.exec_cmd("~/.config/hypr/scripts/screenshot.sh full"))
 
 -- Flytta/ändra storlek på fönster med mus + mod
 hl.bind(mod .. " + mouse:272", hl.dsp.window.drag())

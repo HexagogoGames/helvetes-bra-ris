@@ -7,7 +7,12 @@ punkten är klar, eller flytta den till [[../02-beslut/changelog]] med datum.
 
 ## Aktivt öppna
 
-*(inget just nu — se "Löst" nedan för det senaste)*
+- **Installera två paket** (2026-09-18, båda i officiella `extra`-förrådet,
+  inget AUR-krångel): `sudo pacman -S satty hyprsunset`. `satty` behövs för
+  den nya skärmdumps-redigeringen (`hypr/scripts/screenshot.sh`, se
+  [[../02-beslut/changelog]]) och `hyprsunset` för blåljusfiltret
+  (`hyprsunset.conf`, redan tillagt i `autostart.lua`). Ingetdera fungerar
+  förrän paketen finns på plats.
 
 ## Löst (kvar som referens en kort tid)
 
