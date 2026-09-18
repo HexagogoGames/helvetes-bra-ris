@@ -9,6 +9,11 @@
     font-family: "IBM Plex Mono", "JetBrainsMono Nerd Font", sans-serif;
     font-size: 13px;
     transition: background 150ms ease-out, color 150ms ease-out;
+    /* Mörk skugga bakom all text - garanterar läsbarhet oavsett vad som
+       lyser igenom barens genomskinliga bakgrund (varierar per wallpaper,
+       se vault/04-tema/dynamiskt-tema.md), utan att lägga till en synlig
+       platta bakom texten. */
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
 }
 
 window#waybar {
@@ -32,20 +37,20 @@ window#waybar {
 .modules-right {
     background: alpha(@fg, 0.045);
     border-radius: 12px;
-    margin: 5px 4px;
+    margin: 3px 4px;
     padding: 0 4px;
 }
 
 /* Workspaces: punkt-stil (inga siffror). Aktiv = tydligt större/accent med egen
    badge-bakgrund, inaktiva = accent2 (mer färg/kontrast än grått mot bg). */
 #workspaces button {
-    padding: 0 7px;
+    padding: 0 6px;
     border-radius: 50%;
     color: @accent2;
-    font-size: 15px;
+    font-size: 13px;
     opacity: 0.8;
-    min-width: 26px;
-    min-height: 26px;
+    min-width: 22px;
+    min-height: 22px;
 }
 
 #workspaces button:hover {
@@ -57,7 +62,7 @@ window#waybar {
     color: @accent;
     background: alpha(@accent, 0.2);
     opacity: 1;
-    font-size: 23px;
+    font-size: 18px;
 }
 
 #workspaces button.persistent {
@@ -85,8 +90,8 @@ window#waybar {
 #pulseaudio,
 #battery,
 #custom-dotfiles {
-    margin: 4px 2px;
-    padding: 3px 11px;
+    margin: 2px 2px;
+    padding: 2px 10px;
     border-radius: 10px;
     background: alpha(@fg, 0.05);
     border: 1px solid alpha(@border-c, 0.5);
