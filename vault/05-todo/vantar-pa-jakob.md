@@ -7,14 +7,16 @@ punkten är klar, eller flytta den till [[../02-beslut/changelog]] med datum.
 
 ## Aktivt öppna
 
-- **Bekräfta att strömknapp-eko-fixen (försök 2) faktiskt fungerar.** Första
-  försöket (tidsstämpel efter uppvaknande) hade en kapplöpning och
-  fungerade inte i praktiken - se
-  [[../03-felsokning/strömknapp-ekar-efter-vila]]. Nytt försök
-  (markörfil armad *innan* vila istället) är live men otestat. Testa:
-  vila → väck med strömknappen → ska INTE öppna wlogout-menyn.
+*(inget just nu — se "Löst" nedan för det senaste)*
 
 ## Löst (kvar som referens en kort tid)
+
+- ~~Strömknapp-eko efter vila (försök 2, markörfil)~~ — **bekräftat
+  fungerande 2026-09-18.** Jakob testade en riktig vila/väck-cykel:
+  wlogout-menyn dök inte längre upp. Se
+  [[../03-felsokning/strömknapp-ekar-efter-vila]] för hela historien
+  (första försöket med en tidsstämpel hade en kapplöpning och fungerade
+  inte i praktiken).
 
 - ~~`satty`/`hyprsunset` inte installerade~~ — löst 2026-09-18, Jakob
   installerade båda (`sudo pacman -S satty hyprsunset`). `hyprsunset`

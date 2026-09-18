@@ -45,8 +45,7 @@ ligga kvar och felaktigt blockera en äkta knapptryckning långt senare.
 Löst med `after_sleep_cmd`: städar bort markören 5 sekunder efter
 uppvaknande om inget eko hunnit konsumera den själv.
 
-## Verifiering kvar
+## Bekräftat 2026-09-18
 
-Inte testat live än (kräver en riktig vila/uppvaknande-cykel + ett kort
-tryck direkt efter). Se [[../05-todo/vantar-pa-jakob]] om något behöver
-bekräftas av Jakob.
+Jakob testade en riktig vila/väck-cykel med strömknappen: wlogout-menyn
+dök inte längre upp. Fixen fungerar i praktiken, inte bara i teorin.
