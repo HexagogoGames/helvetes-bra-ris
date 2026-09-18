@@ -20,6 +20,20 @@
 - [x] ~~Bestäm när `hypr.conf-backup-20260913/` kan arkiveras/tas bort~~ — borttagen
       2026-09-14, se changelog.
 - [ ] Ta ställning till om `~/.gitconfig` ska in i dotfiles-repot.
+- [ ] **Kärnfelsökningsprojekt: fixa touchscreen-buggen på riktigt, PR mot
+      upstream.** Se [[../03-felsokning/touchscreen-slutade-fungera]] för
+      full diagnos — felet sitter i mainline Linux (`drivers/hid/
+      intel-thc-hid/intel-quickspi/quickspi-protocol.c`, funktionen
+      `quickspi_handle_input_data`, "Wrong input report length"), inte i
+      `linux-surface`s egen kod. Jakob tyckte det lät kul men ville inte
+      börja direkt (2026-09-18) — kräver flera timmar iterativ felsökning
+      (lägga till loggning, bygga om modulen, testa, upprepa) plus att
+      skicka en riktig kärnpatch via mejl till en underhållarlista (inte
+      en vanlig GitHub-PR, eftersom det är mainline-kärnan) om en fix
+      hittas. Börja med: lägg till loggning av både deklarerad
+      (`input_len`) och faktisk (`buf_len`) buffertstorlek i
+      `quickspi_handle_input_data`, bygg om modulen, reproducera felet,
+      läs loggen.
 - [x] ~~Skapa GitHub-repo och pusha~~ — `HexagogoGames/helvetes-bra-ris`, klart
       2026-09-14.
 - [x] ~~Spotify + Spicetify~~ — **klart och live 2026-09-15.** Jakob

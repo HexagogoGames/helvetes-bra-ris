@@ -37,11 +37,49 @@ felrad (`Wrong input report length: 15`) nämns inte där — skulle kunna
 vara värdefull information att lägga till om han vill kommentera ärendet,
 men löser inget själv.
 
+## Vad felet faktiskt betyder (källkoden läst 2026-09-18)
+
+Drivrutinen är **mainline Linux**, inte `linux-surface`-specifik kod:
+`drivers/hid/intel-thc-hid/intel-quickspi/quickspi-protocol.c` i
+`torvalds/linux`. Den exakta raden (`quickspi_handle_input_data`):
+
+```c
+input_len = le16_to_cpu(body_hdr->content_len);
+
+if (HIDSPI_INPUT_BODY_SIZE(input_len) > buf_len) {
+    dev_err_once(qsdev->dev, "Wrong input report length: %u", input_len);
+    return;
+}
+```
+
+Touchkontrollern skickar ett paket över SPI-bussen och deklarerar hur
+mycket nyttolast det innehåller (`content_len`, hos oss 15). Drivrutinen
+jämför det mot hur mycket data som faktiskt kom in i DMA-bufferten
+(`buf_len`) — om den deklarerade storleken inte får plats, kastas hela
+paketet utan vidare bearbetning. Eftersom `dev_err_once` bara loggar en
+gång, vet vi inte om det händer för varje beröring eller bara vid start —
+men eftersom touch inte fungerar alls är det troligt att det är varje
+gång.
+
+## Vad ett riktigt fix skulle kräva
+
+1. Lägg till egen loggning av **både** `input_len` (deklarerad) och
+   `buf_len` (faktisk) på felraden - vi vet just nu bara den ena.
+2. Bygg om just den kärnmodulen, ladda den, reproducera (rör pekskärmen),
+   läs loggen.
+3. Bilda en hypotes utifrån den faktiska skillnaden (kapplöpningstillstånd
+   i DMA-kompletteringen? fel buffertstorlek beräknad någon annanstans i
+   `pci-quickspi.c`? en firmware-kvirk specifik för den här pekpanelen?).
+4. Implementera, bygg om, testa - troligen flera varv.
+5. Om det fungerar: en riktig kärnpatch via mejl till HID-underhållarnas
+   lista (inte en vanlig GitHub-PR, eftersom det är mainline-kärnan),
+   kräver ett riktigt namn i en `Signed-off-by`-rad (kärnans DCO-regel).
+
 ## Status
 
-**Ingen åtgärd möjlig från vår sida just nu** — det här är ett
-kärndrivrutinsfel i `linux-surface`-projektet, inte något i dotfiles-
-configen. Inte en todo/väntar-punkt, samma kategori som
-[[tangentbordsbelysning-tidsgrans]]: inget att vänta på eller bygga,
-bara att hålla koll på om projektet släpper en fix i en framtida
-`linux-surface`-uppdatering.
+Jakob tyckte idén (fixa på riktigt + skicka patch uppströms) lät kul, men
+ville inte börja direkt 2026-09-18 — realistiskt timmar av iterativ
+felsökning. Sparad som ett riktigt projekt i [[../05-todo/wishlist]] för
+när han har tid avsatt. Inte en `vantar-pa-jakob`-punkt (inget som väntar
+på ett snabbt beslut/kommando) — se även [[tangentbordsbelysning-tidsgrans]]
+för samma "känd begränsning, ingen enkel fix"-kategori.
