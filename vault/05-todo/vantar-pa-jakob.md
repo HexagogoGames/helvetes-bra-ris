@@ -7,14 +7,16 @@ punkten är klar, eller flytta den till [[../02-beslut/changelog]] med datum.
 
 ## Aktivt öppna
 
-- **Installera två paket** (2026-09-18, båda i officiella `extra`-förrådet,
-  inget AUR-krångel): `sudo pacman -S satty hyprsunset`. `satty` behövs för
-  den nya skärmdumps-redigeringen (`hypr/scripts/screenshot.sh`, se
-  [[../02-beslut/changelog]]) och `hyprsunset` för blåljusfiltret
-  (`hyprsunset.conf`, redan tillagt i `autostart.lua`). Ingetdera fungerar
-  förrän paketen finns på plats.
+*(inget just nu — se "Löst" nedan för det senaste)*
 
 ## Löst (kvar som referens en kort tid)
+
+- ~~`satty`/`hyprsunset` inte installerade~~ — löst 2026-09-18, Jakob
+  installerade båda (`sudo pacman -S satty hyprsunset`). `hyprsunset`
+  startad live samma dag (låg direkt på kvällsprofilen, 4500K, eftersom
+  klockan redan var efter 20:00). Skärmdumps-redigeringsflödet
+  (`screenshot.sh` → notis → "Redigera" → `satty`) testat och bekräftat
+  fungerande av Jakob.
 
 - ~~`s2idle`-viloläget vaknar inte~~ — **verkar löst, bekräftat med ett
   kontrollerat test 2026-09-16.** Körde `systemctl suspend` medvetet;
