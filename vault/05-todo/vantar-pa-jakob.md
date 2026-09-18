@@ -7,7 +7,12 @@ punkten är klar, eller flytta den till [[../02-beslut/changelog]] med datum.
 
 ## Aktivt öppna
 
-*(inget just nu — se "Löst" nedan för det senaste)*
+- **Bekräfta att strömknapp-eko-fixen (försök 2) faktiskt fungerar.** Första
+  försöket (tidsstämpel efter uppvaknande) hade en kapplöpning och
+  fungerade inte i praktiken - se
+  [[../03-felsokning/strömknapp-ekar-efter-vila]]. Nytt försök
+  (markörfil armad *innan* vila istället) är live men otestat. Testa:
+  vila → väck med strömknappen → ska INTE öppna wlogout-menyn.
 
 ## Löst (kvar som referens en kort tid)
 

@@ -17,15 +17,33 @@ uppvaknandet. Hyprlands `XF86PowerOff`-keybind (öppnar wlogout, se
 trycket väckte mig" och "det här är ett nytt, avsiktligt tryck" — båda ser
 identiska ut för keybinden.
 
-## Fix
+## Fix, försök 1 (2026-09-18, misslyckades)
 
-En liten kylningsperiod. `hypr/hypridle.conf`s `after_sleep_cmd` skriver nu
-en tidsstämpel till `~/.cache/last-resume-time` varje gång datorn vaknar.
-Keybinden pekar inte längre direkt på `wlogout`, utan på ett nytt skript
-(`hypr/scripts/power-button.sh`) som jämför nuvarande tid mot den
-tidsstämpeln: om det är **under 3 sekunder** sedan senaste uppvaknandet,
-antas trycket vara samma fysiska eko och ignoreras. Annars öppnas
-wlogout-menyn precis som vanligt.
+En kylningsperiod: `after_sleep_cmd` skrev en tidsstämpel efter
+uppvaknande, och `power-button.sh` jämförde nuvarande tid mot den — under
+3 sekunder sedan uppvaknandet antogs vara ett eko.
+
+**Fungerade inte.** Jakob testade: "samma problem som innan. datorn
+tolkade det som att jag klickade på power knappen när jag skulle ut."
+Orsak: **kapplöpning**. Eko-tangenttryckningen kan nå Hyprland (och
+trigga `power-button.sh`) innan `hypridle` hinner köra sitt
+`after_sleep_cmd` och skriva tidsstämpeln — då finns ingen färsk
+tidsstämpel att jämföra mot, och trycket filtreras inte bort.
+
+## Fix, försök 2 (2026-09-18) — markörfil, ingen tidsjämförelse
+
+Vände på ordningen för att helt undvika kapplöpningen: `before_sleep_cmd`
+**armar** en markörfil (`~/.cache/power-button-wake-pending`) *innan*
+datorn somnar — det körs garanterat klart innan suspend faktiskt sker,
+ingen race möjlig där. `power-button.sh` kollar bara om markören
+**finns**, ingen tidsjämförelse: finns den, konsumeras den (tas bort) och
+trycket ignoreras, oavsett hur snabbt eller långsamt eko-trycket kommer.
+
+Kvarstående edge-case: om datorn väcks med tangentbord/mus istället för
+strömknappen konsumeras aldrig markören av ett eko, och skulle annars
+ligga kvar och felaktigt blockera en äkta knapptryckning långt senare.
+Löst med `after_sleep_cmd`: städar bort markören 5 sekunder efter
+uppvaknande om inget eko hunnit konsumera den själv.
 
 ## Verifiering kvar
 
