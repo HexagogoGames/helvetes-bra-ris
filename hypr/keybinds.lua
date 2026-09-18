@@ -36,6 +36,11 @@ hl.bind(mod .. " + SHIFT + S", hl.dsp.exec_cmd("~/.config/hypr/scripts/screensho
 -- Helskärmsskärmdump, samma notis+redigera-flöde
 hl.bind(mod .. " + SHIFT + F", hl.dsp.exec_cmd("~/.config/hypr/scripts/screenshot.sh full"))
 
+-- EXPERIMENTELL regn-shader (av som standard, ingen autostart) - slå på/av
+-- live, rör ingen config. Gillar du inte den: ta bara bort den här raden.
+-- Se vault/04-tema/regn-shader.md.
+hl.bind(mod .. " + SHIFT + W", hl.dsp.exec_cmd("~/.config/hypr/scripts/toggle-rain.sh"))
+
 -- Flytta/ändra storlek på fönster med mus + mod
 hl.bind(mod .. " + mouse:272", hl.dsp.window.drag())
 hl.bind(mod .. " + mouse:273", hl.dsp.window.resize())
