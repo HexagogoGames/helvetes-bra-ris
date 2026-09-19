@@ -24,6 +24,25 @@ för gissade gröna toner — sedan finjusterad för kontrast/läsbarhet.
 fyllningar, text eller ikoner. De använder Accent 1/2 istället. Beslutat
 2026-09-14 när Jakob bytte bort guld-kanter mot gröna.
 
+## Den gröna identiteten: "Moss green" (beslutat 2026-09-19)
+
+Jakob har bestämt att paletten inte bara ska beskrivas som "grönt
+skogstema" rent allmänt — den korrekta, namngivna gröna tonen är
+**mossgrön ("moss green")**. Verifierad referens (flera oberoende
+källor: htmlcolorcodes.com, color-name.com, rgbcolorpedia/encycolorpedia
+sammanfaller): `#8A9A5B` — en dämpad, gulaktig grön, tydligt skild från
+en blådoftande skogsgrön eller en klar lövgrön.
+
+De befintliga gröna tonerna i tabellen ovan (`Yta` `#2c3a2e`, `Accent 2`
+`#7fa66b`) var redan informellt beskrivna som "mossgrön"/"löv-grön" i
+källkommentarer, men var extraherade ur fotot innan "moss green" fanns
+som ett uttalat, namngivet mål — de lutar mer mot blågrön/klar lövgrön än
+den varmare, gulare `#8A9A5B`-referensen. **Inte ännu beslutat:** om de
+befintliga hex-värdena ska justeras mot den nya referensen, eller om
+"moss green" bara ska vara begreppet/riktlinjen för framtida
+färgval (t.ex. wallust-mappningen, se [[dynamiskt-tema]]) utan att röra
+det som redan är byggt. Fråga Jakob innan ändring.
+
 ## Var paletten är implementerad
 
 Hyprland (`hyprland.lua`, `rules.lua`), kitty, waybar, rofi, swaync, wlogout,

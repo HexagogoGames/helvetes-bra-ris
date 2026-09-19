@@ -2,6 +2,17 @@
 
 Nyast överst.
 
+## 2026-09-19 — Namngiven grön identitet: "Moss green"
+
+Jakob: "inte bara grönt skogstema. utan 'moss green' är den korrekta
+gröna färgen." Verifierade referenshex mot flera oberoende källor:
+`#8A9A5B` (dämpad, gulaktig grön). Dokumenterat i
+[[../04-tema/svensk-skog-palett]] som den officiella gröna identiteten.
+De befintliga gröna tonerna (`#2c3a2e`, `#7fa66b`) lutar mer mot
+blågrön/klar lövgrön än den nya referensen — **inte ändrade än**, väntar
+på om Jakob vill justera befintliga hex-värden eller bara använda "moss
+green" som riktlinje framåt (t.ex. wallust-mappningen).
+
 ## 2026-09-18 — Skärmdumps-annotering (satty) + blåljusfilter (hyprsunset)
 
 Efter internet-researchen om vanliga rice-verktyg (se wishlisten) valde
