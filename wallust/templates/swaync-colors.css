@@ -12,5 +12,5 @@
 @define-color purple      {{ color5 | saturate(-0.65) | darken(0.1) }};
 @define-color orange      {{ color3 | saturate(-0.5) | darken(0.05) }};
 @define-color red         {{ color1 | saturate(-0.5) }};
-@define-color green       {{ color2 | saturate(-0.5) }};
+@define-color green       {{ color2 | saturate(-0.5) | blend("8a9a5b") }};
 @define-color border      rgba({{ color8 | rgb }}, 0.6);

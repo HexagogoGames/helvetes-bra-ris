@@ -27,7 +27,7 @@ button {
 button:focus,
 button:hover {
     background-color: rgba(212, 162, 74, 0.18);
-    border-color: #3f5c42;
+    border-color: #404437;
     color: #d4a24a;
 }
 

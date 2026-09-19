@@ -22,7 +22,7 @@
 
     /* Status */
     red:             #{{ color1 | saturate(-0.5) | strip }};
-    green:           #{{ color2 | saturate(-0.5) | strip }};
+    green:           #{{ color2 | saturate(-0.5) | blend("8a9a5b") | strip }};
 
     /* Borders */
     border:          #{{ foreground | darken(0.35) | strip }}59;

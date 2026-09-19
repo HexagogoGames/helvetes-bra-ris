@@ -2,6 +2,31 @@
 
 Nyast överst.
 
+## 2026-09-19 — Alla gröna toner omräknade till "moss green"-familjen
+
+Jakob: "om något är i färgen grön kan du ändra det till moss green. men
+vill fortfarande att temat ska följa bakgrundsbilden. åtminstone löst."
+
+**Statiska/anchor-värden:** räknade fram en sammanhängande familj i
+HLS-rymden utifrån referensen `#8A9A5B` (samma hue/mättnad, olika
+ljushet per roll) och bytte ut de gamla värdena
+(`#7fa66b`→`#8a9a5b`, `#8fbf6f`→`#adbc80`, `#2c3a2e`→`#333724`,
+`#3f5c42`→`#404437`) i **alla** filer som hade dem: `cava/config`,
+`btop/themes/forest.theme`, `fastfetch/config.jsonc`,
+`wallust/anchor/*` (4 filer), `spicetify/Themes/SvenskSkog/color.ini`,
+`wlogout/style.css`, `starship.toml`, `eww/eww.scss`, `wob/wob.ini` —
+grep:ade igenom hela repot för att inte missa någon (lärdom från tidigare
+"tre filer missades i första omgången"-incidenten, se [[../04-tema/design]]).
+
+**Dynamiskt tema:** för att fortfarande "löst följa bakgrundsbilden" utan
+att låsa fast en enda grön ton, lade jag till wallusts `blend()`-filter
+på `green`-rollen i alla fyra `wallust/templates/*`-mallar — blandar
+bildens egna extraherade grönton 50/50 med moss green-referensen.
+Testat live mot den faktiskt aktuella bakgrunden (`höst-utsikt-3.jpg`):
+alla appar (waybar/kitty/rofi/swaync) fick samma konsekventa, mossgröna
+ton (`#6B9A68`) för just den bilden. Se [[../04-tema/svensk-skog-palett]].
+
+Startade om waybar/swaync för att visa det live direkt.
 ## 2026-09-19 — Namngiven grön identitet: "Moss green"
 
 Jakob: "inte bara grönt skogstema. utan 'moss green' är den korrekta

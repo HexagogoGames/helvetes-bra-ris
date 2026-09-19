@@ -1,5 +1,5 @@
 format = """
-[](fg:#d4a24a)[ $directory](bg:#d4a24a fg:#17211a)[](fg:#d4a24a bg:#7fa66b)[$git_branch$git_status ](bg:#7fa66b fg:#17211a)[](fg:#7fa66b)
+[](fg:#d4a24a)[ $directory](bg:#d4a24a fg:#17211a)[](fg:#d4a24a bg:#8a9a5b)[$git_branch$git_status ](bg:#8a9a5b fg:#17211a)[](fg:#8a9a5b)
 $character"""
 
 [character]
@@ -14,11 +14,11 @@ format = "[$path ]($style)"
 
 [git_branch]
 symbol = " "
-style = "bg:#7fa66b fg:#17211a"
+style = "bg:#8a9a5b fg:#17211a"
 format = "[$symbol$branch]($style)"
 
 [git_status]
-style = "bg:#7fa66b fg:#17211a"
+style = "bg:#8a9a5b fg:#17211a"
 format = "[$all_status$ahead_behind ]($style)"
 
 [cmd_duration]

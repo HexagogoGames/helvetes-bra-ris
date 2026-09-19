@@ -2,7 +2,7 @@
     /* Base — mörkgrön skog (från forrest-background1) */
     bg:              #17211ae8;
     bg-solid:        #17211aff;
-    bg-alt:          #2c3a2ee8;
+    bg-alt:          #333724e8;
     bg-hover:        #3a4a3de0;
 
     /* Text */
@@ -13,24 +13,24 @@
     gold:            #d4a24a;
     gold-soft:       #b8863a;
 
-    leaf:            #7fa66b;
+    leaf:            #8a9a5b;
     leaf-soft:       #5c8a4c;
 
     purple:          #a97ca0;
 
     /* Status */
     red:             #c1543f;
-    green:           #8fbf6f;
+    green:           #adbc80;
 
     /* Borders */
     border:          #93a08c59;
-    border-strong:   #3f5c42aa;
+    border-strong:   #404437aa;
 
     /* Selection */
     selected-bg:       #d4a24a23;
     selected-bg-solid: #33341dff;
     selected-bg-2:     #a97ca019;
-    selected-border:   #3f5c42aa;
+    selected-border:   #404437aa;
 
     /* Transparent */
     transparent:     #00000000;

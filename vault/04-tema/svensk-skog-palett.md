@@ -10,16 +10,16 @@ för gissade gröna toner — sedan finjusterad för kontrast/läsbarhet.
 | Roll | Hex | Används till | Källa |
 |---|---|---|---|
 | Bakgrund | `#17211a` | Fönster-/panel-botten överallt | mörkaste skuggtonen i fotot |
-| Yta | `#2c3a2e` | Paneler, rofi-element, kort | mossgrön mellanton |
+| Yta | `#333724` | Paneler, rofi-element, kort | mossgrön mellanton (se nedan) |
 | Text | `#ece3c6` | All brödtext | varm krämvit, "solljus genom lövverk" |
 | Text (dämpad) | `#93a08c` | Sekundär text, inaktiva ikoner | gråaktig salvia/mossgrå ur fotot |
-| **Border** | `#3f5c42` | **Bara kant-egenskaper** (aktiv fönsterkant, toggle-kanter, input-ringar) | mörkare, mindre mättad grön — medvetet skild från Accent 1 |
+| **Border** | `#404437` | **Bara kant-egenskaper** (aktiv fönsterkant, toggle-kanter, input-ringar) | mörkare, mindre mättad mossgrön — medvetet skild från Accent 1 |
 | Accent 1 (guld) | `#d4a24a` | Highlights, aktiv text/ikon, fyllda toggle-brickor, klocka | uppjusterad från fotots solbelysta ockra |
-| Accent 2 (löv-grön) | `#7fa66b` | Sekundära highlights, workspace-dots (inaktiva) | livligare grön än fotots dämpade toner |
+| Accent 2 (moss green) | `#8a9a5b` | Sekundära highlights, workspace-dots (inaktiva) | **referensvärdet för "moss green" självt**, se nedan |
 | Röd | `#c1543f` | Varning/kritiskt/destruktiva knappar | rostig tegel-röd, matchar jordton-familjen |
-| Grön (status) | `#8fbf6f` | "Ok"/laddar-status, skild från Accent 2 | ljusare löv-grön |
+| Grön (status) | `#adbc80` | "Ok"/laddar-status, skild från Accent 2 | ljusare mossgrön |
 
-**Viktig regel:** Border (`#3f5c42`) används *bara* för kant-egenskaper
+**Viktig regel:** Border (`#404437`) används *bara* för kant-egenskaper
 (`border`, `border-color`, `outer_color` i hyprlock osv) — aldrig för
 fyllningar, text eller ikoner. De använder Accent 1/2 istället. Beslutat
 2026-09-14 när Jakob bytte bort guld-kanter mot gröna.
@@ -33,15 +33,22 @@ källor: htmlcolorcodes.com, color-name.com, rgbcolorpedia/encycolorpedia
 sammanfaller): `#8A9A5B` — en dämpad, gulaktig grön, tydligt skild från
 en blådoftande skogsgrön eller en klar lövgrön.
 
-De befintliga gröna tonerna i tabellen ovan (`Yta` `#2c3a2e`, `Accent 2`
-`#7fa66b`) var redan informellt beskrivna som "mossgrön"/"löv-grön" i
-källkommentarer, men var extraherade ur fotot innan "moss green" fanns
-som ett uttalat, namngivet mål — de lutar mer mot blågrön/klar lövgrön än
-den varmare, gulare `#8A9A5B`-referensen. **Inte ännu beslutat:** om de
-befintliga hex-värdena ska justeras mot den nya referensen, eller om
-"moss green" bara ska vara begreppet/riktlinjen för framtida
-färgval (t.ex. wallust-mappningen, se [[dynamiskt-tema]]) utan att röra
-det som redan är byggt. Fråga Jakob innan ändring.
+**Genomfört samma dag:** "om något är i färgen grön kan du ändra det till
+moss green." Alla gröna toner i tabellen ovan (och i hela riggen, se
+nedan) är omräknade som en sammanhängande familj utifrån `#8A9A5B`
+(samma nyans/mättnad, bara varierande ljushet per roll — beräknat i
+HLS-rymden, inte bara ögonmått): Accent 2 är referensen själv, Grön
+(status) en ljusare variant, Yta och Border mörkare/dämpade varianter.
+De gamla värdena (`#7fa66b`, `#8fbf6f`, `#2c3a2e`, `#3f5c42`) lutade mer
+mot blågrön/klar lövgrön.
+
+**Dynamiskt tema (wallust) — "löst" följer bakgrundsbilden:** Jakob ville
+fortfarande att temat ska följa bakgrundsbilden, åtminstone löst. Den
+"gröna" rollen i `wallust/templates/*` (används för icke-ankarbilder)
+använder nu wallusts `blend("8a9a5b")`-filter: den extraherade grönton
+ur *just den bilden* blandas 50/50 med mossgrönt-referensen, istället
+för att antingen vara helt fri (ingen koppling till moss green) eller
+helt låst (ingen koppling till bilden). Se [[dynamiskt-tema]].
 
 ## Var paletten är implementerad
 

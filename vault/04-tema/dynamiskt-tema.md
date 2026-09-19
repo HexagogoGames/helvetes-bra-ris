@@ -116,7 +116,7 @@ bildens egna färger (inte bara for Svensk skog-liknande gröna bilder):
 | `accent`/`gold` | `color3 \| saturate(-0.5) \| darken(0.05)` | Primär highlight (motsvarar guld i Svensk skog) |
 | `accent2`/`leaf` | `color4 \| saturate(-0.5) \| darken(0.05)` | Sekundär highlight |
 | `red`       | `color1 \| saturate(-0.5)`              | Varning/fel |
-| `green`     | `color2 \| saturate(-0.5)`              | Success/laddar |
+| `green`     | `color2 \| saturate(-0.5) \| blend("8a9a5b")` | Success/laddar — blandas med [[svensk-skog-palett\|moss green-referensen]] 2026-09-19, se den filen för varför |
 | `border`/`border-c` | `color8`                        | Kanter (alltid mörk/neutral ton) |
 | `cyan`, `purple` (swaync/rofi) | `color6`/`color5 \| saturate(-0.5..-0.65) \| darken(...)` | Sekundära notis-/menyfärger |
 
